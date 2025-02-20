@@ -25,6 +25,17 @@ def tuto_start(cla):
             out_check(cla)
             tuto_go(cla)
         else:
+
+            # 실수로 메뉴 클릭시....
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("menu_post")
+                click_pos_2(920, 55, cla)
+            else:
+                tuto_story(cla)
             tuto_skip(cla)
 
     except Exception as e:
@@ -38,64 +49,152 @@ def tuto_go(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action import confirm_all
+    from action import confirm_all, out_check
     from game_check import move_check
     try:
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\tuto_ing.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(830, 90, 860, 140, cla, img, 0.7)
+        imgs_ = imgs_set_(830, 90, 860, 140, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("tuto_ing")
-            move_check(cla)
-        else:
+
             is_tuto = False
             is_tuto_count = 0
             while is_tuto is False:
-                is_tuto_count += 1
-                if is_tuto_count > 10:
-                    is_tuto = True
 
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\ready_quest.PNG"
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\tuto_ing.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(830, 60, 960, 130, cla, img, 0.7)
+                imgs_ = imgs_set_(830, 90, 860, 140, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("ready_quest")
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    print("tuto_ing", imgs_)
+                    move_check(cla)
+                    is_tuto_count = 0
 
-                    im_move_not = False
-
-                    for i in range(10):
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\im_move_not.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(330, 480, 660, 600, cla, img, 0.7)
-                        if imgs_ is not None and imgs_ != False:
-                            print("im_move_not")
-                            im_move_not = True
-                            break
-                        time.sleep(0.1)
-                    if im_move_not == True:
-                        click_pos_2(800, 115, cla)
-                        is_tuto = True
-                    else:
-                        print("빠른이동 오케이하기")
-                        is_tuto = True
-                        for i in range(5):
-                            result_confirm = confirm_all(cla)
-                            if result_confirm == True:
-                                break
-                            QTest.qWait(1000)
                 else:
-                    print("물음표??")
-                    tuto_skip(cla)
+                    print("물음표?")
+
+                    clicked = False
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\ready_quest.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(830, 60, 960, 130, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("tuto_go : ready_quest")
+                        clicked = True
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\ready_quest2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(830, 60, 960, 130, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("tuto_go : ready_quest")
+                        clicked = True
+                    if clicked == True:
+                        tuto_click(cla)
+                    else:
+                        is_tuto_count += 1
+                        if is_tuto_count > 3:
+                            is_tuto = True
+                        tuto_skip(cla)
                 time.sleep(1)
+
+        else:
+            tuto_click(cla)
     except Exception as e:
         print(e)
         return 0
 
+def tuto_click(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action import confirm_all, out_check
+    from game_check import move_check
+    try:
+
+        is_tuto = False
+        is_tuto_count = 0
+        while is_tuto is False:
+            is_tuto_count += 1
+            if is_tuto_count > 10:
+                is_tuto = True
+
+            clicked = False
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\ready_quest.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(830, 60, 960, 130, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("ready_quest")
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                clicked = True
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\ready_quest2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(830, 60, 960, 130, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("ready_quest")
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                clicked = True
+
+            if clicked == True:
+                im_move_not = False
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\im_move_not.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(330, 480, 660, 600, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("im_move_not")
+                        im_move_not = True
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\segesoo.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(415, 95, 660, 170, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("segesoo")
+                            im_move_not = True
+                        else:
+                            break
+                    time.sleep(0.1)
+                if im_move_not == True:
+                    click_pos_2(800, 115, cla)
+                    is_tuto = True
+                else:
+                    print("빠른이동 오케이하기")
+                    is_tuto = True
+                    for i in range(5):
+                        result_confirm = confirm_all(cla)
+                        if result_confirm == True:
+                            break
+                        QTest.qWait(1000)
+            else:
+                print("물음표??")
+                result_out = out_check(cla)
+                if result_out == True:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\tuto_ing.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(830, 90, 860, 140, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("tuto_ing", imgs_)
+                    else:
+                        click_pos_2(800, 115, cla)
+                        is_tuto = True
+                else:
+                    tuto_skip(cla)
+            time.sleep(1)
+    except Exception as e:
+        print(e)
+        return 0
 def tuto_skip(cla):
     import numpy as np
     import cv2
@@ -104,7 +203,7 @@ def tuto_skip(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen import clean_screen_start
     try:
-
+        skip_result = False
         is_skip = False
         is_skip_count = 0
         while is_skip is False:
@@ -119,8 +218,137 @@ def tuto_skip(cla):
             if imgs_ is not None and imgs_ != False:
                 print("skip_top_right_1")
                 click_pos_reg(imgs_.x, imgs_.y, cla)
+                is_skip = True
+                skip_result = True
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\skip\\skip_top_right_2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(830, 30, 960, 80, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("skip_top_right_2")
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    is_skip = True
+                    skip_result = True
+                else:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\skip\\screen_touch_bottom.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(380, 980, 570, 1040, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("screen_touch_bottom")
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        is_skip = True
+                        skip_result = True
 
             time.sleep(1)
+        return skip_result
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def tuto_story(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen import clean_screen_start
+    try:
+        is_stroy = False
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\disir.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("title : disir")
+            is_stroy = True
+            click_pos_2(895, 1010, cla)
+        else:
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\jejak.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("title : jejak")
+                is_stroy = True
+
+                for i in range(20):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\jejak_result_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(410, 410, 550, 500, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(480, 750, cla)
+
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\jejak_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(610, 980, 820, 1040, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\cancle_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(610, 980, 820, 1040, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("제작중")
+                                time.sleep(2)
+                    time.sleep(1)
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\balkeyly.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("title : balkeyly")
+                    click_pos_2(830, 200, cla)
+                    time.sleep(1)
+                    click_pos_2(860, 1010, cla)
+                    time.sleep(1)
+                    is_stroy = True
+                else:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\daejangan.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("title : daejangan")
+
+                        for i in range(20):
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\safe_ganghwa.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(340, 950, 500, 990, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_2(480, 1010, cla)
+                                break
+                            else:
+                                click_pos_2(740, 170, cla)
+                            time.sleep(1)
+
+                        for i in range(20):
+                            result_skip = tuto_skip(cla)
+                            if result_skip == True:
+                                break
+
+                            time.sleep(1)
+                        is_stroy = True
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\dongbanja.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("title : dongbanja")
+                            is_stroy = True
+                            click_pos_2(895, 1010, cla)
+        if is_stroy == True:
+            clean_screen_start(cla)
     except Exception as e:
         print(e)
         return 0

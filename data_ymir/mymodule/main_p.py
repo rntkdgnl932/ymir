@@ -146,12 +146,35 @@ class MyApp(QDialog):
         # 업데이트버젼
         # pyinstaller --hidden-import PyQt5 --hidden-import pyserial --hidden-import requests --hidden-import chardet --add-data="C:\\my_games\\game_folder\\data_game;./data_game" --name game_folder -i="game_folder_macro.ico" --add-data="game_folder_macro.ico;./" --icon="game_folder_macro.ico" --paths "C:\Users\1_S_3\AppData\Local\Programs\Python\Python311\Lib\site-packages\cv2" main.py
 
+        dir_path = "C:\\my_games"
+        file_path = dir_path + "\\line\\line.txt"
+
+        if os.path.isdir(dir_path) == False:
+            os.makedirs(dir_path)
+        isFile = False
+        while isFile is False:
+            if os.path.isfile(file_path) == True:
+                isFile = True
+                # 파일 읽기
+                with open(file_path, "r", encoding='utf-8-sig') as file:
+                    line = file.read()
+                    line_ = line.split(":")
+                    print('line', line)
+            else:
+                print('line 파일 없당')
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    file.write("ccocco:메롱")
+
+
+
         monitors = get_monitors()
         last_monitor_number = 0
         for idx, monitor in enumerate(monitors, start=1):
             last_monitor_number = idx
 
-        if last_monitor_number == 1:
+        if line_[1] == "super_coob":
+            x_reg = 960 * 2
+        elif last_monitor_number == 1:
             x_reg = 0
         elif last_monitor_number == 2:
             x_reg = 960 * 2
@@ -159,7 +182,7 @@ class MyApp(QDialog):
             x_reg = 960 * 4
 
         # self.setGeometry(20 + x_reg, 200, 900, 700)
-        self.setGeometry(20 + 1920, 100, 900, 800)
+        self.setGeometry(20 + x_reg, 100, 900, 800)
         self.show()
     def my_title(self):
         self.setWindowTitle(v_.this_game + "(ver " + version + ")")
