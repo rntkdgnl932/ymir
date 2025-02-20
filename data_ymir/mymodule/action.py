@@ -21,7 +21,7 @@ def out_check(cla):
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\out_check\\small_out.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 880, 60, 930, cla, img, 0.7)
+        imgs_ = imgs_set_(0, 800, 60, 930, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
             print("small_out")
             small_ui_big_change(cla)
@@ -29,7 +29,7 @@ def out_check(cla):
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\out_check\\out_check.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 840, 60, 900, cla, img, 0.7)
+        imgs_ = imgs_set_(0, 800, 60, 900, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
             print("out_check")
             is_out = True

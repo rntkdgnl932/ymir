@@ -37,12 +37,12 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
     try:
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\tuto_ing.PNG"
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\out_check\\out_check.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(830, 90, 860, 140, cla, img, 0.8)
+        imgs_ = imgs_set_(0, 800, 60, 900, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
-            print("tuto_ing", imgs_)
+            print("out_check")
 
     except Exception as e:
         print(e)
