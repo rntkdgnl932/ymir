@@ -7,7 +7,32 @@ import variable as v_
 from PyQt5.QtTest import *
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
+def macro_out(cla):
+    import numpy as np
+    import cv2
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    try:
+        dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+        file_path = dir_path + "\\start.txt"
+        # cla.txt
+        cla_data = str(cla) + "cla"
+        file_path2 = dir_path + "\\" + cla_data + ".txt"
+        with open(file_path, "w", encoding='utf-8-sig') as file:
+            data = 'no'
+            file.write(str(data))
+            time.sleep(0.2)
+        with open(file_path2, "w", encoding='utf-8-sig') as file:
+            data = cla
+            file.write(str(data))
+            time.sleep(0.2)
+        os.execl(sys.executable, sys.executable, *sys.argv)
 
+
+
+    except Exception as e:
+        print(e)
+        return 0
 
 def out_check(cla):
     import numpy as np

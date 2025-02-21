@@ -15,7 +15,7 @@ def tuto_start(cla):
     import os
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action import out_check
+    from action import out_check, macro_out
     from game_check import move_check
     from massenger import line_to_me
     try:
@@ -36,20 +36,7 @@ def tuto_start(cla):
                 why = "미션실패했다 정비해보자"
                 line_to_me(cla, why)
 
-                dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
-                file_path = dir_path + "\\start.txt"
-                # cla.txt
-                cla_data = str(cla) + "cla"
-                file_path2 = dir_path + "\\" + cla_data + ".txt"
-                with open(file_path, "w", encoding='utf-8-sig') as file:
-                    data = 'no'
-                    file.write(str(data))
-                    time.sleep(0.2)
-                with open(file_path2, "w", encoding='utf-8-sig') as file:
-                    data = cla
-                    file.write(str(data))
-                    time.sleep(0.2)
-                os.execl(sys.executable, sys.executable, *sys.argv)
+                macro_out(cla)
 
 
             # 실수로 메뉴 클릭시....
@@ -312,7 +299,7 @@ def tuto_story(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen import clean_screen_start
     from massenger import line_to_me
-    from action import confirm_all, out_check
+    from action import confirm_all, out_check, macro_out
     try:
         is_stroy = False
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\disir.PNG"
@@ -468,6 +455,41 @@ def tuto_story(cla):
                     time.sleep(0.5)
                     is_stroy = True
 
+            else:
+                # 사가
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\saga.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\saga_story_ravenshall_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(740, 330, 840, 380, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            why = "수동해야 한다"
+                            line_to_me(cla, why)
+                            macro_out(cla)
+                            break
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\saga.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_2(145, 525, cla)
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\saga_story_ravenshall_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(740, 330, 840, 380, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                        time.sleep(1)
         if is_stroy == True:
             clean_screen_start(cla)
     except Exception as e:
