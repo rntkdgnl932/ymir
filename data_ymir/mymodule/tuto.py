@@ -16,10 +16,12 @@ def tuto_start(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action import out_check, macro_out
-    from game_check import move_check
+    from stop_event18 import _stop_please
     from massenger import line_to_me
     try:
         print("tuto_start")
+
+        _stop_please(cla)
 
         result_out = out_check(cla)
         if result_out == True:
