@@ -37,21 +37,23 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
     try:
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\18\\18_2.PNG"
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\bag_refresh_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(70, 600, 350, 770, cla, img, 0.7)
+        imgs_ = imgs_set_(800, 980, 870, 1040, cla, img, 0.9)
         if imgs_ is not None and imgs_ != False:
-            print("18_2")
+            print("bag_refresh_btn")
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(800, 980, 960, 1040, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("logout2")
-        else:
-            print("18toRldi")
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\busut_supe.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(720, 110, 960, 1000, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("busut_supe", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.5)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.5)
 
     except Exception as e:
         print(e)
