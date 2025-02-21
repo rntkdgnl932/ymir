@@ -78,6 +78,56 @@ def tuto_go(cla):
     from game_check import move_check
     try:
 
+        # 토르 이벤트
+        tor = False
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_quest.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(700, 90, 860, 140, cla, img, 0.9)
+        if imgs_ is not None and imgs_ != False:
+            tor = True
+            tor_count = 0
+            while tor is True:
+                tor_count += 1
+                if tor_count > 30:
+                    tor = False
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_4.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(200, 200, 800, 800, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_2(480, 540, cla)
+                    time.sleep(0.2)
+                    pyautogui.press("a")
+                    time.sleep(0.5)
+                    pyautogui.press("s")
+                else:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_quest.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(700, 90, 860, 140, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        tor_count = 0
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(200, 200, 800, 800, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(480, 540, cla)
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_3.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(200, 200, 800, 800, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_2(480, 540, cla)
+
+
+                else:
+                    tor_count += 1
+                time.sleep(1)
+
+
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\tuto_ing.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
