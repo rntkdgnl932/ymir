@@ -11,7 +11,7 @@ def game_start_screen(cla, character_id):
     import cv2
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-
+    from stop_event18 import _stop_please
 
 
     try:
@@ -353,7 +353,7 @@ def game_ready(cla):
 
     from function_game import imgs_set_, click_pos_2, click_pos_reg
     from action import out_check, confirm_all
-
+    from stop_event18 import _stop_please
 
     try:
         print("game_ready")
@@ -436,6 +436,7 @@ def wait_game(cla):
 
     from function_game import imgs_set_, click_pos_2, click_pos_reg
     from action import out_check, confirm_all
+    from stop_event18 import _stop_please
     try:
         game_ready_count = 0
         game_play_count = 0
