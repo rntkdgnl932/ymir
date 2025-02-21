@@ -23,9 +23,11 @@ def tuto_start(cla):
 
         _stop_please(cla)
 
+        # 토르 이벤트
+        tor_story(cla)
+
         result_out = out_check(cla)
         if result_out == True:
-            out_check(cla)
             tuto_go(cla)
         else:
             # 미션 실패시 알람하기
@@ -339,58 +341,6 @@ def tuto_story(cla):
     try:
         is_stroy = False
 
-        # 토르 이벤트
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_quest.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(700, 90, 860, 140, cla, img, 0.9)
-        if imgs_ is not None and imgs_ != False:
-            tor = True
-            tor_count = 0
-            while tor is True:
-                tor_count += 1
-                if tor_count > 300:
-                    tor = False
-
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_quest.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(700, 90, 860, 140, cla, img, 0.9)
-                if imgs_ is not None and imgs_ != False:
-                    tor_count = 0
-
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_4.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(200, 200, 800, 800, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("tor_4", imgs_)
-                        click_pos_2(480, 540, cla)
-                        time.sleep(0.2)
-                        pyautogui.press("a")
-                        time.sleep(0.5)
-                        pyautogui.press("s")
-                    else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_2.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(200, 200, 800, 800, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("tor_2", imgs_)
-                            click_pos_2(480, 540, cla)
-                        else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_3.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(200, 200, 800, 800, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("tor_3", imgs_)
-                                click_pos_2(480, 540, cla)
-
-
-                else:
-                    tor_count += 1
-                time.sleep(0.1)
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\disir.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -582,6 +532,101 @@ def tuto_story(cla):
                         time.sleep(1)
         if is_stroy == True:
             clean_screen_start(cla)
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def tor_story(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen import clean_screen_start
+    from massenger import line_to_me
+    from action import confirm_all, out_check, macro_out
+    try:
+        tor = False
+
+        # 토르 이벤트
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_quest.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(700, 90, 860, 140, cla, img, 0.9)
+        if imgs_ is not None and imgs_ != False:
+            tor = True
+
+        else:
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_4.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(200, 200, 800, 800, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("tor_4", imgs_)
+                tor = True
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(200, 200, 800, 800, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("tor_2", imgs_)
+                    tor = True
+                else:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_3.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(200, 200, 800, 800, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("tor_3", imgs_)
+                        tor = True
+        if tor == True:
+            tor_count = 0
+            while tor is True:
+                tor_count += 1
+                if tor_count > 300:
+                    tor = False
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_quest.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(700, 90, 860, 140, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    tor_count = 0
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_4.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(200, 200, 800, 800, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("tor_4", imgs_)
+                        click_pos_2(480, 540, cla)
+                        time.sleep(0.2)
+                        pyautogui.press("a")
+                        time.sleep(0.5)
+                        pyautogui.press("s")
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(200, 200, 800, 800, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("tor_2", imgs_)
+                            click_pos_2(480, 540, cla)
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\tor\\tor_3.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(200, 200, 800, 800, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("tor_3", imgs_)
+                                click_pos_2(480, 540, cla)
+
+
+                else:
+                    tor_count += 1
+                time.sleep(0.1)
     except Exception as e:
         print(e)
         return 0
