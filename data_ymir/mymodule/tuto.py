@@ -396,7 +396,7 @@ def tuto_story(cla):
             print("title : quest")
             why = "의뢰"
             click_pos_2(810, 155, cla)
-            line_to_me(cla, why)
+            # line_to_me(cla, why)
 
             for i in range(20):
                 result_confirm = confirm_all(cla)
