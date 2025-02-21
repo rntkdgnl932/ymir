@@ -155,6 +155,7 @@ def tuto_click(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("im_move_not")
                         im_move_not = True
+                        break
                     else:
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\segesoo.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -163,12 +164,30 @@ def tuto_click(cla):
                         if imgs_ is not None and imgs_ != False:
                             print("segesoo")
                             im_move_not = True
-                        else:
                             break
                     time.sleep(0.1)
                 if im_move_not == True:
                     click_pos_2(800, 115, cla)
                     is_tuto = True
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\quest_gesipan_notice_300_90_650_160.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(300, 90, 650, 160, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("quest_gesipan_notice_300_90_650_160")
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\quest_gesipan_notice_10_50_170_215.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(10, 50, 170, 215, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                break
+                        time.sleep(0.1)
+
+
+
                 else:
                     print("빠른이동 오케이하기")
                     is_tuto = True
