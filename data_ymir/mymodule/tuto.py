@@ -254,12 +254,22 @@ def tuto_skip(cla):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\skip\\screen_touch_bottom.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(380, 980, 570, 1040, cla, img, 0.7)
+                    imgs_ = imgs_set_(350, 720, 600, 1040, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
                         print("screen_touch_bottom")
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         is_skip = True
                         skip_result = True
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\skip\\screen_touch_bottom2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(350, 720, 600, 1040, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("screen_touch_bottom")
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            is_skip = True
+                            skip_result = True
 
             time.sleep(1)
         return skip_result
