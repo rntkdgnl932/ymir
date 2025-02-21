@@ -507,6 +507,7 @@ def download_game(cla):
 
     from function_game import imgs_set_, click_pos_2, click_pos_reg
     from action import out_check, confirm_all
+    from stop_event18 import _stop_please
     from massenger import line_to_me
     try:
         game_ready_count = 0
@@ -536,6 +537,8 @@ def download_game(cla):
 
                             why = "다운로드 시간이 길다" + str(result_) + "분 걸렸다."
                             line_to_me(cla, why)
+                else:
+                    _stop_please(cla)
             time.sleep(1)
     except Exception as e:
         print(e)
