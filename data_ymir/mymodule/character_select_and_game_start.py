@@ -527,7 +527,7 @@ def download_game(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(800, 980, 960, 1040, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                game_ready == False
+                game_ready = False
                 print("downloading 2", game_ready_count, "초")
                 _stop_please(cla)
             else:
