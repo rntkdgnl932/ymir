@@ -517,19 +517,22 @@ def download_game(cla):
             game_ready_count += 1
             confirm_all(cla)
 
+            print("downloading 1", game_ready_count, "초")
+
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(800, 980, 960, 1040, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 game_ready == False
+                print("downloading 2", game_ready_count, "초")
             else:
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\downloading.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(370, 960, 500, 1040, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("downloading", game_ready_count, "초")
+                    print("downloading 3", game_ready_count, "초")
                     if game_ready_count % 600:
                         result_minute = game_ready_count // 600
                         if result_minute > 0 and int(result_minute) == result_minute:
@@ -538,6 +541,7 @@ def download_game(cla):
                             why = "다운로드 시간이 길다" + str(result_) + "분 걸렸다."
                             line_to_me(cla, why)
                 else:
+                    print("downloading 4", game_ready_count, "초")
                     _stop_please(cla)
             time.sleep(1)
     except Exception as e:
