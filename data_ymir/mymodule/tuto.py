@@ -152,6 +152,25 @@ def tuto_click(cla):
 
             clicked = False
 
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\tuto_question.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(830, 60, 960, 230, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("tuto_question")
+                for i in range(10):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\tuto_question.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(830, 60, 960, 230, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("tuto_question")
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                    else:
+                        break
+                    time.sleep(0.2)
+
+
 
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\ready_quest2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
