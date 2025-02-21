@@ -33,6 +33,15 @@ def _stop_please(cla):
                 print("18_2")
                 click_pos_reg(imgs_.x, imgs_.y, cla)
                 time.sleep(1)
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\18\\18_3.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(800, 350, 860, 400, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("18_3")
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(1)
         # full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder) + "\\imgs\\18\\18_2.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
         # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
