@@ -12,11 +12,12 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def tuto_start(cla):
     import numpy as np
     import cv2
-    import pyautogui
+    import os
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action import out_check
     from game_check import move_check
+    from massenger import line_to_me
     try:
         print("tuto_start")
 
@@ -25,6 +26,31 @@ def tuto_start(cla):
             out_check(cla)
             tuto_go(cla)
         else:
+            # 미션 실패시 알람하기
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\mission_failed.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 180, 530, 230, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("mission_failed")
+                why = "미션실패했다 정비해보자"
+                line_to_me(cla, why)
+
+                dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                file_path = dir_path + "\\start.txt"
+                # cla.txt
+                cla_data = str(cla) + "cla"
+                file_path2 = dir_path + "\\" + cla_data + ".txt"
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    data = 'no'
+                    file.write(str(data))
+                    time.sleep(0.2)
+                with open(file_path2, "w", encoding='utf-8-sig') as file:
+                    data = cla
+                    file.write(str(data))
+                    time.sleep(0.2)
+                os.execl(sys.executable, sys.executable, *sys.argv)
+
 
             # 실수로 메뉴 클릭시....
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
