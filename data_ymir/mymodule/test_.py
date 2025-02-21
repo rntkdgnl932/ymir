@@ -44,6 +44,22 @@ def go_test():
         if imgs_ is not None and imgs_ != False:
             print("out_check")
 
+        token = '7718169047:AAGSr-Uej5frwoFZwlJptTpafZuk9_cJxiE'
+        chat_id = '2133333624'
+
+        # https://api.telegram.org/bot7718169047:AAGSr-Uej5frwoFZwlJptTpafZuk9_cJxiE/getUpdates
+
+
+        send_message(token, chat_id, '으이샤으이샤')
+
+
     except Exception as e:
         print(e)
         return 0
+
+def send_message(token, chat_id, text):
+    url = f'https://api.telegram.org/bot{token}/sendMessage'
+    payload = {'chat_id': chat_id, 'text': text}
+    response = requests.post(url, data=payload)
+    return response
+

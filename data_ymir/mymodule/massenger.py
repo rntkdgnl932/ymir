@@ -137,6 +137,8 @@ def line_to_me(cla, why):
     import os.path
     global send_own, send_cla, send_num
     try:
+
+        # 이제 텔레그램으로 대체함....
         print("cla", cla)
         print("why", why)
         dir_path = "C:\\my_games"
@@ -169,8 +171,20 @@ def line_to_me(cla, why):
             send_cla = cla
             send_num = read_result[1]
 
+
+
             if read_result[0] == "coob":
                 my_token = "qwERHZyXhOvohyX0ONQcA0rsCh2aEur1djCC7zEplhH"
+
+                # 텔레그램으로 보내기
+                token = '7718169047:AAGSr-Uej5frwoFZwlJptTpafZuk9_cJxiE'
+                chat_id = '2133333624'
+                tele_massage = "\n" + v_.this_game + "\n" + str(read_result[0]) + "님\n" + str(read_result[1]) + " 컴퓨터\n[" + str(cla) + "클라] 확인 요망\n=> " + str(why)
+                # https://api.telegram.org/bot7718169047:AAGSr-Uej5frwoFZwlJptTpafZuk9_cJxiE/getUpdates
+
+                send_message(token, chat_id, tele_massage)
+                #
+
             elif read_result[0] == "ccocco":
                 my_token = "hKXb6oosWTnH2JCrhtnchbVV5WN5WN3G3yMtZF4UTos"
             v_.this_game
@@ -184,6 +198,12 @@ def line_to_me(cla, why):
 
     except Exception as ex:
         print(ex)
+
+def send_message(token, chat_id, text):
+    url = f'https://api.telegram.org/bot{token}/sendMessage'
+    payload = {'chat_id': chat_id, 'text': text}
+    response = requests.post(url, data=payload)
+    return response
 
 def line_monitor(game, cla):
     print("line_monitor")
