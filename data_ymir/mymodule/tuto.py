@@ -286,7 +286,7 @@ def tuto_story(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen import clean_screen_start
     from massenger import line_to_me
-    from action import confirm_all
+    from action import confirm_all, out_check
     try:
         is_stroy = False
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\disir.PNG"
@@ -399,11 +399,26 @@ def tuto_story(cla):
             # line_to_me(cla, why)
 
             for i in range(20):
-                result_confirm = confirm_all(cla)
-                if result_confirm == True:
-                    break
+
+                result_out = out_check(cla)
+                if result_out == True:
+
+                    result_confirm = confirm_all(cla)
+                    if result_confirm == True:
+                        break
                 else:
-                    time.sleep(2)
+                    result_skip = tuto_skip(cla)
+                    if result_skip == True:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\quest.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(810, 155, cla)
+                            clean_screen_start(cla)
+                            break
                 time.sleep(1)
 
         if is_stroy == True:
