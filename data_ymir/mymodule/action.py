@@ -151,7 +151,7 @@ def confirm_all(cla):
         imgs_ = imgs_set_(400, 540, 600, 660, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
             print("confirm_1")
-            click_pos_reg(imgs_.x, img.y, cla)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
             is_confirm = True
         else:
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\soolock_1.PNG"
@@ -160,7 +160,7 @@ def confirm_all(cla):
             imgs_ = imgs_set_(400, 540, 650, 750, cla, img, 0.7)
             if imgs_ is not None and imgs_ != False:
                 print("soolock_1")
-                click_pos_reg(imgs_.x, img.y, cla)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
                 is_confirm = True
 
 
