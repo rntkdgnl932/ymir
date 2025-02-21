@@ -531,10 +531,11 @@ def download_game(cla):
                     print("downloading", game_ready_count, "초")
                     if game_ready_count % 600:
                         result_minute = game_ready_count // 600
-                        result_ = 10 * result_minute
+                        if result_minute > 0 and int(result_minute) == result_minute:
+                            result_ = 10 * result_minute
 
-                        why = "다운로드 시간이 길다" + str(result_) + "분 걸렸다."
-                        line_to_me(cla, why)
+                            why = "다운로드 시간이 길다" + str(result_) + "분 걸렸다."
+                            line_to_me(cla, why)
             time.sleep(1)
     except Exception as e:
         print(e)
