@@ -65,6 +65,13 @@ def game_start_screen(cla, character_id):
                             imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 ready = True
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\down_load_1.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(300, 400, 660, 530, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    ready = True
 
                 if ready == True:
                     game_ready(cla)
@@ -344,7 +351,7 @@ def game_ready(cla):
     import cv2
 
     from function_game import imgs_set_, click_pos_2, click_pos_reg
-    from action import out_check
+    from action import out_check, confirm_all
 
 
     try:
@@ -361,8 +368,6 @@ def game_ready(cla):
         imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             game_ready = True
-            game_ready_count = 0
-            game_play_count = 0
         else:
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ready_cancle_btn2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -370,69 +375,8 @@ def game_ready(cla):
             imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 game_ready = True
-                game_ready_count = 0
-                game_play_count = 0
         if game_ready == True:
-            while game_ready is True:
-
-                game_ready_count += 1
-
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ready_cancle_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    game_ready_count = 0
-                    print("기다리는중", game_ready_count, "초")
-                else:
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ready_cancle_btn2.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        game_ready_count = 0
-                        print("기다리는중", game_ready_count, "초")
-                    else:
-                        # 로딩중 확인
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(830, 980, 960, 1040, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_2(500, 400, cla)
-                        else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(800, 980, 960, 1040, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                click_pos_2(500, 400, cla)
-
-                            else:
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\character__select__btn.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(800, 950, 960, 1040, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    click_pos_2(915, 1000, cla)
-                                else:
-                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\character__select__btn2.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(800, 950, 960, 1040, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        click_pos_2(915, 1000, cla)
-                                    else:
-                                        result_out = out_check(cla)
-                                        if result_out == False:
-                                            game_ready = True
-
-                                        else:
-                                            game_play_count += 1
-                                            print("게임 3초 대기", game_ready_count)
-                                            if game_play_count > 2:
-                                                game_ready = False
-                time.sleep(1)
+            wait_game(cla)
         else:
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\login_character_title.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -464,8 +408,6 @@ def game_ready(cla):
                 imgs_ = imgs_set_(830, 980, 960, 1040, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     game_ready = True
-                    game_ready_count = 0
-                    game_play_count = 0
                 else:
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -473,68 +415,126 @@ def game_ready(cla):
                     imgs_ = imgs_set_(800, 980, 960, 1040, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         game_ready = True
-                        game_ready_count = 0
-                        game_play_count = 0
                 if game_ready == True:
-                    while game_ready is True:
+                    wait_game(cla)
+                else:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\down_load_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(300, 400, 660, 530, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        download_game(cla)
+                        time.sleep(1)
+    except Exception as e:
+        print(e)
 
-                        game_ready_count += 1
+def wait_game(cla):
+    import numpy as np
+    import cv2
 
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ready_cancle_btn.PNG"
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
+    from action import out_check, confirm_all
+    try:
+        game_ready_count = 0
+        game_play_count = 0
+        game_ready = True
+        while game_ready is True:
+
+            game_ready_count += 1
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ready_cancle_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                game_ready_count = 0
+                print("기다리는중", game_ready_count, "초")
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ready_cancle_btn2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    game_ready_count = 0
+                    print("기다리는중", game_ready_count, "초")
+                else:
+                    # 로딩중 확인
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(830, 980, 960, 1040, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(500, 400, cla)
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
+                        imgs_ = imgs_set_(800, 980, 960, 1040, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            game_ready_count = 0
-                            print("기다리는중", game_ready_count, "초")
+                            click_pos_2(500, 400, cla)
+
                         else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ready_cancle_btn2.PNG"
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\character__select__btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
+                            imgs_ = imgs_set_(800, 950, 960, 1040, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                game_ready_count = 0
-                                print("기다리는중", game_ready_count, "초")
+                                click_pos_2(915, 1000, cla)
                             else:
-                                # 로딩중 확인
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout.PNG"
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\character__select__btn2.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(830, 980, 960, 1040, cla, img, 0.8)
+                                imgs_ = imgs_set_(800, 950, 960, 1040, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    click_pos_2(500, 400, cla)
+                                    click_pos_2(915, 1000, cla)
                                 else:
-                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(800, 980, 960, 1040, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        click_pos_2(500, 400, cla)
+                                    result_out = out_check(cla)
+                                    if result_out == False:
+                                        game_ready = True
 
                                     else:
-                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\character__select__btn.PNG"
-                                        img_array = np.fromfile(full_path, np.uint8)
-                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(800, 950, 960, 1040, cla, img, 0.8)
-                                        if imgs_ is not None and imgs_ != False:
-                                            click_pos_2(915, 1000, cla)
-                                        else:
-                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\character__select__btn2.PNG"
-                                            img_array = np.fromfile(full_path, np.uint8)
-                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(800, 950, 960, 1040, cla, img, 0.8)
-                                            if imgs_ is not None and imgs_ != False:
-                                                click_pos_2(915, 1000, cla)
-                                            else:
-                                                result_out = out_check(cla)
-                                                if result_out == False:
-                                                    game_ready = True
+                                        game_play_count += 1
+                                        print("게임 3초 대기", game_ready_count)
+                                        if game_play_count > 2:
+                                            game_ready = False
+            time.sleep(1)
+    except Exception as e:
+        print(e)
 
-                                                else:
-                                                    game_play_count += 1
-                                                    print("게임 3초 대기", game_ready_count)
-                                                    if game_play_count > 2:
-                                                        game_ready = False
-                        time.sleep(1)
+def download_game(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
+    from action import out_check, confirm_all
+    from massenger import line_to_me
+    try:
+        game_ready_count = 0
+        game_play_count = 0
+        game_ready = True
+        while game_ready is True:
+            game_ready_count += 1
+            confirm_all(cla)
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(800, 980, 960, 1040, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                game_ready == False
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\downloading.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(370, 960, 500, 1040, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("downloading", game_ready_count, "초")
+                    if game_ready_count % 600:
+                        result_minute = game_ready_count // 600
+                        result_ = 10 * result_minute
+
+                        why = "다운로드 시간이 길다" + str(result_) + "분 걸렸다."
+                        line_to_me(cla, why)
+            time.sleep(1)
     except Exception as e:
         print(e)
