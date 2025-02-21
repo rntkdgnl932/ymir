@@ -39,6 +39,16 @@ def tuto_start(cla):
                 line_to_me(cla, why)
 
                 macro_out(cla)
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\boohwal_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(380, 900, 600, 1040, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("boohwal_btn")
+                why = "죽었다...정비해보자"
+                line_to_me(cla, why)
+
+                macro_out(cla)
 
 
             # 실수로 메뉴 클릭시....
