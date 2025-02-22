@@ -471,13 +471,15 @@ def mission_get(cla, data):
 
                                 time.sleep(0.2)
                 ###
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\cancle.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(330, 570, 480, 620, cla, img, 0.85)
-                if imgs_ is not None and imgs_ != False:
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    is_get_btn = True
+                for i in range(10):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\cancle.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(330, 570, 480, 620, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        is_get_btn = True
+                    time.sleep(0.2)
                 ##############################################
 
                 if is_get_btn == True:
@@ -546,8 +548,9 @@ def mission_get(cla, data):
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(720, 690, 860, 740, cla, img, 0.85)
                                 if imgs_ is not None and imgs_ != False:
-                                    juljun_on(cla)
-                                    break
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.5)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
                                 else:
                                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\mission_start_btn.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
