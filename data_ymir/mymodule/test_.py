@@ -39,12 +39,12 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
     try:
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\anymore_jadong_notice.PNG"
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\juljun_small_potion.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(370, 380, 600, 455, cla, img, 0.9)
+        imgs_ = imgs_set_(280, 920, 680, 1040, cla, img, 0.9)
         if imgs_ is not None and imgs_ != False:
-            print("anymore_jadong_notice", imgs_)
+            print("juljun_small_potion")
 
     except Exception as e:
         print(e)
