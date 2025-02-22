@@ -341,6 +341,7 @@ def tuto_story(cla):
     from clean_screen import clean_screen_start
     from massenger import line_to_me
     from action import confirm_all, out_check, macro_out
+    from schedule import myQuest_play_add
     try:
         is_stroy = False
 
@@ -515,7 +516,7 @@ def tuto_story(cla):
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                             why = "수동해야 한다"
                             line_to_me(cla, why)
-                            macro_out(cla)
+                            myQuest_play_add(cla, "튜토육성")
                             break
                         else:
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\saga.PNG"

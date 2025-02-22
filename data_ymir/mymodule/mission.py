@@ -39,15 +39,28 @@ def mission_start(cla, data):
                     imgs_ = imgs_set_(760, 130, 890, 180, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("자동임무 수행중....")
-                        result_buy = potion_check(cla)
-                        if result_buy == True:
-                            break
+
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\mission_complete_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(730, 70, 890, 240, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("mission_complete_btn", cla)
+                            mission_get(cla, data)
+                            time.sleep(10)
+                            juljun_on(cla)
+                        else:
+
+                            result_buy = potion_check(cla)
+                            if result_buy == True:
+                                break
                     else:
                         break
                     time.sleep(5)
         else:
             mission_get(cla, data)
             time.sleep(10)
+            juljun_on(cla)
 
     except Exception as e:
         print(e)
@@ -210,132 +223,261 @@ def mission_get(cla, data):
                             if imgs_ is not None and imgs_ != False:
                                 is_get_btn = True
                                 break
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_get_btn = True
+                                    break
+
                             time.sleep(0.2)
-                ### 포기 다시 파악
+                if is_get_btn == False:
+                    ### 포기 다시 파악
 
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\give_up_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_give = imgs_set_for(760, 110, 850, 990, cla, img, 0.8)
-                if imgs_give is not None and imgs_give != False:
-                    print("give_up_btn", imgs_give)
-                    if len(imgs_give) > 0:
-                        result_for = len(imgs_give) - 1
-                        y_reg_1 = imgs_give[result_for][1] + 30
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\give_up_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_give = imgs_set_for(760, 110, 850, 990, cla, img, 0.8)
+                    if imgs_give is not None and imgs_give != False:
+                        print("give_up_btn", imgs_give)
+                        if len(imgs_give) > 0:
+                            result_for = len(imgs_give) - 1
+                            y_reg_1 = imgs_give[result_for][1] + 30
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\cancle.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(330, 570, 480, 620, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        is_get_btn = True
 
+                    ###
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\60.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_for = imgs_set_for(250, y_reg_1 + 20, 600, y_reg_2, cla, img, 0.85)
+                    if imgs_for is not None and imgs_for != False:
+                        print("60", imgs_for)
+                        if len(imgs_for) > 0:
+                            for i in range(len(imgs_for)):
+                                click_pos_reg(840 + plus, imgs_for[i][1] - 10, cla)
+                                time.sleep(0.2)
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_get_btn = True
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice2.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        is_get_btn = True
+                                        break
+
+                                time.sleep(0.2)
+                if is_get_btn == False:
+                    ### 포기 다시 파악
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\give_up_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_give = imgs_set_for(760, 110, 850, 990, cla, img, 0.8)
+                    if imgs_give is not None and imgs_give != False:
+                        print("give_up_btn", imgs_give)
+                        if len(imgs_give) > 0:
+                            result_for = len(imgs_give) - 1
+                            y_reg_1 = imgs_give[result_for][1] + 30
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\cancle.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(330, 570, 480, 620, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        is_get_btn = True
+
+                    ###
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\120.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_for = imgs_set_for(250, y_reg_1 + 20, 600, y_reg_2, cla, img, 0.85)
+                    if imgs_for is not None and imgs_for != False:
+                        print("120", imgs_for)
+                        if len(imgs_for) > 0:
+                            for i in range(len(imgs_for)):
+                                click_pos_reg(840 + plus, imgs_for[i][1] - 10, cla)
+                                time.sleep(0.2)
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_get_btn = True
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice2.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        is_get_btn = True
+                                        break
+
+                                time.sleep(0.2)
+                if is_get_btn == False:
+                    ### 포기 다시 파악
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\give_up_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_give = imgs_set_for(760, 110, 850, 990, cla, img, 0.8)
+                    if imgs_give is not None and imgs_give != False:
+                        print("give_up_btn", imgs_give)
+                        if len(imgs_give) > 0:
+                            result_for = len(imgs_give) - 1
+                            y_reg_1 = imgs_give[result_for][1] + 30
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\cancle.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(330, 570, 480, 620, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        is_get_btn = True
+                    ###
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\160.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_for = imgs_set_for(250, y_reg_1 + 20, 600, y_reg_2, cla, img, 0.85)
+                    if imgs_for is not None and imgs_for != False:
+                        print("160", imgs_for)
+                        if len(imgs_for) > 0:
+                            for i in range(len(imgs_for)):
+                                click_pos_reg(840 + plus, imgs_for[i][1] - 10, cla)
+                                time.sleep(0.2)
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_get_btn = True
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice2.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        is_get_btn = True
+                                        break
+
+                                time.sleep(0.2)
+                if is_get_btn == False:
+                    ### 포기 다시 파악
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\give_up_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_give = imgs_set_for(760, 110, 850, 990, cla, img, 0.8)
+                    if imgs_give is not None and imgs_give != False:
+                        print("give_up_btn", imgs_give)
+                        if len(imgs_give) > 0:
+                            result_for = len(imgs_give) - 1
+                            y_reg_1 = imgs_give[result_for][1] + 30
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\cancle.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(330, 570, 480, 620, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        is_get_btn = True
+                    ###
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\240.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_for = imgs_set_for(250, y_reg_1 + 20, 600, y_reg_2, cla, img, 0.85)
+                    if imgs_for is not None and imgs_for != False:
+                        print("240", imgs_for)
+                        if len(imgs_for) > 0:
+                            for i in range(len(imgs_for)):
+                                click_pos_reg(840 + plus, imgs_for[i][1] - 10, cla)
+                                time.sleep(0.2)
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_get_btn = True
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice2.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        is_get_btn = True
+                                        break
+
+                                time.sleep(0.2)
+                if is_get_btn == False:
+                    ### 포기 다시 파악
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\give_up_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_give = imgs_set_for(760, 110, 850, 990, cla, img, 0.8)
+                    if imgs_give is not None and imgs_give != False:
+                        print("give_up_btn", imgs_give)
+                        if len(imgs_give) > 0:
+                            result_for = len(imgs_give) - 1
+                            y_reg_1 = imgs_give[result_for][1] + 30
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\cancle.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(330, 570, 480, 620, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        is_get_btn = True
+                    ###
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\320.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_for = imgs_set_for(250, y_reg_1 + 20, 600, y_reg_2, cla, img, 0.85)
+                    if imgs_for is not None and imgs_for != False:
+                        print("320", imgs_for)
+                        if len(imgs_for) > 0:
+                            for i in range(len(imgs_for)):
+                                click_pos_reg(840 + plus, imgs_for[i][1] - 10, cla)
+                                time.sleep(0.2)
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_get_btn = True
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice2.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        is_get_btn = True
+                                        break
+
+                                time.sleep(0.2)
                 ###
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\120.PNG"
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\cancle.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_for = imgs_set_for(250, y_reg_1 + 20, 600, y_reg_2, cla, img, 0.85)
-                if imgs_for is not None and imgs_for != False:
-                    print("120", imgs_for)
-                    if len(imgs_for) > 0:
-                        for i in range(len(imgs_for)):
-                            click_pos_reg(840 + plus, imgs_for[i][1] - 10, cla)
-                            time.sleep(0.2)
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
-                            if imgs_ is not None and imgs_ != False:
-                                is_get_btn = True
-                                break
-                            time.sleep(0.2)
-                ### 포기 다시 파악
-
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\give_up_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_give = imgs_set_for(760, 110, 850, 990, cla, img, 0.8)
-                if imgs_give is not None and imgs_give != False:
-                    print("give_up_btn", imgs_give)
-                    if len(imgs_give) > 0:
-                        result_for = len(imgs_give) - 1
-                        y_reg_1 = imgs_give[result_for][1] + 30
-
-                ###
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\160.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_for = imgs_set_for(250, y_reg_1 + 20, 600, y_reg_2, cla, img, 0.85)
-                if imgs_for is not None and imgs_for != False:
-                    print("160", imgs_for)
-                    if len(imgs_for) > 0:
-                        for i in range(len(imgs_for)):
-                            click_pos_reg(840 + plus, imgs_for[i][1] - 10, cla)
-                            time.sleep(0.2)
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
-                            if imgs_ is not None and imgs_ != False:
-                                is_get_btn = True
-                                break
-                            time.sleep(0.2)
-                ### 포기 다시 파악
-
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\give_up_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_give = imgs_set_for(760, 110, 850, 990, cla, img, 0.8)
-                if imgs_give is not None and imgs_give != False:
-                    print("give_up_btn", imgs_give)
-                    if len(imgs_give) > 0:
-                        result_for = len(imgs_give) - 1
-                        y_reg_1 = imgs_give[result_for][1] + 30
-
-                ###
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\240.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_for = imgs_set_for(250, y_reg_1 + 20, 600, y_reg_2, cla, img, 0.85)
-                if imgs_for is not None and imgs_for != False:
-                    print("240", imgs_for)
-                    if len(imgs_for) > 0:
-                        for i in range(len(imgs_for)):
-                            click_pos_reg(840 + plus, imgs_for[i][1] - 10, cla)
-                            time.sleep(0.2)
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
-                            if imgs_ is not None and imgs_ != False:
-                                is_get_btn = True
-                                break
-                            time.sleep(0.2)
-                ### 포기 다시 파악
-
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\give_up_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_give = imgs_set_for(760, 110, 850, 990, cla, img, 0.8)
-                if imgs_give is not None and imgs_give != False:
-                    print("give_up_btn", imgs_give)
-                    if len(imgs_give) > 0:
-                        result_for = len(imgs_give) - 1
-                        y_reg_1 = imgs_give[result_for][1] + 30
-
-                ###
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\320.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_for = imgs_set_for(250, y_reg_1 + 20, 600, y_reg_2, cla, img, 0.85)
-                if imgs_for is not None and imgs_for != False:
-                    print("320", imgs_for)
-                    if len(imgs_for) > 0:
-                        for i in range(len(imgs_for)):
-                            click_pos_reg(840 + plus, imgs_for[i][1] - 10, cla)
-                            time.sleep(0.2)
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\full_get_notice.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(330, 500, 530, 570, cla, img, 0.85)
-                            if imgs_ is not None and imgs_ != False:
-                                is_get_btn = True
-                                break
-                            time.sleep(0.2)
-                ###
+                imgs_ = imgs_set_(330, 570, 480, 620, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    is_get_btn = True
                 ##############################################
 
                 if is_get_btn == True:
@@ -368,7 +510,6 @@ def mission_get(cla, data):
                         else:
                             y_click -= 35
                         if y_click < 140 or y_click > 285:
-                            myQuest_play_add(cla, data)
                             is_get = True
 
 
@@ -391,6 +532,7 @@ def mission_get(cla, data):
                             imgs_ = imgs_set_(370, 380, 600, 455, cla, img, 0.9)
                             if imgs_ is not None and imgs_ != False:
                                 clean_screen_start(cla)
+                                myQuest_play_add(cla, data)
                                 break
 
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\on.PNG"
@@ -398,12 +540,21 @@ def mission_get(cla, data):
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(620, 690, 730, 740, cla, img, 0.85)
                             if imgs_ is not None and imgs_ != False:
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\mission_start_btn.PNG"
+
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\end_btn.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(720, 690, 860, 740, cla, img, 0.85)
                                 if imgs_ is not None and imgs_ != False:
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    juljun_on(cla)
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\mission_start_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(720, 690, 860, 740, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
                             else:
                                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\off.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
