@@ -60,6 +60,7 @@ from tuto import tuto_start
 from character_select_and_game_start import game_start_screen
 from jadong import jadong_start
 from mission import mission_start
+from get_item import get_item_start
 
 sys.setrecursionlimit(10 ** 7)
 # pyqt5 관련###################################################
@@ -1042,7 +1043,7 @@ class FirstTab(QWidget):
         # 마을 의뢰
         self.com_group6 = QGroupBox('육성, 각종템받기, 거래소등록하기, 의뢰')
         cb6 = QComboBox()
-        list6 = ['스케쥴 선택', '캐릭터바꾸기', '각종템받기', '버프와물약사기', '거래소등록', '튜토육성', '의뢰_세라보그', '의뢰_바란', '의뢰_국경지대', '의뢰_유로키나산맥']
+        list6 = ['스케쥴 선택', '각종템받기', '튜토육성', '거래소등록']
         cb6.addItems(list6)
         vbox6 = QHBoxLayout()
         vbox6.addWidget(cb6)
@@ -3908,6 +3909,9 @@ class game_Playing(QThread):
                                 if result_schedule_ == "튜토육성":
                                     tuto_start(v_.now_cla)
                                     print("start")
+                                elif result_schedule_ == "각종템받기":
+                                    get_item_start(v_.now_cla)
+                                    myQuest_play_add(v_.now_cla, result_schedule_)
                                 elif "자동" in result_schedule_:
                                     result_jadong = result_schedule_.split("_")
                                     jadong_start(v_.now_cla, result_jadong[1])
