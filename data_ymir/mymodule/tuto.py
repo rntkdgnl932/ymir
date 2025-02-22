@@ -148,7 +148,7 @@ def tuto_click(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action import confirm_all, out_check
-    from game_check import move_check
+    from stop_event18 import _stop_please
     try:
 
         is_tuto = False
@@ -244,6 +244,9 @@ def tuto_click(cla):
 
                 else:
                     print("빠른이동 오케이하기")
+
+                    _stop_please(cla)
+
                     is_tuto = True
                     for i in range(5):
                         result_confirm = confirm_all(cla)
