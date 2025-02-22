@@ -48,7 +48,12 @@ def clean_screen_go(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
+    from action import juljun_check, juljun_off
     try:
+        result_juljun = juljun_check(cla)
+        if result_juljun == True:
+            juljun_off(cla)
+
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -77,8 +82,19 @@ def clean_screen_go(cla):
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(650, 550, 750, 650, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
-            print("menu_post")
+            print("clean_screen : menu_post")
             click_pos_2(915, 50, cla)
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\18\\event_1818.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("close_2 : ", imgs_)
+            if len(imgs_) > 0:
+                for i in range(len(imgs_)):
+                    click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
+                    time.sleep(0.5)
 
     except Exception as e:
         print(e)

@@ -194,3 +194,140 @@ def confirm_all(cla):
     except Exception as e:
         print(e)
         return 0
+
+def juljun_check(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    try:
+        is_juljun = False
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\juljun\\juljun_on.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(360, 100, 600, 160, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("juljun_on")
+            is_juljun = True
+
+
+
+        return is_juljun
+    except Exception as e:
+        print(e)
+        return 0
+
+def juljun_on(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen import clean_screen_start
+    try:
+
+        for i in range(10):
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\juljun\\juljun_on.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(360, 100, 600, 160, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("juljun_on")
+                break
+            else:
+                result_out = out_check(cla)
+                if result_out == False:
+                    clean_screen_start(cla)
+                else:
+                    click_pos_2(205, 965, cla)
+            QTest.qWait(1000)
+
+    except Exception as e:
+        print(e)
+        return 0
+
+def juljun_off(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, drag_pos, click_pos_2
+    try:
+        print("juljun_off")
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\juljun\\juljun_on.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(360, 100, 600, 160, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("juljun_on")
+            for i in range(10):
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\juljun\\juljun_on.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(360, 100, 600, 160, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("juljun_on")
+                    drag_pos(370, 500, 850, 500, cla)
+                    QTest.qWait(1000)
+                else:
+                    break
+                QTest.qWait(1000)
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def attack_check(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    try:
+        is_data = False
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\attack_check\\attack.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 900, 600, 960, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("attack")
+            is_data = True
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\attack_check\\ready.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 900, 600, 960, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("ready")
+            is_data = False
+
+
+        return is_data
+    except Exception as e:
+        print(e)
+        return 0
+
+def attack_on(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen import clean_screen_start
+    try:
+        print("attack_on")
+        clean_screen_start(cla)
+        click_pos_2(750, 960, cla)
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+
+
+
+

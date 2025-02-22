@@ -18,10 +18,13 @@ def tuto_start(cla):
     from action import out_check, macro_out
     from stop_event18 import _stop_please
     from massenger import line_to_me
+    from dead_die import dead_check
     try:
         print("tuto_start")
 
+        dead_check(cla)
         _stop_please(cla)
+
 
         # 토르 이벤트
         tor_story(cla)
