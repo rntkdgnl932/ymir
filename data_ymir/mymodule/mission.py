@@ -235,6 +235,14 @@ def mission_get(cla, data):
                                 if imgs_ is not None and imgs_ != False:
                                     is_get_btn = True
                                     break
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\mission_end_notice.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(250, 500, 530, 570, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        is_get_btn = True
+                                        break
 
                             time.sleep(0.2)
                 if is_get_btn == False:
@@ -283,6 +291,14 @@ def mission_get(cla, data):
                                     if imgs_ is not None and imgs_ != False:
                                         is_get_btn = True
                                         break
+                                    else:
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\mission_end_notice.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(250, 500, 530, 570, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            is_get_btn = True
+                                            break
 
                                 time.sleep(0.2)
                 if is_get_btn == False:
@@ -331,6 +347,14 @@ def mission_get(cla, data):
                                     if imgs_ is not None and imgs_ != False:
                                         is_get_btn = True
                                         break
+                                    else:
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\mission_end_notice.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(250, 500, 530, 570, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            is_get_btn = True
+                                            break
 
                                 time.sleep(0.2)
                 if is_get_btn == False:
@@ -378,6 +402,14 @@ def mission_get(cla, data):
                                     if imgs_ is not None and imgs_ != False:
                                         is_get_btn = True
                                         break
+                                    else:
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\mission_end_notice.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(250, 500, 530, 570, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            is_get_btn = True
+                                            break
 
                                 time.sleep(0.2)
                 if is_get_btn == False:
@@ -425,6 +457,14 @@ def mission_get(cla, data):
                                     if imgs_ is not None and imgs_ != False:
                                         is_get_btn = True
                                         break
+                                    else:
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\mission_end_notice.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(250, 500, 530, 570, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            is_get_btn = True
+                                            break
 
                                 time.sleep(0.2)
                 if is_get_btn == False:
@@ -472,6 +512,14 @@ def mission_get(cla, data):
                                     if imgs_ is not None and imgs_ != False:
                                         is_get_btn = True
                                         break
+                                    else:
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\mission_end_notice.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(250, 500, 530, 570, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            is_get_btn = True
+                                            break
 
                                 time.sleep(0.2)
                 ###
