@@ -57,6 +57,10 @@ def mission_start(cla, data):
                     else:
                         break
                     time.sleep(5)
+            else:
+                mission_get(cla, data)
+                time.sleep(10)
+                juljun_on(cla)
         else:
             mission_get(cla, data)
             time.sleep(10)
