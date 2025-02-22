@@ -46,6 +46,8 @@ def go_test():
         if imgs_ is not None and imgs_ != False:
             print("juljun_small_potion")
 
+        potion_buy(cla)
+
     except Exception as e:
         print(e)
         return 0
