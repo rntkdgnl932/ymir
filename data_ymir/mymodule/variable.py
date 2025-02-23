@@ -8,7 +8,7 @@ now_arduino = "none"
 potion_count = 0
 
 # 게임 및 폴더 관련
-this_game = "ymir"
+this_game = "y_game"
 game_folder = "ymir"
 data_folder = "data_ymir"
 
