@@ -15,7 +15,7 @@ def check_start(cla):
     import pyautogui
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action import confirm_all
+    from action import confirm_all, macro_out
     from massenger import line_to_me
     try:
         print("game_check")
@@ -27,9 +27,20 @@ def check_start(cla):
         imgs_ = imgs_set_(0, 880, 60, 930, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
             print("long_time")
-            confirm_all(cla)
+            why = "장시간 1????"
+            line_to_me(cla, why)
             # 다시 시작
+            macro_out(cla)
             time.sleep(1)
+        else:
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\long_time2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 880, 60, 930, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                why = "장시간 2????"
+                line_to_me(cla, why)
+                macro_out(cla)
         # 캐릭터 선택
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\login_character_title.PNG"
         img_array = np.fromfile(full_path, np.uint8)
