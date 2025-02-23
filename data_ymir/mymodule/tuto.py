@@ -19,6 +19,7 @@ def tuto_start(cla):
     from stop_event18 import _stop_please
     from massenger import line_to_me
     from dead_die import dead_check
+    from schedule import myQuest_play_add
     try:
         print("tuto_start")
 
@@ -43,7 +44,7 @@ def tuto_start(cla):
                 why = "미션실패했다 정비해보자"
                 line_to_me(cla, why)
 
-                macro_out(cla)
+                myQuest_play_add(cla, "튜토육성")
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\boohwal_btn.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -53,7 +54,7 @@ def tuto_start(cla):
                 why = "죽었다...정비해보자"
                 line_to_me(cla, why)
 
-                macro_out(cla)
+                myQuest_play_add(cla, "튜토육성")
 
 
             # 실수로 메뉴 클릭시....
@@ -81,6 +82,7 @@ def tuto_go(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action import confirm_all, out_check
     from game_check import move_check
+    from dead_die import dead_check
     try:
 
 
@@ -108,6 +110,8 @@ def tuto_go(cla):
 
                 else:
                     print("물음표?")
+
+                    dead_check(cla)
 
                     clicked = False
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\ready_quest.PNG"
