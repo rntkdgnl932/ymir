@@ -4,7 +4,7 @@ import time
 import requests
 
 import variable as v_
-
+from PyQt5.QtTest import *
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
 
@@ -58,7 +58,7 @@ def potion_check(cla):
                         is_buy_potion = True
 
         return is_buy_potion
-    except Exceptio as e:
+    except Exception as e:
         print(e)
         return 0
 
@@ -153,7 +153,31 @@ def potion_buy(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("out_maul_go")
                         click_pos_reg(imgs_.x, imgs_.y, cla)
-                        time.sleep(1)
+
+                        near_aim_spot = False
+                        for i in range(10):
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\near_aim_spot_notice.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(330, 500, 530, 580, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("near_aim_spot_notice")
+                                near_aim_spot = True
+                                break
+                            time.sleep(0.2)
+
+                        if near_aim_spot == True:
+                            for i in range(4):
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\jabhwa_sangin_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(10, 60, 160, 210, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    break
+                                else:
+                                    click_pos_2(190, 55, cla)
+                                QTest.qWait(1000)
+
                     else:
                         clean_screen_start(cla)
             time.sleep(1)
@@ -169,7 +193,7 @@ def potion_buy(cla):
             time.sleep(0.5)
 
 
-    except Exceptio as e:
+    except Exception as e:
         print(e)
         return 0
 
