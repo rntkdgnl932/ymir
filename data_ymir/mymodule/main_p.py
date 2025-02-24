@@ -61,6 +61,7 @@ from character_select_and_game_start import game_start_screen
 from jadong import jadong_start
 from mission import mission_start
 from get_item import get_item_start
+from game_check import check_start
 
 sys.setrecursionlimit(10 ** 7)
 # pyqt5 관련###################################################
@@ -3889,7 +3890,8 @@ class game_Playing(QThread):
                                 # 18 이벤트창부터 끄자
                                 _stop_please(v_.now_cla)
 
-
+                                # 게임체크하자
+                                check_start(v_.now_cla)
 
 
 

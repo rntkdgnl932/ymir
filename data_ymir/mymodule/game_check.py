@@ -33,7 +33,7 @@ def check_start(cla):
             macro_out(cla)
             time.sleep(1)
         else:
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\long_time2.PNG"
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\jangsigan_2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(0, 880, 60, 930, cla, img, 0.7)
