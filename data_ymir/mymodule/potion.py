@@ -69,7 +69,7 @@ def potion_buy(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, juljun_check
+    from action import go_maul
     from clean_screen import clean_screen_start
     from get_item import get_item_start
 
@@ -117,6 +117,7 @@ def potion_buy(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("jabhwa_sangin_btn")
                     click_pos_reg(imgs_.x, imgs_.y, cla)
+
                     for i in range(10):
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\jabhwa_sangin.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -145,41 +146,8 @@ def potion_buy(cla):
                                     break
                         time.sleep(1)
                 else:
+                    go_maul(cla)
 
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\out_maul_go.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(630, 920, 710, 1000, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("out_maul_go")
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
-
-                        near_aim_spot = False
-                        for i in range(10):
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\near_aim_spot_notice.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(330, 500, 530, 580, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("near_aim_spot_notice")
-                                near_aim_spot = True
-                                break
-                            time.sleep(0.2)
-
-                        if near_aim_spot == True:
-                            for i in range(4):
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\jabhwa_sangin_btn.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(10, 60, 160, 210, cla, img, 0.85)
-                                if imgs_ is not None and imgs_ != False:
-                                    break
-                                else:
-                                    click_pos_2(190, 55, cla)
-                                QTest.qWait(1000)
-
-                    else:
-                        clean_screen_start(cla)
             time.sleep(1)
         for i in range(5):
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\jabhwa_sangin.PNG"
