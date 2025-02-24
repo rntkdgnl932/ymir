@@ -123,7 +123,7 @@ def jadong_spot_in(cla, data):
     from action import out_check, attack_on
     from clean_screen import clean_screen_start
     from potion import potion_buy
-
+    from game_check import check_start
 
     # 사냥터
     dir_path = "C:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder)
@@ -148,6 +148,9 @@ def jadong_spot_in(cla, data):
 
     try:
         print("jadong_spot_in", data)
+        
+        ###### 게임체크하기
+        check_start(cla)
 
         ################ 물약부터 사보자
         potion_buy(cla)
