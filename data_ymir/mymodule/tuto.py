@@ -215,7 +215,6 @@ def tuto_click(cla):
                         print("segesoo")
 
                         myQuest_play_add(cla, "튜토육성")
-                        is_tuto = True
                         break
                     else:
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\im_move_not.PNG"
@@ -225,7 +224,6 @@ def tuto_click(cla):
                         if imgs_ is not None and imgs_ != False:
                             print("im_move_not")
                             im_move_not = True
-                            break
 
                     time.sleep(0.1)
                 if im_move_not == True:
