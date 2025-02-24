@@ -97,6 +97,9 @@ def tuto_go(cla):
             is_tuto = False
             is_tuto_count = 0
             while is_tuto is False:
+                is_tuto_count += 1
+                if is_tuto_count > 3:
+                    is_tuto = True
 
 
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\tuto_ing.PNG"
@@ -132,9 +135,7 @@ def tuto_go(cla):
                     if clicked == True:
                         tuto_click(cla)
                     else:
-                        is_tuto_count += 1
-                        if is_tuto_count > 3:
-                            is_tuto = True
+
                         tuto_skip(cla)
                 time.sleep(1)
 
