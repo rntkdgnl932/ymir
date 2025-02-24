@@ -62,6 +62,7 @@ from jadong import jadong_start
 from mission import mission_start
 from get_item import get_item_start
 from game_check import check_start
+from dead_die import dead_check
 
 sys.setrecursionlimit(10 ** 7)
 # pyqt5 관련###################################################
@@ -3896,7 +3897,7 @@ class game_Playing(QThread):
 
 
                                 # 죽었는지 파악
-                                # dead_die(v_.now_cla, result_schedule_)
+                                dead_check(v_.now_cla)
 
 
 

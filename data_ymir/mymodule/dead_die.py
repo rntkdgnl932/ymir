@@ -31,6 +31,7 @@ def dead_check(cla):
         imgs_ = imgs_set_(380, 900, 600, 1040, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("boohwal_btn")
+            click_pos_reg(imgs_.x, imgs_.y, cla)
             is_dead = True
 
         if is_dead == True:

@@ -148,7 +148,7 @@ def jadong_spot_in(cla, data):
 
     try:
         print("jadong_spot_in", data)
-        
+
         ###### 게임체크하기
         check_start(cla)
 
