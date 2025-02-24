@@ -153,6 +153,7 @@ def tuto_click(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action import confirm_all, out_check
     from stop_event18 import _stop_please
+    from schedule import myQuest_play_add
     try:
 
         is_tuto = False
@@ -215,13 +216,15 @@ def tuto_click(cla):
                         im_move_not = True
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\segesoo.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\segesoo_notice.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(415, 95, 660, 170, cla, img, 0.7)
+                        imgs_ = imgs_set_(400, 95, 660, 190, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             print("segesoo")
-                            im_move_not = True
+
+                            myQuest_play_add(cla, "튜토육성")
+                            is_tuto = True
                             break
                     time.sleep(0.1)
                 if im_move_not == True:
