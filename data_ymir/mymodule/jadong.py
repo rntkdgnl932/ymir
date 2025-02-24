@@ -122,6 +122,7 @@ def jadong_spot_in(cla, data):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action import out_check, attack_on
     from clean_screen import clean_screen_start
+    from potion import potion_buy
 
 
     # 사냥터
@@ -147,6 +148,9 @@ def jadong_spot_in(cla, data):
 
     try:
         print("jadong_spot_in", data)
+
+        ################ 물약부터 사보자
+        potion_buy(cla)
 
         # 들어온 데이터와 비교하기....
         result_spot = "none"
