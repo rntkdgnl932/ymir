@@ -53,6 +53,10 @@ def go_test():
         if imgs_ is not None and imgs_ != False:
             print("free_recover", imgs_)
 
+        pyautogui.keyDown('w')
+        time.sleep(1)
+        pyautogui.keyUp('w')
+
     except Exception as e:
         print(e)
         return 0
