@@ -18,7 +18,7 @@ def tuto_start(cla):
     from action import out_check, macro_out
     from stop_event18 import _stop_please
     from massenger import line_to_me
-    from dead_die import dead_check
+    from dead_die import dead_check, dead_after
     from schedule import myQuest_play_add
     try:
         print("tuto_start")
@@ -54,7 +54,7 @@ def tuto_start(cla):
                 why = "죽었다...정비해보자"
                 line_to_me(cla, why)
 
-                myQuest_play_add(cla, "튜토육성")
+                dead_after(cla)
 
 
             # 실수로 메뉴 클릭시....
