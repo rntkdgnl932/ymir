@@ -124,6 +124,7 @@ def dead_recovery(cla):
                     imgs_ = imgs_set_(90, 920, 230, 960, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("free_recover", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
                     else:
                         click_pos_2(100, 850, cla)
                         time.sleep(0.5)
