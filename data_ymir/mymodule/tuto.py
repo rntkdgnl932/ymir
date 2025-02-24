@@ -207,6 +207,8 @@ def tuto_click(cla):
             if clicked == True:
                 im_move_not = False
 
+                confirm_all(cla)
+
                 for i in range(10):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\segesoo_notice.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
