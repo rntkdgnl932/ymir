@@ -111,17 +111,26 @@ def dead_recovery(cla):
             if imgs_ is not None and imgs_ != False:
                 print("exp_recover_title", imgs_)
 
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dead_die\\free_recover.PNG"
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dead_die\\exp.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(90, 920, 230, 960, cla, img, 0.8)
+                imgs_ = imgs_set_(30, 60, 100, 120, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("free_recover", imgs_)
+                    print("exp", imgs_)
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dead_die\\free_recover.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(90, 920, 230, 960, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("free_recover", imgs_)
+                    else:
+                        click_pos_2(100, 850, cla)
+                        time.sleep(0.5)
+                        click_pos_2(150, 945, cla)
+                        time.sleep(0.5)
                 else:
-                    click_pos_2(100, 850, cla)
-                    time.sleep(0.5)
-                    click_pos_2(150, 945, cla)
-                    time.sleep(0.5)
+                    is_recovery = True
             else:
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dead_die\\out_dead_point.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
