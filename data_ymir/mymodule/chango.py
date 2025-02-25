@@ -290,6 +290,19 @@ def chango_in(cla):
     from potion import potion_buy
     from schedule import myQuest_play_check, myQuest_play_add
 
+    if cla == "one":
+        plus = 0
+    elif cla == "two":
+        plus = 960
+    elif cla == "three":
+        plus = 960 * 2
+    elif cla == "four":
+        plus = 960 * 3
+    elif cla == "five":
+        plus = 960 * 4
+    elif cla == "six":
+        plus = 960 * 5
+
     try:
         print("chango_in")
 
@@ -312,10 +325,10 @@ def chango_in(cla):
         if x_reg_1 != 0:
             print("x_reg_1", x_reg_1)
             print("y_reg_1", y_reg_1)
-            if x_reg_1 < 900:
+            if x_reg_1 < 900 + plus:
                 x_reg_1 = x_reg_1 + 40
             else:
-                x_reg_1 = 735
+                x_reg_1 = 735 + plus
                 y_reg_1 = y_reg_1 + 70
 
             for i in range(20):
