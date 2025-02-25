@@ -16,6 +16,7 @@ def request_start(cla, data):
     from action import juljun_check, juljun_off, juljun_on, attack_check, out_check
     from potion import potion_check
     from game_check import move_check
+    from dead_die import dead_check
     try:
         print("request_start", data)
 
@@ -112,6 +113,7 @@ def request_start(cla, data):
                             request_get_ready(cla, data)
                 else:
                     print("로딩중이거나 걷는 거?")
+                    dead_check(cla)
                     move_check(cla)
                     QTest.qWait(1500)
             QTest.qWait(1000)
