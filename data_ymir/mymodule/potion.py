@@ -30,7 +30,7 @@ def potion_check(cla):
 
 
     try:
-        print("potion_check")
+        print("potion_check", v_.potion_count)
 
         is_buy_potion = False
 
@@ -40,21 +40,22 @@ def potion_check(cla):
 
             is_potion = True
 
-
-            for i in range(len(out_list)):
-                result_file_list = out_list[i].split(".")
-                read_data = result_file_list[0]
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\out\\" + str(read_data) + ".PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(615, 970, 680, 1040, cla, img, 0.9)
-                if imgs_ is not None and imgs_ != False:
-                    print("out_zero_potion", str(read_data))
-                    is_potion = False
+            for r in range(50):
+                for i in range(len(out_list)):
+                    result_file_list = out_list[i].split(".")
+                    read_data = result_file_list[0]
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\out\\" + str(read_data) + ".PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(615, 970, 680, 1040, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        print("out_zero_potion", str(read_data))
+                        is_potion = False
+                time.sleep(0.1)
 
             if is_potion == False:
                 v_.potion_count += 1
-                if v_.potion_count > 2:
+                if v_.potion_count > 1:
                     juljun_off(cla)
                     potion_buy(cla)
                     is_buy_potion = True
@@ -66,24 +67,25 @@ def potion_check(cla):
             if result_juljun == True:
 
                 is_potion = False
+                for r in range(50):
+                    for i in range(len(juljun_list)):
+                        result_file_list = juljun_list[i].split(".")
+                        read_data = result_file_list[0]
 
-                for i in range(len(juljun_list)):
-                    result_file_list = juljun_list[i].split(".")
-                    read_data = result_file_list[0]
-
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\juljun\\" + str(read_data) + ".PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(280, 920, 680, 1040, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("juljun_potion", str(read_data))
-                        is_potion = True
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\juljun\\" + str(read_data) + ".PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(280, 920, 680, 1040, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("juljun_potion", str(read_data))
+                            is_potion = True
+                    time.sleep(0.1)
 
                 if is_potion == True:
                     v_.potion_count = 0
                 else:
                     v_.potion_count += 1
-                    if v_.potion_count > 2:
+                    if v_.potion_count > 1:
                         juljun_off(cla)
                         potion_buy(cla)
                         is_buy_potion = True

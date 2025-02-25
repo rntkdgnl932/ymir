@@ -46,7 +46,15 @@ def go_test():
         # request_get(cla, "외뢰_1")
 
         # request_start(cla, "외뢰_1")
+
         clean_screen_go(cla)
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\juljun\\juljun_middle_potion.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(280, 920, 680, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("juljun_potion")
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\click_request_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
