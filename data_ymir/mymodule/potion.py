@@ -101,7 +101,7 @@ def potion_buy(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action import go_maul
-    from clean_screen import clean_screen_start
+    from chango import chango_start
     from get_item import get_item_start
 
     try:
@@ -191,6 +191,8 @@ def potion_buy(cla):
                 break
             time.sleep(0.5)
 
+        # 창고 정리
+        chango_start(cla)
 
     except Exception as e:
         print(e)

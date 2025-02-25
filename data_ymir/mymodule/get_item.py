@@ -16,11 +16,13 @@ def get_item_start(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action import out_check, juljun_off, juljun_on, juljun_check
-    from game_check import move_check
+    from chango import chango_start
 
     print("get_item_start")
 
     try:
+        chango_start(cla)
+
         get_post(cla)
         get_upjuk(cla)
         get_sangjum_gyohwan(cla)
