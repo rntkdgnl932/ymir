@@ -88,11 +88,8 @@ def dead_recovery(cla):
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, juljun_check
-    from game_check import move_check
-    from potion import potion_buy
-    from schedule import myQuest_play_check, myQuest_play_add
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen import clean_screen_start
 
     try:
         print("dead_recovery")
@@ -132,6 +129,7 @@ def dead_recovery(cla):
                         click_pos_2(150, 945, cla)
                         time.sleep(0.5)
                 else:
+                    clean_screen_start(cla)
                     is_recovery = True
             else:
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dead_die\\out_dead_point.PNG"
