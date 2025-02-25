@@ -212,7 +212,8 @@ def request_get_ready(cla, data):
                                     is_spot = True
                                     break
                             QTest.qWait(1000)
-
+                else:
+                    click_pos_2(55, 85, cla)
             else:
                 for i in range(10):
                     result_out = out_check(cla)
