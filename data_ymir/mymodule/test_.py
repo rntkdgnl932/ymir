@@ -53,9 +53,12 @@ def go_test():
         if imgs_ is not None and imgs_ != False:
             print("free_recover", imgs_)
 
-        pyautogui.keyDown('w')
-        time.sleep(1)
-        pyautogui.keyUp('w')
+        out_potion = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\out"
+        out_list = os.listdir(out_potion)
+        for i in range(len(out_list)):
+            result_file_list = out_list[i].split(".")
+            read_data = result_file_list[0]
+            print("read_data", read_data)
 
     except Exception as e:
         print(e)
