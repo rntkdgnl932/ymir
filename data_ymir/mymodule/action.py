@@ -187,10 +187,73 @@ def confirm_all(cla):
                 print("soolock_1")
                 click_pos_reg(imgs_.x, imgs_.y, cla)
                 is_confirm = True
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\select_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 540, 650, 750, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("select_1")
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    is_confirm = True
+                else:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_confirm.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(480, 655, 590, 710, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("request_confirm", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        is_confirm = True
+
 
 
 
         return is_confirm
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def cancle_all(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    try:
+        is_cancle = False
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\cancle_all\\cancle_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(340, 540, 480, 660, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("cancle_btn")
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+            is_cancle = True
+        else:
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\end_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(480, 570, 630, 630, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("end_btn")
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                is_cancle = True
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_cancle.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(370, 655, 480, 710, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("request_cancle", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    is_cancle = True
+
+
+
+        return is_cancle
     except Exception as e:
         print(e)
         return 0

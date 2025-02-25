@@ -104,11 +104,15 @@ def move_check(cla):
     from clean_screen import clean_screen_start
     try:
 
+        is__move = False
+
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\check\\move\\move_2.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(60, 90, 120, 150, cla, img, 0.9)
         if imgs_ is not None and imgs_ != False:
+
+            is__move = True
 
             is_ = False
             is_count = 0
@@ -134,6 +138,8 @@ def move_check(cla):
 
 
                 time.sleep(1)
+
+        return is__move
     except Exception as e:
         print(e)
         return 0

@@ -41,6 +41,26 @@ def tuto_start(cla):
             imgs_ = imgs_set_(300, 100, 700, 500, cla, img, 0.7)
             if imgs_ is not None and imgs_ != False:
                 print("mission_failed")
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.5)
+
+                for i in range(10):
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\mission_failed.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(300, 100, 700, 500, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("mission_failed")
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+                            click_pos_2(500, 400, cla)
+                    QTest.qWait(1000)
+
+
                 why = "미션실패했다 정비해보자"
                 line_to_me(cla, why)
 
@@ -53,6 +73,22 @@ def tuto_start(cla):
                 print("boohwal_btn")
                 why = "죽었다...정비해보자"
                 line_to_me(cla, why)
+
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.5)
+
+                for i in range(10):
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\boohwal_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(380, 900, 600, 1040, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    QTest.qWait(1000)
 
                 dead_after(cla)
 

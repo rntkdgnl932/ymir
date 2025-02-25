@@ -63,6 +63,7 @@ from mission import mission_start
 from get_item import get_item_start
 from game_check import check_start
 from dead_die import dead_check
+from request import request_start
 
 sys.setrecursionlimit(10 ** 7)
 # pyqt5 관련###################################################
@@ -1083,15 +1084,15 @@ class FirstTab(QWidget):
         self.dun_group_1.setLayout(dun_box_1)
 
         # 던전 종류
-        self.dun_group_2 = QGroupBox('심연')
+        self.dun_group_2 = QGroupBox('의뢰')
         dun_g2_name = QComboBox()
         # list4 = ['던전 선택', '일반_업보', '일반_지옥', '일반_죄악', '일반_저주', '특수_마족', '특수_아르카스', '파티_묘지']
         # dun_g2_list = ['던전 선택', '다크디멘젼', '레이드', '기간토마키아']
-        dun_g2_list = ['뒤틀린 심연 선택', '뒤틀린심연']
+        dun_g2_list = ['의뢰 선택', '의뢰필드']
         dun_g2_name.addItems(dun_g2_list)
 
         dun_g2_stair = QComboBox()
-        dun_g2_stair_list = ['층', '1', '2']
+        dun_g2_stair_list = ['구역', '1', '2', '3', '4']
         dun_g2_stair.addItems(dun_g2_stair_list)
 
         # dun_g2_step = QComboBox()
@@ -1103,7 +1104,7 @@ class FirstTab(QWidget):
         dun_box_2.addWidget(dun_g2_stair)
         # dun_box_2.addWidget(dun_g2_step)
 
-        dungeon_2 = QPushButton('심연 추가')
+        dungeon_2 = QPushButton('의뢰 추가')
         dungeon_2.clicked.connect(self.onActivated_dunjeon_2_add)
 
         dun_box_2.addWidget(dungeon_2)
@@ -1787,14 +1788,14 @@ class FirstTab(QWidget):
             self.onActivated_dunjeon_add2(data)
     def onActivated_dunjeon_2_add(self):
         char_ = onCharacter
-        dun_ = "던전/심연/" + str(onDunjeon_2) + "_" + str(onDunjeon_2_level)
+        dun_ = str(onDunjeon_2) + "_" + str(onDunjeon_2_level)
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onCla == 'none':
             pyautogui.alert(button='넵', text='몇 클라인지 선택해 주시지예', title='뭐합니꺼')
-        elif onDunjeon_2 == '던전 선택' or onDunjeon_2 == 'none' or onDunjeon_2_level == 0 or onDunjeon_2_level == "층":
+        elif onDunjeon_2 == '의뢰 선택' or onDunjeon_2 == 'none' or onDunjeon_2_level == 0 or onDunjeon_2_level == "구역":
             pyautogui.alert(button='넵', text='던전 및 층수를 선택해 주시지예', title='아 진짜 뭐합니꺼')
-        elif onCharacter != 0 and (onDunjeon_2 != '던전 선택' or onDunjeon_2 != 'none'):
+        elif onCharacter != 0 and (onDunjeon_2 != '의뢰 선택' or onDunjeon_2 != 'none'):
             print('char_', char_)
             print('dun_', dun_)
 
@@ -3920,6 +3921,8 @@ class game_Playing(QThread):
                                     jadong_start(v_.now_cla, result_jadong[1])
                                 elif "임무" in result_schedule_:
                                     mission_start(v_.now_cla, result_schedule_)
+                                elif "의뢰" in result_schedule_:
+                                    request_start(v_.now_cla, result_schedule_)
 
 
 

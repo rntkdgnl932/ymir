@@ -23,10 +23,12 @@ def clean_screen_start(cla):
 
         while clean is False:
             clean_count += 1
-            if clean_count > 5:
+            print("clean_screen_start", clean_count)
+            if clean_count > 2:
                 clean = True
 
             result_out = out_check(cla)
+            QTest.qWait(1000)
             if result_out == True:
                 clean_screen_go(cla)
                 clean = True
@@ -48,11 +50,15 @@ def clean_screen_go(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import juljun_check, juljun_off
+    from action import juljun_check, juljun_off, confirm_all, cancle_all
     try:
         result_juljun = juljun_check(cla)
         if result_juljun == True:
             juljun_off(cla)
+
+        confirm_all(cla)
+
+        cancle_all(cla)
 
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_1.PNG"
@@ -60,7 +66,7 @@ def clean_screen_go(cla):
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
-            print("close_1 : ", imgs_, len(imgs_))
+            print("clean_screen close_1 : ", imgs_, len(imgs_))
             if len(imgs_) > 0:
                 for i in range(len(imgs_)):
                     click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
@@ -71,7 +77,7 @@ def clean_screen_go(cla):
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
-            print("close_2 : ", imgs_)
+            print("clean_screen close_2 : ", imgs_)
             if len(imgs_) > 0:
                 for i in range(len(imgs_)):
                     click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
@@ -90,7 +96,7 @@ def clean_screen_go(cla):
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
-            print("close_2 : ", imgs_)
+            print("clean_screen event_1818 : ", imgs_)
             if len(imgs_) > 0:
                 for i in range(len(imgs_)):
                     click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
