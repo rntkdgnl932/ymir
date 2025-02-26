@@ -50,11 +50,9 @@ def go_chango(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, juljun_check
+    from action import out_check, macro_out
     from clean_screen import clean_screen_start
-    from potion import potion_buy
-    from schedule import myQuest_play_check, myQuest_play_add
-
+    from game_check import error_check
     try:
         print("go_chango")
 
@@ -89,6 +87,8 @@ def go_chango(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("im_move_btn")
                         click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                        error_check(cla)
 
                     for i in range(5):
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\asgard_castle.PNG"

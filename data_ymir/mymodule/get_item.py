@@ -39,7 +39,6 @@ def get_post(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
-    from game_check import move_check
     try:
         print("get_post")
 
@@ -129,7 +128,6 @@ def get_upjuk(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
-    from game_check import move_check
     try:
         print("get_upjuk")
 
@@ -345,11 +343,8 @@ def get_sangjum_gyohwan(cla):
 def get_daily_mission(cla):
     import numpy as np
     import cv2
-    import pyautogui
-    import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
-    from game_check import move_check
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action import menu_open
     try:
         print("get_daily_mission")
 

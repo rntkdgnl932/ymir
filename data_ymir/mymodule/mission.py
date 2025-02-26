@@ -16,7 +16,6 @@ def mission_start(cla, data):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action import out_check, juljun_off, juljun_on, juljun_check
-    from game_check import move_check
     from get_item import get_item_start
     from potion import potion_check
 
@@ -77,7 +76,6 @@ def mission_get(cla, data):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
     from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
-    from game_check import move_check
     from get_item import get_item_start
     from schedule import myQuest_play_add
     from clean_screen import clean_screen_start

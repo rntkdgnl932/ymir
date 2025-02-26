@@ -123,7 +123,7 @@ def jadong_spot_in(cla, data):
     from action import out_check, attack_on, confirm_all
     from clean_screen import clean_screen_start
     from potion import potion_buy
-    from game_check import check_start
+    from game_check import check_start, error_check
 
     # 사냥터
     dir_path = "C:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder)
@@ -312,6 +312,7 @@ def jadong_spot_in(cla, data):
                                     if imgs_ is not None and imgs_ != False:
                                         confirm_all(cla)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        error_check(cla)
                                         time.sleep(1)
                                         break
                                     else:
@@ -332,6 +333,7 @@ def jadong_spot_in(cla, data):
                                     if imgs_ is not None and imgs_ != False:
                                         confirm_all(cla)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        error_check(cla)
                                         time.sleep(1)
                                     else:
                                         result_out = out_check(cla)

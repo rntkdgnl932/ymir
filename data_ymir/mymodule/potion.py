@@ -17,7 +17,6 @@ def potion_check(cla):
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action import out_check, juljun_off, juljun_on, juljun_check
-    from game_check import move_check
     from get_item import get_item_start
 
     ########

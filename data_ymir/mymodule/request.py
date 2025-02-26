@@ -130,7 +130,7 @@ def request_get_ready(cla, data):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen import clean_screen_start, clean_screen_go
     from action import out_check, confirm_all
-
+    from game_check import error_check
     try:
         print("request_get_ready", data)
 
@@ -193,6 +193,7 @@ def request_get_ready(cla, data):
                         confirm_all(cla)
 
                         click_pos_reg(imgs_.x, imgs_.y, cla)
+                        error_check(cla)
 
                         for i in range(10):
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_notice_board.PNG"
@@ -210,6 +211,7 @@ def request_get_ready(cla, data):
                                     confirm_all(cla)
 
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    error_check(cla)
                             else:
                                 result_out = out_check(cla)
                                 if result_out == True:
@@ -487,13 +489,6 @@ def request_get(cla, data):
                         is_spot = True
 
 
-
-                    # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\move_btn.PNG"
-                    # img_array = np.fromfile(full_path, np.uint8)
-                    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    # imgs_ = imgs_set_(770, y_reg_2, 910, y_reg_3, cla, img, 0.85)
-                    # if imgs_ is not None and imgs_ != False:
-                    #     print("move_btn", imgs_)
 
 
             else:
