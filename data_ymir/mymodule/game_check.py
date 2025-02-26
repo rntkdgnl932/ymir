@@ -167,6 +167,45 @@ def error_check(cla):
                 macro_out(cla)
                 break
             time.sleep(0.2)
+        for i in range(5):
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\move_ticket_lack_notice.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(240, 30, 550, 80, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("move_ticket_lack_notice")
+                why = "이동서 부족하다는 에러"
+                line_to_me(cla, why)
+                macro_out(cla)
+                break
+            time.sleep(0.2)
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def error_check2(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action import macro_out
+    from massenger import line_to_me
+    try:
+
+        for i in range(5):
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\pakit_gamji_notice.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(240, 30, 960, 1040, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("pakit_gamji_notice")
+                why = "비정상적인 패킷 감지했다는 에러"
+                line_to_me(cla, why)
+                macro_out(cla)
+                break
+            time.sleep(0.2)
     except Exception as e:
         print(e)
         return 0

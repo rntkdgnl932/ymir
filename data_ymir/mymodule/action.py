@@ -271,7 +271,11 @@ def juljun_check(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from game_check import error_check2
     try:
+
+        error_check2(cla)
+
         is_juljun = False
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\juljun\\juljun_on.PNG"
