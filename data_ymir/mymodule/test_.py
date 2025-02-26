@@ -82,6 +82,21 @@ def go_test():
         if imgs_ is not None and imgs_ != False:
             print("request_complete_btn", imgs_)
 
+        prohibition = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prohibition"
+        prohibition_list = os.listdir(prohibition)
+
+        for i in range(len(prohibition_list)):
+            result_prohibition_list = prohibition_list[i].split(".")
+            read_data = result_prohibition_list[0]
+            print("read_data", read_data)
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prohibition\\" + str(
+                read_data) + ".PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(210, 100, 460, 800, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("prohibition_list", str(read_data),imgs_)
+
         # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\bag_auction_item.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
         # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
