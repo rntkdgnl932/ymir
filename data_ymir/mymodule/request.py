@@ -129,7 +129,7 @@ def request_get_ready(cla, data):
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen import clean_screen_start, clean_screen_go
-    from action import out_check
+    from action import out_check, confirm_all
 
     try:
         print("request_get_ready", data)
@@ -189,6 +189,9 @@ def request_get_ready(cla, data):
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(780, 980, 870, 1035, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
+
+                        confirm_all(cla)
+
                         click_pos_reg(imgs_.x, imgs_.y, cla)
 
                         for i in range(10):
@@ -204,6 +207,8 @@ def request_get_ready(cla, data):
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(780, 980, 870, 1035, cla, img, 0.85)
                                 if imgs_ is not None and imgs_ != False:
+                                    confirm_all(cla)
+
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
                             else:
                                 result_out = out_check(cla)

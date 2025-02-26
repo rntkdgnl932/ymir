@@ -120,7 +120,7 @@ def jadong_spot_in(cla, data):
     import cv2
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action import out_check, attack_on
+    from action import out_check, attack_on, confirm_all
     from clean_screen import clean_screen_start
     from potion import potion_buy
     from game_check import check_start
@@ -310,6 +310,7 @@ def jadong_spot_in(cla, data):
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                     imgs_ = imgs_set_(780, 980, 870, 1035, cla, img, 0.85)
                                     if imgs_ is not None and imgs_ != False:
+                                        confirm_all(cla)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
                                         time.sleep(1)
                                         break
@@ -329,6 +330,7 @@ def jadong_spot_in(cla, data):
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                     imgs_ = imgs_set_(780, 980, 870, 1035, cla, img, 0.85)
                                     if imgs_ is not None and imgs_ != False:
+                                        confirm_all(cla)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
                                         time.sleep(1)
                                     else:
