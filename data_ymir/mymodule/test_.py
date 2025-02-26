@@ -313,7 +313,10 @@ def go_test():
                     QTest.qWait(1000)
 
             QTest.qWait(1000)
-
+        if complete == True:
+            print("add 하거라")
+        else:
+            print("에라다")
         # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\bag_auction_item.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
         # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
