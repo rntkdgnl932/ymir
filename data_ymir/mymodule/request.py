@@ -17,6 +17,8 @@ def request_start(cla, data):
     from potion import potion_check
     from game_check import move_check
     from dead_die import dead_check
+    from massenger import line_to_me
+    from schedule import myQuest_play_add
     try:
         print("request_start", data)
 
@@ -69,6 +71,21 @@ def request_start(cla, data):
                         if imgs_ is not None and imgs_ != False:
                             print("click_request_btn", imgs_)
                             click_pos_reg(imgs_.x - 70, imgs_.y, cla)
+
+                            for x in range(10):
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\saga.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(835, 135, 920, 190, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("title : saga....외뢰중 이 곳은 에러임...", imgs_)
+                                    why = "외뢰중 이 곳은 에러임..."
+                                    line_to_me(cla, why)
+                                    myQuest_play_add(cla, data)
+                                    time.sleep(100)
+                                    break
+                                time.sleep(0.1)
+
                             juljun_on(cla)
                 else:
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_complete_btn.PNG"
@@ -97,6 +114,21 @@ def request_start(cla, data):
                         print("click_request_btn", imgs_)
                         is__request_count = 0
                         click_pos_reg(imgs_.x - 70, imgs_.y, cla)
+
+                        for x in range(10):
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\saga.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(835, 135, 920, 190, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("title : saga....외뢰중 이 곳은 에러임...", imgs_)
+                                why = "외뢰중 이 곳은 에러임..."
+                                line_to_me(cla, why)
+                                myQuest_play_add(cla, data)
+                                time.sleep(100)
+                                break
+                            time.sleep(0.1)
+
                         juljun_on(cla)
                     else:
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_complete_btn.PNG"
@@ -297,6 +329,7 @@ def request_get(cla, data):
     from game_check import move_check
     from schedule import myQuest_play_add
     from action import confirm_all, juljun_on, attack_check, juljun_check, juljun_off
+    from massenger import line_to_me
 
     prohibition = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prohibition"
     prohibition_list = os.listdir(prohibition)
@@ -480,6 +513,20 @@ def request_get(cla, data):
                                     if imgs_ is not None and imgs_ != False:
                                         print("click_request_btn", imgs_)
                                         click_pos_reg(imgs_.x - 70, imgs_.y, cla)
+
+                                        for x in range(10):
+                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\saga.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(835, 135, 920, 190, cla, img, 0.85)
+                                            if imgs_ is not None and imgs_ != False:
+                                                print("title : saga....외뢰중 이 곳은 에러임...", imgs_)
+                                                why = "외뢰중 이 곳은 에러임..."
+                                                line_to_me(cla, why)
+                                                myQuest_play_add(cla, data)
+                                                time.sleep(100)
+                                                break
+                                            time.sleep(0.1)
                                         juljun_on(cla)
                                 else:
                                     break
