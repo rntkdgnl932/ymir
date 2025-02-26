@@ -538,6 +538,7 @@ def request_get(cla, data):
             QTest.qWait(1000)
 
         if complete == True:
+            print("add 하거라")
             myQuest_play_add(cla, data)
 
     except Exception as e:
