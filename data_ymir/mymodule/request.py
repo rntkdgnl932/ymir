@@ -445,6 +445,7 @@ def request_get(cla, data):
                                             if imgs_ is not None and imgs_ != False:
                                                 print("complete? prerequisites", imgs_)
                                                 complete = True
+                                time.sleep(1)
                         if complete == False:
                             # 이제 수락 받으러 가는 길
                             for i in range(50):
