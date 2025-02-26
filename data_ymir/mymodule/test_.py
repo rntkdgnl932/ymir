@@ -47,7 +47,19 @@ def go_test():
 
         # request_start(cla, "외뢰_1")
 
-        clean_screen_go(cla)
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\end_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(480, 570, 630, 630, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("end_btn")
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\cancle_all\\cancle_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(340, 540, 480, 660, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("cancle_btn")
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\juljun\\juljun_middle_potion.PNG"
         img_array = np.fromfile(full_path, np.uint8)

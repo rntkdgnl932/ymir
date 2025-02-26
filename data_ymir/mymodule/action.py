@@ -168,6 +168,15 @@ def confirm_all(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     try:
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\end_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(480, 570, 630, 630, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("end_btn")
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+
         is_confirm = False
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\confirm_1.PNG"
@@ -205,8 +214,6 @@ def confirm_all(cla):
                         print("request_confirm", imgs_)
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         is_confirm = True
-
-
 
 
         return is_confirm
