@@ -93,7 +93,7 @@ def go_test():
                 read_data) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(210, 100, 460, 800, cla, img, 0.85)
+            imgs_ = imgs_set_(210, 100, 460, 800, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("prohibition_list", str(read_data),imgs_)
 
