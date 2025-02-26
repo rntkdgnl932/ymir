@@ -85,17 +85,77 @@ def go_test():
         prohibition = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prohibition"
         prohibition_list = os.listdir(prohibition)
 
-        for i in range(len(prohibition_list)):
-            result_prohibition_list = prohibition_list[i].split(".")
-            read_data = result_prohibition_list[0]
-            print("read_data", read_data)
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prohibition\\" + str(
-                read_data) + ".PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(210, 100, 460, 800, cla, img, 0.85)
-            if imgs_ is not None and imgs_ != False:
-                print("prohibition_list", str(read_data),imgs_)
+        y_reg_3 = 1040
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\complete_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(770, 130, 910, y_reg_3, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("complete_1", imgs_)
+            y_reg_3 = imgs_.y
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prerequisites.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(770, 130, 910, y_reg_3, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("prerequisites", imgs_)
+            if y_reg_3 > imgs_.y:
+                y_reg_3 = imgs_.y
+        print("y_reg_3", y_reg_3)
+
+        y_scan_1 = 50  # 120
+        y_scan_2 = 120  # 190
+
+        click_y = 85  # 155
+        for s in range(10):
+            y_scan_1 += 70
+            y_scan_2 += 70
+            click_y += 70
+            print("y_scan_1, y_scan_2, click_y", y_scan_1, y_scan_2, click_y)
+            if y_scan_2 > y_reg_3:
+                complete = True
+                break
+            else:
+                is_prohibition_y = 200
+                is_prohibition = False
+                for i in range(len(prohibition_list)):
+                    result_prohibition_list = prohibition_list[i].split(".")
+                    read_data = result_prohibition_list[0]
+                    print("read_data", read_data)
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prohibition\\" + str(
+                        read_data) + ".PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(210, y_scan_1, 460, y_scan_2, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("prohibition_list", imgs_)
+                        is_prohibition = True
+                # 금지 안되어 있으면 클릭하고
+                if is_prohibition == False:
+                    click_pos_2(840, click_y, cla)
+                    break
+                # 금지 되어 있으면 다음꺼 클릭하기 위함인데
+                # y_reg_3 이건 완료 또는 불가능한 최소값
+                # 그래서 이번에 금지된것이고, y_scan_1, y_scan_2 의 범주내에 최소값이 있으면 퀘스트 완료로 간주
+                else:
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\complete_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(770, y_scan_1, 910, y_scan_2, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("complete? complete_1", imgs_)
+                        complete = True
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prerequisites.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(770, y_scan_1, 910, y_scan_2, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("complete? prerequisites", imgs_)
+                            complete = True
 
         # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\bag_auction_item.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

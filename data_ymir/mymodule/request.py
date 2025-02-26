@@ -388,6 +388,7 @@ def request_get(cla, data):
                             if y_reg_3 > imgs_.y:
                                 y_reg_3 = imgs_.y
 
+                        print("y_reg_3", y_reg_3)
                         if y_reg_3 < 190:
                             complete = True
                         else:
