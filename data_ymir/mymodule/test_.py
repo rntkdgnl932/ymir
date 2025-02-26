@@ -116,6 +116,7 @@ def go_test():
             print("y_scan_1, y_scan_2, click_y", y_scan_1, y_scan_2, click_y)
             if y_scan_2 > y_reg_3:
                 complete = True
+                print("끝이 나버렸다..")
                 break
             else:
                 is_prohibition_y = 200
