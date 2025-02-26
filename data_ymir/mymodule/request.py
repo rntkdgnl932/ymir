@@ -361,7 +361,7 @@ def request_get(cla, data):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prerequisites.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(770, 130, 910, 190, cla, img, 0.85)
+                    imgs_ = imgs_set_(220, 130, 450, 190, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         print("prerequisites", imgs_)
                         is_spot = True
@@ -382,7 +382,7 @@ def request_get(cla, data):
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prerequisites.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(770, 130, 910, y_reg_3, cla, img, 0.85)
+                        imgs_ = imgs_set_(220, 130, 450, y_reg_3, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             print("prerequisites", imgs_)
                             if y_reg_3 > imgs_.y:
@@ -441,7 +441,7 @@ def request_get(cla, data):
                                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prerequisites.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(770, y_scan_1, 910, y_scan_2, cla, img, 0.85)
+                                            imgs_ = imgs_set_(220, y_scan_1, 450, y_scan_2, cla, img, 0.85)
                                             if imgs_ is not None and imgs_ != False:
                                                 print("complete? prerequisites", imgs_)
                                                 complete = True
