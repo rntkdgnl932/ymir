@@ -211,7 +211,7 @@ def error_check2(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\black_screen.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.95)
+                imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 1)
                 if imgs_ is not None and imgs_ != False:
                     print("black_screen")
                     black_screen = True
@@ -223,7 +223,7 @@ def error_check2(cla):
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\black_screen.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.95)
+            imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 1)
             if imgs_ is not None and imgs_ != False:
                 black_screen_count += 1
                 print("black_screen =>", black_screen_count, "초")
