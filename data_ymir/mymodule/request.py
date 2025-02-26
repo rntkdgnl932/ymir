@@ -286,7 +286,7 @@ def request_get(cla, data):
     import numpy as np
     import cv2
     import os
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from game_check import move_check
     from schedule import myQuest_play_add
     from action import confirm_all, juljun_on, attack_check, juljun_check, juljun_off
@@ -516,7 +516,15 @@ def request_get(cla, data):
 
                             break
                         else:
-                            click_pos_2(190, 55, cla)
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\jabhwa_sangin_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(10, 60, 160, 210, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                drag_pos(90, 75, 90, 180, cla)
+                            else:
+                                click_pos_2(190, 55, cla)
+                                time.sleep(1)
 
                     QTest.qWait(1000)
 
