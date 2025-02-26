@@ -2,7 +2,7 @@ import sys
 import os
 import time
 import requests
-
+from PyQt5.QtTest import *
 import variable as v_
 
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
@@ -194,6 +194,8 @@ def error_check2(cla):
     from massenger import line_to_me
     try:
 
+        black_screen = False
+
         for i in range(5):
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\pakit_gamji_notice.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -205,7 +207,34 @@ def error_check2(cla):
                 line_to_me(cla, why)
                 macro_out(cla)
                 break
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\black_screen.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.95)
+                if imgs_ is not None and imgs_ != False:
+                    print("black_screen")
+                    black_screen = True
+                    break
             time.sleep(0.2)
+        black_screen_count = 0
+        while black_screen is True:
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\black_screen.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.95)
+            if imgs_ is not None and imgs_ != False:
+                black_screen_count += 1
+                print("black_screen =>", black_screen_count, "초")
+                if black_screen_count > 300:
+                    why = "블랙스크린이다"
+                    line_to_me(cla, why)
+                    macro_out(cla)
+            else:
+                black_screen = False
+            QTest.qWait(1000)
+
     except Exception as e:
         print(e)
         return 0
