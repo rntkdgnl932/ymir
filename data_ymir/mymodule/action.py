@@ -384,6 +384,38 @@ def attack_check(cla):
         print(e)
         return 0
 
+
+def chajib_check(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    try:
+        is_data = False
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\attack_check\\chajib_ing.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 900, 600, 960, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("chajib_ing")
+            is_data = True
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\attack_check\\ready.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 900, 600, 960, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("ready")
+            is_data = False
+
+
+        return is_data
+    except Exception as e:
+        print(e)
+        return 0
+
 def attack_on(cla):
     import numpy as np
     import cv2
@@ -394,7 +426,24 @@ def attack_on(cla):
     try:
         print("attack_on")
         clean_screen_start(cla)
-        click_pos_2(750, 960, cla)
+        click_pos_2(750, 965, cla)
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def chajib_on(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen import clean_screen_start
+    try:
+        print("chajib_on")
+        clean_screen_start(cla)
+        click_pos_2(770, 1000, cla)
 
     except Exception as e:
         print(e)

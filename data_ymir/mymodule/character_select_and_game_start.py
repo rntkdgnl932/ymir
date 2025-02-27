@@ -76,6 +76,7 @@ def game_start_screen(cla, character_id):
 
                 if ready == True:
                     game_ready(cla)
+                    character_change(cla, character_id)
                 else:
                     dir_path = "C:\\my_games\\" + str(v_.game_folder) + ""
                     if cla == 'one':

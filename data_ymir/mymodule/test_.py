@@ -43,16 +43,11 @@ def go_test():
         plus = 960 * 5
     try:
 
-        # request_get(cla, "외뢰_1")
+        request_get(cla, "외뢰_2")
 
         # request_start(cla, "외뢰_1")
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\black_screen.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.99)
-        if imgs_ is not None and imgs_ != False:
-            print("black_screen")
+
 
         # prohibition = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prohibition"
         # prohibition_list = os.listdir(prohibition)
@@ -70,19 +65,19 @@ def go_test():
         #         print("prohibition_list", str(read_data), imgs_)
         #         is_prohibition = True
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\end_btn.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(480, 570, 630, 630, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("end_btn")
-
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prohibition\\15.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(210, 100, 460, 960, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("prohibition_list", imgs_)
+        # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\end_btn.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(480, 570, 630, 630, cla, img, 0.85)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("end_btn")
+        #
+        # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prohibition\\15.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(210, 100, 460, 960, cla, img, 0.85)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("prohibition_list", imgs_)
         # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\bag_auction_item.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
         # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

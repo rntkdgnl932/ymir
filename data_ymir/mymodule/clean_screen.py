@@ -14,7 +14,7 @@ def clean_screen_start(cla):
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
+    from game_check import error_check2
     from action import out_check
     try:
 
@@ -34,6 +34,8 @@ def clean_screen_start(cla):
                 clean = True
             else:
                 clean_screen_go(cla)
+                error_check2(cla)
+
 
             QTest.qWait(1000)
 
