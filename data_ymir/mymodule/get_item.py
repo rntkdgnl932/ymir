@@ -23,10 +23,179 @@ def get_item_start(cla):
     try:
         chango_start(cla)
 
+        get_event(cla)
+        get_pass(cla)
         get_post(cla)
+        get_main(cla)
         get_upjuk(cla)
         get_sangjum_gyohwan(cla)
 
+
+    except Exception as e:
+        print(e)
+        return 0
+
+def get_event(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
+    from clean_screen import clean_screen_start
+    try:
+        print("get_event")
+
+        is_get = False
+        is_get_count = 0
+        while is_get is False:
+            is_get_count += 1
+            if is_get_count > 10:
+                is_get = True
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\event.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(420, 350, 530, 400, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("title : event")
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_title_point_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(275, 380, 300, 720, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("event_title_point_1", imgs_)
+                    click_pos_reg(imgs_.x - 50, imgs_.y + 15, cla)
+                    time.sleep(0.5)
+                    for i in range(15):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_title_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(275, 380, 300, 720, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_des_point_1.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(340, 500, 810, 720, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                print("event_des_point_1", imgs_)
+                                click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                                time.sleep(0.5)
+                                click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                                time.sleep(0.5)
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_des_point_2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(340, 500, 810, 720, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("event_des_point_2", imgs_)
+                                    click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                                    time.sleep(0.5)
+                                    click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                                    time.sleep(0.5)
+                                else:
+                                    break
+                        else:
+                            break
+                        time.sleep(0.5)
+
+                else:
+                    is_point = False
+                    for i in range(3):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_title_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(275, 380, 300, 720, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            is_point = True
+                            break
+                        else:
+                            drag_pos(220, 680, 220, 420, cla)
+                        QTest.qWait(1000)
+                    if is_point == False:
+                        is_get = True
+
+            else:
+                result_out = out_check(cla)
+                if result_out == True:
+                    for i in range(5):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\event.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(420, 350, 530, 400, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            click_pos_2(230, 55, cla)
+                        time.sleep(1)
+                else:
+                    clean_screen_start(cla)
+
+            QTest.qWait(1000)
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def get_pass(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
+    from clean_screen import clean_screen_start
+    try:
+        print("get_pass")
+
+        is_get = False
+        is_get_count = 0
+        while is_get is False:
+            is_get_count += 1
+            if is_get_count > 10:
+                is_get = True
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\pass.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(420, 350, 540, 400, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("title : pass")
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_title_point_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(275, 380, 300, 720, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("event_title_point_1", imgs_)
+                    click_pos_reg(imgs_.x - 50, imgs_.y + 15, cla)
+                    time.sleep(0.5)
+                    click_pos_2(765, 695, cla)
+                    time.sleep(0.5)
+                    click_pos_2(765, 695, cla)
+                    time.sleep(0.5)
+
+                else:
+                    is_get = True
+
+            else:
+                result_out = out_check(cla)
+                if result_out == True:
+                    for i in range(5):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\pass.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(420, 350, 540, 400, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            click_pos_2(270, 55, cla)
+                        time.sleep(1)
+                else:
+                    clean_screen_start(cla)
+
+            QTest.qWait(1000)
 
     except Exception as e:
         print(e)
@@ -120,6 +289,83 @@ def get_post(cla):
 
 
 
+
+def get_main(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
+    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
+    try:
+        print("get_main")
+
+        this_point_x = 355
+        this_point_y = 450
+        plus_minus = 20
+
+        is_get = False
+        is_get_count = 0
+        while is_get is False:
+            is_get_count += 1
+            if is_get_count > 7:
+                is_get = True
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\main.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("title : main")
+                is_get = True
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\main_point_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(115, 75, 140, 1020, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\main.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(870, 1010, cla)
+                            time.sleep(0.5)
+                            click_pos_2(870, 1010, cla)
+                    else:
+                        break
+                    time.sleep(1)
+
+            else:
+                menu_open(cla)
+                is_in = False
+                for i in range(5):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\main.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        is_in = True
+                        break
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
+                                          this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("menu_point_2")
+                            click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
+                    time.sleep(1)
+                if is_in == False:
+                    is_get = True
+            time.sleep(1)
+
+    except Exception as e:
+        print(e)
+        return 0
 
 def get_upjuk(cla):
     import numpy as np

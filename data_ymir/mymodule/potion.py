@@ -50,6 +50,9 @@ def potion_check(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("out_zero_potion", str(read_data))
                         is_potion = False
+                        break
+                if is_potion == True:
+                    break
                 time.sleep(0.1)
 
             if is_potion == False:
@@ -78,6 +81,10 @@ def potion_check(cla):
                         if imgs_ is not None and imgs_ != False:
                             print("juljun_potion", str(read_data))
                             is_potion = True
+                            break
+                    if is_potion == True:
+                        break
+
                     time.sleep(0.1)
 
                 if is_potion == True:

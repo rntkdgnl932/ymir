@@ -59,7 +59,54 @@ def out_check(cla):
             print("out_check")
             is_out = True
 
-
+        if is_out == True:
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_1.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("out_check close_1 : ", imgs_, len(imgs_))
+                is_out = False
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("out_check close_2 : ", imgs_)
+                    is_out = False
+                else:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_3.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("out_check close_3 : ", imgs_)
+                        is_out = False
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_4.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("out_check close_4 : ", imgs_)
+                            is_out = False
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(650, 550, 750, 650, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("out_check : menu_post")
+                                is_out = False
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\18\\event_1818.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("out_check event_1818 : ", imgs_)
+                                    is_out = False
 
         return is_out
     except Exception as e:
@@ -122,7 +169,14 @@ def menu_open(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen import clean_screen_start
+    from get_item import get_post
     try:
+
+        is_post = False
+        this_point_x = 720
+        this_point_y = 573
+        plus_minus = 20
+
         is_menu = False
         is_menu_count = 0
 
@@ -132,7 +186,17 @@ def menu_open(cla):
         imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
             print("menu_post")
-            is_menu = True
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
+                              this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("menu_open : menu_point_2")
+                get_post(cla)
+            else:
+                is_menu = True
+
 
         while is_menu is False:
             is_menu_count += 1
@@ -399,7 +463,7 @@ def chajib_check(cla):
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(400, 900, 600, 960, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("chajib_ing")
+            # print("chajib_ing")
             is_data = True
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\attack_check\\ready.PNG"
@@ -412,6 +476,52 @@ def chajib_check(cla):
 
 
         return is_data
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def dun_check(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+
+    # 발키리
+    juljun_ready = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\balkeyly\\juljun"
+    juljun_ready_list = os.listdir(juljun_ready)
+    out_ready = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\balkeyly\\out"
+    out_ready_list = os.listdir(out_ready)
+
+    # 미궁
+    juljun_ready_balkeyly = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\balkeyly\\juljun"
+    juljun_ready_list_balkeyly = os.listdir(juljun_ready)
+
+    try:
+
+        print("dun_check")
+
+        # is_data = False
+        #
+        # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\attack_check\\chajib_ing.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(400, 900, 600, 960, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     # print("chajib_ing")
+        #     is_data = True
+        #
+        # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\attack_check\\ready.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(400, 900, 600, 960, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("ready")
+        #     is_data = False
+        #
+        #
+        # return is_data
     except Exception as e:
         print(e)
         return 0
@@ -455,7 +565,7 @@ def go_maul(cla):
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from clean_screen import clean_screen_start
     try:
         print("go_maul")
@@ -485,6 +595,7 @@ def go_maul(cla):
                     click_pos_reg(imgs_.x, imgs_.y, cla)
 
                     near_aim_spot = False
+                    unusable_item_notice = False
                     for i in range(10):
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\near_aim_spot_notice.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -494,6 +605,14 @@ def go_maul(cla):
                             print("near_aim_spot_notice")
                             near_aim_spot = True
                             break
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\go_maul\\unusable_item_notice.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(330, 500, 750, 600, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("unusable_item_notice", imgs_)
+                                unusable_item_notice = True
                         time.sleep(0.2)
 
                     if near_aim_spot == True:
@@ -505,9 +624,31 @@ def go_maul(cla):
                             if imgs_ is not None and imgs_ != False:
                                 break
                             else:
-                                click_pos_2(190, 55, cla)
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\maul_personal_chango_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(10, 60, 160, 210, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("maul_personal_chango_btn")
+                                    drag_pos(90, 75, 90, 180, cla)
+                                    time.sleep(1)
+                                else:
+                                    click_pos_2(190, 55, cla)
                             QTest.qWait(1000)
+                    elif unusable_item_notice == True:
+                        for i in range(5):
 
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\go_maul\\move_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(450, 550, 660, 660, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("move_btn", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                break
+                            else:
+                                click_pos_2(195, 55, cla)
+                            QTest.qWait(1000)
                 else:
                     clean_screen_start(cla)
             time.sleep(1)

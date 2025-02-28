@@ -146,7 +146,7 @@ def myQuest_play_check(cla, data):
                 # 초기화 할때 변경해야할 전역 변수
                 v_.dead_count = 0
                 v_.daily_mission_ready = True
-
+                v_.amber = True
 
         else:
             with open(file_path2, "w", encoding='utf-8-sig') as file:
@@ -544,6 +544,7 @@ def myQuest_play_add(cla, data):
             # 초기화 할때 변경해야할 전역 변수
             v_.dead_count = 0
             v_.daily_mission_ready = True
+            v_.amber = True
 
 
         add_result = 'check'

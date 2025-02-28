@@ -17,11 +17,12 @@ def go_test():
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
     from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check
     from game_check import move_check
-    from get_item import get_item_start
+    from get_item import get_item_start, get_event, get_pass
     from potion import potion_buy
     from chango import go_chango, chango_start
     from request import request_get, request_start
     from clean_screen import clean_screen_go
+    from dungeon import dungeon_in
 
     print("test")
     cla = "one"
@@ -43,11 +44,28 @@ def go_test():
         plus = 960 * 5
     try:
 
-        request_get(cla, "외뢰_2")
+        # request_get(cla, "외뢰_2")
 
         # request_start(cla, "외뢰_1")
 
+        # dungeon_in(cla, "발할라_일반_혼돈_4")
 
+        ran_x = random.randint(100, 200)
+        print("result", ran_x)
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\dun_complete.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(805, 255, 870, 320, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("dun_complete", imgs_)
+
+        # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_title_point_1.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(275, 380, 300, 720, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("event_title_point_1", imgs_)
 
         # prohibition = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prohibition"
         # prohibition_list = os.listdir(prohibition)
