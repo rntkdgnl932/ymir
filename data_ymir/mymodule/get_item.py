@@ -551,6 +551,83 @@ def get_sangjum_gyohwan(cla):
                         else:
                             click_pos_2(870, 350, cla)
                         time.sleep(1)
+                # 11개
+                # 발키리 소환
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\sohwan_soldout.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(300, 730, 450, 830, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("발키리품절")
+                else:
+                    for i in range(7):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\product_buy_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(400, 300, 550, 390, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\buy_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(470, 680, 620, 750, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\max.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(620, 640, 700, 700, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(1)
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\buy_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(470, 680, 620, 750, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                break
+                        else:
+                            click_pos_2(390, 770, cla)
+                        time.sleep(1)
+                # 11개
+                # 디시르 소환
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\sohwan_soldout.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(800, 730, 930, 830, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("디시르품절")
+                else:
+                    for i in range(7):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\product_buy_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(400, 300, 550, 390, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\buy_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(470, 680, 620, 750, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\max.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(620, 640, 700, 700, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(1)
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\buy_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(470, 680, 620, 750, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                break
+                        else:
+                            click_pos_2(870, 770, cla)
+                        time.sleep(1)
+
                 # 다 샀으면 나가기
                 for i in range(10):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\sangjum.PNG"
