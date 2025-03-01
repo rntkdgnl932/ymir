@@ -133,7 +133,7 @@ def migoong_in(cla, data):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
-    from action import menu_open, out_check
+    from action import menu_open, out_check, go_maul
     from schedule import myQuest_play_add
 
 
@@ -310,7 +310,7 @@ def random_spot(cla, data):
         is_spot_count = 0
         while is_spot is False:
             is_spot_count += 1
-            print("request_get_count", is_spot_count)
+            print("random_spot_count", is_spot_count)
             if is_spot_count > 30:
                 is_spot = True
 
@@ -357,7 +357,18 @@ def random_spot(cla, data):
             else:
                 result_out = out_check(cla)
                 if result_out == True:
-                    click_pos_2(85, 50, cla)
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\migoong\\out\\sbipa.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 30, 160, 100, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("sbipa", imgs_)
+                        click_pos_2(85, 50, cla)
+                    else:
+                        # 들어가기 ㄱ
+
+                        migoong_in(cla, data)
+
                 else:
                     clean_screen_start(cla)
 
@@ -394,7 +405,7 @@ def step_check(cla, step):
         is_spot_count = 0
         while is_spot is False:
             is_spot_count += 1
-            print("request_get_count", is_spot_count)
+            print("step_check_count", is_spot_count)
             if is_spot_count > 15:
                 is_spot = True
 
