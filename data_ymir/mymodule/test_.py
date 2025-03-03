@@ -52,24 +52,12 @@ def go_test():
 
         # dungeon_in(cla, "발할라_일반_혼돈_4")
 
-        my_token = "7849921174:AAEhgcjNJcVyM7sewlxCOgV-edRakA3gl7k"
-
-        # 텔레그램으로 보내기
-
-        token = '7000893833:AAEEecQWjeWV43C14BrkRsQI_JKnxNSkrXc'
-        chat_id = '2139978875'
-        tele_massage = "팬티 먹고 소아리 질러엇!!!!!!!!!"
-        # https://api.telegram.org/bot7718169047:AAGSr-Uej5frwoFZwlJptTpafZuk9_cJxiE/getUpdates
-
-        send_message(token, chat_id, tele_massage)
-
-        # 텔레그램으로 보내기
-        token = '7849921174:AAEhgcjNJcVyM7sewlxCOgV-edRakA3gl7k'
-        chat_id = '5933492731'
-        tele_massage = "수어코오 소아리 질러엇!!!!!!!!!"
-        # https://api.telegram.org/bot7718169047:AAGSr-Uej5frwoFZwlJptTpafZuk9_cJxiE/getUpdates
-
-        send_message(token, chat_id, tele_massage)
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\confirm_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 540, 600, 660, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("confirm_1")
 
         # ################### collection ##################
         #

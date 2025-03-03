@@ -74,6 +74,7 @@ def request_start(cla, data):
 
                             result_notice = out_click_check(cla, data)
 
+                            confirm_all(cla)
 
                             if result_notice == False:
                                 juljun_on(cla)
