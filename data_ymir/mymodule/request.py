@@ -13,7 +13,7 @@ def request_start(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action import juljun_check, juljun_off, juljun_on, attack_check, out_check
+    from action import juljun_check, juljun_off, juljun_on, attack_check, out_check, confirm_all
     from potion import potion_check
     from game_check import move_check
     from dead_die import dead_check
@@ -106,6 +106,8 @@ def request_start(cla, data):
                         click_pos_reg(imgs_.x - 70, imgs_.y, cla)
 
                         result_notice = out_click_check(cla, data)
+
+                        confirm_all(cla)
 
                         if result_notice == False:
                             juljun_on(cla)

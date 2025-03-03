@@ -1627,6 +1627,50 @@ def text_check_potion(posX1, posY1, posX2, posY2, cla):
         return 0
 
 
+def text_check_get_black_white(posX1, posY1, posX2, posY2, cla):
+    try:
+        from PIL import ImageGrab
+        from functools import partial
+        import cv2
+        import pytesseract
+        import numpy
+        import pyautogui
+
+        ImageGrab.grab = partial(ImageGrab.grab, all_screens=True)
+
+        coordinate = 0
+        if cla == 'one':
+            coordinate = 0
+        if cla == 'two':
+            coordinate = 960
+        if cla == 'three':
+            coordinate = 960 * 2
+        if cla == 'four':
+            coordinate = 960 * 3
+        if cla == 'five':
+            coordinate = 960 * 4
+        if cla == 'six':
+            coordinate = 960 * 5
+
+        # 화면의 지정된 부분 캡처
+        screenshot = pyautogui.screenshot(region=(posX1, posY1, posX2 - posX1, posY2 - posY1))
+
+        # 이미지를 흑백으로 변환
+        screenshot = screenshot.convert('L')
+
+        # 이미지에서 텍스트 추출
+        current_text = pytesseract.image_to_string(screenshot, config='--psm 6').strip()
+
+        this_text = current_text
+
+        print("this_text", this_text)
+
+        ##
+        return this_text
+    except Exception as e:
+        print(e)
+        return 0
+
 def text_check_get(posX1, posY1, posX2, posY2, cla):
     try:
         from PIL import ImageGrab

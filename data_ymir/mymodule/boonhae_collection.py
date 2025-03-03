@@ -4,6 +4,7 @@ import time
 import requests
 
 import variable as v_
+from PyQt5.QtTest import *
 
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
@@ -41,7 +42,7 @@ def collection_start(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, juljun_check
+    from action import out_check, juljun_off, juljun_on, menu_open
     from game_check import move_check
     from get_item import get_item_start
 
@@ -65,30 +66,82 @@ def collection_start(cla):
             if imgs_ is not None and imgs_ != False:
                 print("title : daily_mission")
 
-                click_pos_2(350, 85, cla)
-                time.sleep(0.5)
-                click_pos_2(60, 175, cla)
-                time.sleep(1)
-                click_pos_2(350, 85, cla)
-                time.sleep(0.5)
-                click_pos_2(60, 175, cla)
-                time.sleep(1)
+                for i in range(20):
+                    # 장비 이전까지
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\collection_title_point_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(50, 60, 300, 105, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        print("collection_title_point_1", imgs_)
+                        click_pos_reg(imgs_.x - 40, imgs_.y + 10, cla)
+                        time.sleep(0.5)
 
-                for i in range(10):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\collection_des_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(150, 150, 160, 400, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("collection_des_point_1", imgs_)
+                            click_pos_reg(imgs_.x - 50, imgs_.y + 5, cla)
+                            time.sleep(0.5)
+
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\collection_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(440, 150, 680, 1030, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("collection_point_1", imgs_)
+                            click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
+                            time.sleep(0.5)
+
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\registration_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(750, 980, 880, 1030, cla, img, 0.9)
                     if imgs_ is not None and imgs_ != False:
                         click_pos_reg(imgs_.x, imgs_.y, cla)
-                    else:
+                        time.sleep(0.5)
+
+                    QTest.qWait(1000)
+                for i in range(20):
+                    # 장비는 고급까지
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\collection_title_point_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(350, 60, 510, 105, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        print("collection_title_point_1", imgs_)
+                        click_pos_reg(imgs_.x - 40, imgs_.y + 10, cla)
+                        time.sleep(0.5)
+
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\collection_des_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(150, 150, 160, 400, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("collection_des_point_1", imgs_)
+                            click_pos_reg(imgs_.x - 50, imgs_.y + 5, cla)
+                            time.sleep(0.5)
+
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\collection_point_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(440, 150, 680, 1030, cla, img, 0.9)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
-                    time.sleep(0.5)
+                            print("collection_point_1", imgs_)
+                            click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
+                            time.sleep(0.5)
+
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\registration_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(750, 980, 880, 1030, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+                    QTest.qWait(1000)
+
 
 
 

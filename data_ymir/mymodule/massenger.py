@@ -174,27 +174,43 @@ def line_to_me(cla, why):
 
 
             if read_result[0] == "coob":
+                # 라인
                 my_token = "qwERHZyXhOvohyX0ONQcA0rsCh2aEur1djCC7zEplhH"
 
                 # 텔레그램으로 보내기
                 token = '7718169047:AAGSr-Uej5frwoFZwlJptTpafZuk9_cJxiE'
                 chat_id = '2133333624'
-                tele_massage = "\n" + v_.this_game + "\n" + str(read_result[0]) + "님\n" + str(read_result[1]) + " 컴퓨터\n[" + str(cla) + "클라] 확인 요망\n=> " + str(why)
-                # https://api.telegram.org/bot7718169047:AAGSr-Uej5frwoFZwlJptTpafZuk9_cJxiE/getUpdates
 
-                send_message(token, chat_id, tele_massage)
                 #
 
             elif read_result[0] == "ccocco":
+                # 라인
                 my_token = "hKXb6oosWTnH2JCrhtnchbVV5WN5WN3G3yMtZF4UTos"
-            v_.this_game
-            message = "\n" + v_.this_game + "\n" + str(read_result[0]) + "님\n" + str(read_result[1]) + " 컴퓨터\n[" + str(cla) + "클라] 확인 요망\n=> " + str(why)
-            TARGET_URL = 'https://notify-api.line.me/api/notify'
-            TOKEN = my_token  # 발급받은 토큰
-            headers = {'Authorization': 'Bearer ' + TOKEN}
-            data = {'message': message}
 
-            response = requests.post(TARGET_URL, headers=headers, data=data)
+                # 텔레그램으로 보내기
+                token = '7000893833:AAEEecQWjeWV43C14BrkRsQI_JKnxNSkrXc'
+                chat_id = '2139978875'
+
+            elif read_result[0] == "suko":
+
+                # 텔레그램으로 보내기
+                token = '7849921174:AAEhgcjNJcVyM7sewlxCOgV-edRakA3gl7k'
+                chat_id = '5933492731'
+                #
+            tele_massage = "\n" + v_.this_game + "\n" + str(read_result[0]) + "님\n" + str(
+                read_result[1]) + " 컴퓨터\n[" + str(cla) + "클라] 확인 요망\n=> " + str(why)
+            # https://api.telegram.org/bot7718169047:AAGSr-Uej5frwoFZwlJptTpafZuk9_cJxiE/getUpdates
+
+            send_message(token, chat_id, tele_massage)
+            #
+            # v_.this_game
+            # message = "\n" + v_.this_game + "\n" + str(read_result[0]) + "님\n" + str(read_result[1]) + " 컴퓨터\n[" + str(cla) + "클라] 확인 요망\n=> " + str(why)
+            # TARGET_URL = 'https://notify-api.line.me/api/notify'
+            # TOKEN = my_token  # 발급받은 토큰
+            # headers = {'Authorization': 'Bearer ' + TOKEN}
+            # data = {'message': message}
+            #
+            # response = requests.post(TARGET_URL, headers=headers, data=data)
 
     except Exception as ex:
         print(ex)

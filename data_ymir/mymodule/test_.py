@@ -14,7 +14,8 @@ def go_test():
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
+    import pytesseract
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos, text_check_get, text_check_get_black_white
     from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check
     from game_check import move_check
     from get_item import get_item_start, get_event, get_pass
@@ -23,6 +24,7 @@ def go_test():
     from request import request_get, request_start
     from clean_screen import clean_screen_go
     from dungeon import dungeon_in
+    from boonhae_collection import collection_start
 
     print("test")
     cla = "one"
@@ -50,22 +52,91 @@ def go_test():
 
         # dungeon_in(cla, "발할라_일반_혼돈_4")
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\migoong\\out\\sbipa.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(20, 30, 200, 90, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("migoong out :",  imgs_)
+        my_token = "7849921174:AAEhgcjNJcVyM7sewlxCOgV-edRakA3gl7k"
 
-        ran_x = random.randint(100, 200)
-        print("result", ran_x)
+        # 텔레그램으로 보내기
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\dun_complete.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(805, 255, 870, 320, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("dun_complete", imgs_)
+        token = '7000893833:AAEEecQWjeWV43C14BrkRsQI_JKnxNSkrXc'
+        chat_id = '2139978875'
+        tele_massage = "팬티 먹고 소아리 질러엇!!!!!!!!!"
+        # https://api.telegram.org/bot7718169047:AAGSr-Uej5frwoFZwlJptTpafZuk9_cJxiE/getUpdates
+
+        send_message(token, chat_id, tele_massage)
+
+        # 텔레그램으로 보내기
+        token = '7849921174:AAEhgcjNJcVyM7sewlxCOgV-edRakA3gl7k'
+        chat_id = '5933492731'
+        tele_massage = "수어코오 소아리 질러엇!!!!!!!!!"
+        # https://api.telegram.org/bot7718169047:AAGSr-Uej5frwoFZwlJptTpafZuk9_cJxiE/getUpdates
+
+        send_message(token, chat_id, tele_massage)
+
+        # ################### collection ##################
+        #
+        # result_get_1 = text_check_get_black_white(30, 85, 170, 110, cla)
+        # print("result_get_1", result_get_1)
+        #
+        #
+        # for i in range(30):
+        #     result_get_2 = text_check_get_black_white(30, 85, 170, 110, cla)
+        #     print("result_get_2", result_get_2)
+        #     if result_get_1 != result_get_2:
+        #         break
+        #     time.sleep(1)
+        #
+        # print("last result", result_get_1, result_get_2)
+
+        # x1 = 30
+        # y1 = 85
+        # x2 = 170
+        # y2= 110
+        #
+        # # 이전 숫자 저장
+        #
+        # # 화면의 지정된 부분 캡처
+        # screenshot = pyautogui.screenshot(region=(x1, y1, x2 - x1, y2 - y1))
+        #
+        # # 이미지를 흑백으로 변환
+        # screenshot = screenshot.convert('L')
+        #
+        # # 이미지에서 텍스트 추출
+        # current_text = pytesseract.image_to_string(screenshot, config='--psm 6').strip()
+        #
+        # previous_number = current_text
+        #
+        # print("previous_number", previous_number)
+        #
+        # # 실시간 숫자 감지
+        # while True:
+        #     # 화면의 지정된 부분 캡처
+        #     screenshot = pyautogui.screenshot(region=(x1, y1, x2 - x1, y2 - y1))
+        #
+        #     # 이미지를 흑백으로 변환
+        #     screenshot = screenshot.convert('L')
+        #
+        #     # 이미지에서 텍스트 추출
+        #     current_text = pytesseract.image_to_string(screenshot, config='--psm 6').strip()
+        #
+        #     # 텍스트가 숫자로 바뀌었는지 확인
+        #     if current_text.isdigit():
+        #         if current_text != previous_number:
+        #             print(f'숫자가 바뀌었습니다! 이전: {previous_number}, 현재: {current_text}')
+        #             previous_number = current_text
+        #         else:
+        #             print("아직 숫자가 바뀌지 않음")
+        #     # 0.1초 간격으로 화면 캡처
+        #     time.sleep(1)
+
+
+        # ran_x = random.randint(100, 200)
+        # print("result", ran_x)
+        #
+        # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\dun_complete.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(805, 255, 870, 320, cla, img, 0.85)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("dun_complete", imgs_)
 
         # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_title_point_1.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

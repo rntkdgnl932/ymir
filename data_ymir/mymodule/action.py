@@ -422,7 +422,7 @@ def attack_check(cla):
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, text_check_get_black_white, click_pos_2
     try:
         is_data = False
 
@@ -432,7 +432,19 @@ def attack_check(cla):
         imgs_ = imgs_set_(400, 900, 600, 960, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("attack")
-            is_data = True
+
+            result_get_1 = text_check_get_black_white(30, 85, 170, 110, cla)
+            print("attack : result_get_1", result_get_1)
+
+            for i in range(30):
+                result_get_2 = text_check_get_black_white(30, 85, 170, 110, cla)
+                print("result_get_2", result_get_2)
+                if result_get_1 != result_get_2:
+                    is_data = True
+                    break
+                time.sleep(1)
+
+            print("attack : last result", result_get_1, result_get_2)
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\attack_check\\ready.PNG"
         img_array = np.fromfile(full_path, np.uint8)
