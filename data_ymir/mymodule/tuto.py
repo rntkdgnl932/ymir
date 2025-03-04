@@ -15,13 +15,15 @@ def tuto_start(cla):
     import os
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action import out_check, macro_out
+    from action import out_check, juljun_off
     from stop_event18 import _stop_please
     from massenger import line_to_me
     from dead_die import dead_check, dead_after
     from schedule import myQuest_play_add
     try:
         print("tuto_start")
+
+        juljun_off(cla)
 
         dead_check(cla)
         _stop_please(cla)
