@@ -52,6 +52,9 @@ def go_test():
 
         # dungeon_in(cla, "발할라_일반_혼돈_4")
 
+        opop= out_check(cla)
+        print('out......', opop)
+
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\jangsigan_2.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
