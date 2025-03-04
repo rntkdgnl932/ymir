@@ -90,9 +90,19 @@ def dead_recovery(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen import clean_screen_start
+    from schedule import myQuest_play_add, myQuest_play_check
 
     try:
         print("dead_recovery")
+
+        # 스케쥴부터 불러오기
+        result_schedule = myQuest_play_check(cla, "check")
+        print("result_schedule", result_schedule)
+        character_id = result_schedule[0][1]
+        result_schedule_ = result_schedule[0][2]
+
+        if result_schedule_ == "튜토육성" or "의뢰" in result_schedule_ or "임무" in result_schedule_:
+            myQuest_play_add(cla, result_schedule_)
 
         # 스케쥴부터 불러오기
         is_recovery = False
