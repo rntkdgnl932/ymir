@@ -1653,7 +1653,7 @@ def text_check_get_black_white(posX1, posY1, posX2, posY2, cla):
             coordinate = 960 * 5
 
         # 화면의 지정된 부분 캡처
-        screenshot = pyautogui.screenshot(region=(posX1, posY1, posX2 - posX1, posY2 - posY1))
+        screenshot = pyautogui.screenshot(region=(posX1 + coordinate, posY1, posX2 - posX1, posY2 - posY1))
 
         # 이미지를 흑백으로 변환
         screenshot = screenshot.convert('L')

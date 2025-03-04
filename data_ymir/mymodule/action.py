@@ -455,11 +455,11 @@ def attack_check(cla):
         if imgs_ is not None and imgs_ != False:
             print("attack")
 
-            result_get_1 = text_check_get_black_white(30, 85, 170, 110, cla)
+            result_get_1 = text_check_get_black_white(25, 85, 170, 110, cla)
             print("attack : result_get_1", result_get_1)
 
             for i in range(30):
-                result_get_2 = text_check_get_black_white(30, 85, 170, 110, cla)
+                result_get_2 = text_check_get_black_white(25, 85, 170, 110, cla)
                 print("result_get_2", result_get_2)
                 if result_get_1 != result_get_2:
                     is_data = True
