@@ -170,6 +170,8 @@ def menu_open(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen import clean_screen_start
     from get_item import get_post
+    from massenger import line_to_me
+
     try:
 
         is_post = False
@@ -200,25 +202,45 @@ def menu_open(cla):
 
         while is_menu is False:
             is_menu_count += 1
-            if is_menu_count > 7:
-                is_menu = True
+            if 7 < is_menu_count < 10:
+                print("메뉴 안 열려??")
 
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                print("menu_post")
-                is_menu = True
+                click_pos_2(195, 55, cla)
+                time.sleep(1)
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\out_btn_545_595.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 400, 740, 700, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("out_btn_545_595", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(1)
+            elif is_menu_count > 10:
+                print("이레도 메뉴 안 열려??")
+                why = "메뉴 안 열려"
+                line_to_me(cla, why)
+                macro_out(cla)
+
             else:
-
-                result_out = out_check(cla)
-                if result_out == True:
-                    print("out")
-                    click_pos_2(915, 45, cla)
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("menu_post")
+                    is_menu = True
                 else:
-                    clean_screen_start(cla)
+
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        print("out")
+                        click_pos_2(915, 45, cla)
+                    else:
+                        clean_screen_start(cla)
             QTest.qWait(1000)
+
+
 
     except Exception as e:
         print(e)
