@@ -55,6 +55,7 @@ def clean_screen_go(cla):
     from action import juljun_check, juljun_off, confirm_all, cancle_all
     from character_select_and_game_start import game_start_screen
     from schedule import myQuest_play_check
+    from stop_event18 import _stop_please
     try:
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout.PNG"
@@ -67,78 +68,88 @@ def clean_screen_go(cla):
             character_id = result_schedule[0][1]
             game_start_screen(cla, character_id)
         else:
-
-            result_juljun = juljun_check(cla)
-            if result_juljun == True:
-                juljun_off(cla)
-
-            confirm_all(cla)
-
-            cancle_all(cla)
-
-
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_1.PNG"
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
+            imgs_ = imgs_set_(830, 980, 960, 1040, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("clean_screen close_1 : ", imgs_, len(imgs_))
-                if len(imgs_) > 0:
-                    for i in range(len(imgs_)):
-                        click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
-                        time.sleep(0.5)
+                result_schedule = myQuest_play_check(cla, "check")
+                print("clean sreenresult_schedule", result_schedule)
+                character_id = result_schedule[0][1]
+                game_start_screen(cla, character_id)
+            else:
 
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_2.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                print("clean_screen close_2 : ", imgs_)
-                if len(imgs_) > 0:
-                    for i in range(len(imgs_)):
-                        click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
-                        time.sleep(0.5)
+                result_juljun = juljun_check(cla)
+                if result_juljun == True:
+                    juljun_off(cla)
 
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_3.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                print("clean_screen close_3 : ", imgs_)
-                if len(imgs_) > 0:
-                    for i in range(len(imgs_)):
-                        click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
-                        time.sleep(0.5)
+                confirm_all(cla)
 
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_4.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                print("clean_screen close_4 : ", imgs_)
-                if len(imgs_) > 0:
-                    for i in range(len(imgs_)):
-                        click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
-                        time.sleep(0.5)
+                cancle_all(cla)
 
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(650, 550, 750, 650, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                print("clean_screen : menu_post")
-                click_pos_2(915, 50, cla)
 
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\18\\event_1818.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                print("clean_screen event_1818 : ", imgs_)
-                if len(imgs_) > 0:
-                    for i in range(len(imgs_)):
-                        click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
-                        time.sleep(0.5)
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("clean_screen close_1 : ", imgs_, len(imgs_))
+                    if len(imgs_) > 0:
+                        for i in range(len(imgs_)):
+                            click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
+                            time.sleep(0.5)
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("clean_screen close_2 : ", imgs_)
+                    if len(imgs_) > 0:
+                        for i in range(len(imgs_)):
+                            click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
+                            time.sleep(0.5)
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_3.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("clean_screen close_3 : ", imgs_)
+                    if len(imgs_) > 0:
+                        for i in range(len(imgs_)):
+                            click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
+                            time.sleep(0.5)
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_4.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("clean_screen close_4 : ", imgs_)
+                    if len(imgs_) > 0:
+                        for i in range(len(imgs_)):
+                            click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
+                            time.sleep(0.5)
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(650, 550, 750, 650, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("clean_screen : menu_post")
+                    click_pos_2(915, 50, cla)
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\18\\event_1818.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("clean_screen event_1818 : ", imgs_)
+                    if len(imgs_) > 0:
+                        for i in range(len(imgs_)):
+                            click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
+                            time.sleep(0.5)
 
     except Exception as e:
         print(e)
