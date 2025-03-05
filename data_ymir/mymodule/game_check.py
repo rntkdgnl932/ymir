@@ -238,3 +238,40 @@ def error_check2(cla):
     except Exception as e:
         print(e)
         return 0
+
+
+def dun_check(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen import clean_screen_start
+    try:
+
+        is_dun = False
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\out_dun_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(160, 30, 230, 100, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("out_dun_1", imgs_)
+            is_dun = True
+        else:
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\out_dun_2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(160, 30, 230, 100, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("out_dun_2", imgs_)
+                is_dun = True
+
+
+
+        return is_dun
+    except Exception as e:
+        print(e)
+        return 0
+
+

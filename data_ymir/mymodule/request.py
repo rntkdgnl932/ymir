@@ -146,10 +146,13 @@ def request_get_ready(cla, data):
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen import clean_screen_start, clean_screen_go
-    from action import out_check, confirm_all
+    from action import out_check, confirm_all, dun_out
     from game_check import error_check
     try:
         print("request_get_ready", data)
+
+        # 던전이면 나가기
+        dun_out(cla)
 
         # 의뢰_1 => 이둔골짜기
         # 의뢰_2 => 레이븐스홀

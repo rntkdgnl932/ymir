@@ -17,7 +17,7 @@ def go_test():
     import pytesseract
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos, text_check_get, text_check_get_black_white
     from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check
-    from game_check import move_check
+    from game_check import move_check, dun_check
     from get_item import get_item_start, get_event, get_pass
     from potion import potion_buy
     from chango import go_chango, chango_start
@@ -51,16 +51,15 @@ def go_test():
         # request_start(cla, "외뢰_1")
 
         # dungeon_in(cla, "발할라_일반_혼돈_4")
-
-        opop= out_check(cla)
-        print('out......', opop)
-
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\jangsigan_2.PNG"
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\collection_title_point_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 60, 880, 930, cla, img, 0.7)
+        imgs_ = imgs_set_(50, 60, 300, 105, cla, img, 0.9)
         if imgs_ is not None and imgs_ != False:
-            print("confirm_1")
+            print("collection_title_point_1", imgs_)
+
+        collection_start(cla)
+
 
         # ################### collection ##################
         #

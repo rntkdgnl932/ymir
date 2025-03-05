@@ -75,7 +75,7 @@ def mission_get(cla, data):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
-    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
+    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open, dun_out
     from get_item import get_item_start
     from schedule import myQuest_play_add
     from clean_screen import clean_screen_start
@@ -96,6 +96,9 @@ def mission_get(cla, data):
         plus = 960 * 5
 
     try:
+
+        # 먼저 던전이면 나가기
+        dun_out(cla)
 
         # 드래그 횟수
         drag_count = 0

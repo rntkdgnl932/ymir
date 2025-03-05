@@ -87,7 +87,7 @@ def out_check(cla):
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_4.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.7)
+                        imgs_ = imgs_set_(0, 80, 960, 1040, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             print("out_check close_4 : ", imgs_)
                             is_out = False
@@ -300,6 +300,15 @@ def confirm_all(cla):
                         print("request_confirm", imgs_)
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         is_confirm = True
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\move_btn_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(470, 570, 630, 660, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("move_btn_1", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            is_confirm = True
 
 
         return is_confirm
@@ -601,6 +610,7 @@ def go_maul(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from clean_screen import clean_screen_start
+    from boonhae_collection import collection_start
     try:
         print("go_maul")
 
@@ -618,6 +628,8 @@ def go_maul(cla):
             if imgs_ is not None and imgs_ != False:
                 is_maul = True
                 confirm_all(cla)
+                collection_start(cla)
+
             else:
 
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\out_maul_go.PNG"
@@ -692,6 +704,37 @@ def go_maul(cla):
 
 
 
+def dun_out(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from game_check import dun_check
+    try:
+
+
+
+        is_dun = dun_check(cla)
+        is_dun_count = 0
+
+        while is_dun is True:
+            is_dun_count += 1
+            if is_dun_count > 7:
+                is_dun = False
+
+            result_confirm = confirm_all(cla)
+            if result_confirm == False:
+                click_pos_2(195, 55, cla)
+            else:
+                is_dun = False
+                QTest.qWait(1000)
+
+            QTest.qWait(1000)
+
+    except Exception as e:
+        print(e)
+        return 0
 
 
 

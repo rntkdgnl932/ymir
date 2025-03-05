@@ -111,6 +111,7 @@ def potion_buy(cla):
     from action import go_maul
     from chango import chango_start
     from get_item import get_item_start
+    from massenger import line_to_me
 
     try:
         print("potion_buy")
@@ -129,24 +130,39 @@ def potion_buy(cla):
             if imgs_ is not None and imgs_ != False:
                 print("title : jabhwa_sangin")
 
+                exceeded_weight_limit = False
+
                 for i in range(10):
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\full_buy_notice.PNG"
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\exceeded_weight_limit_notice.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(270, 490, 600, 600, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         is_potion = True
+                        exceeded_weight_limit = True
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\buy_btn.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\full_buy_notice.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(450, 950, 700, 1040, cla, img, 0.9)
+                        imgs_ = imgs_set_(270, 490, 600, 600, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            is_potion = True
+                            break
                         else:
-                            click_pos_2(230, 1010, cla)
-                        time.sleep(0.5)
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\buy_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(450, 950, 700, 1040, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                click_pos_2(230, 1010, cla)
+                    time.sleep(0.5)
+
+                if exceeded_weight_limit == True:
+                    why = "무게 초과다. 손 보자"
+                    line_to_me(cla, why)
 
             else:
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\jabhwa_sangin_btn.PNG"
