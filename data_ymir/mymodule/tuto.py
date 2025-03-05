@@ -406,195 +406,203 @@ def tuto_story(cla):
     try:
         is_stroy = False
 
-
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\disir.PNG"
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\skill.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
         if imgs_ is not None and imgs_ != False:
-            print("title : disir")
+            print("title : skill")
+            myQuest_play_add(cla, "튜토육성")
             is_stroy = True
-            click_pos_2(895, 1010, cla)
         else:
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\jejak.PNG"
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\disir.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
             if imgs_ is not None and imgs_ != False:
-                print("title : jejak")
+                print("title : disir")
                 is_stroy = True
+                click_pos_2(895, 1010, cla)
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\jejak.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("title : jejak")
+                    is_stroy = True
 
-                for i in range(20):
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\jejak_result_title.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(410, 410, 550, 500, cla, img, 0.9)
-                    if imgs_ is not None and imgs_ != False:
-                        click_pos_2(480, 750, cla)
-
-                    else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\jejak_btn.PNG"
+                    for i in range(20):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\jejak_result_title.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(610, 980, 820, 1040, cla, img, 0.9)
+                        imgs_ = imgs_set_(410, 410, 550, 500, cla, img, 0.9)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            click_pos_2(480, 750, cla)
 
                         else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\cancle_btn.PNG"
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\jejak_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(610, 980, 820, 1040, cla, img, 0.9)
                             if imgs_ is not None and imgs_ != False:
-                                print("제작중")
-                                time.sleep(2)
-                    time.sleep(1)
-            else:
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\balkeyly.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
-                if imgs_ is not None and imgs_ != False:
-                    print("title : balkeyly")
-                    click_pos_2(830, 200, cla)
-                    time.sleep(1)
-                    click_pos_2(860, 1010, cla)
-                    time.sleep(1)
-                    is_stroy = True
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\cancle_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(610, 980, 820, 1040, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("제작중")
+                                    time.sleep(2)
+                        time.sleep(1)
                 else:
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\daejangan.PNG"
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\balkeyly.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
                     if imgs_ is not None and imgs_ != False:
-                        print("title : daejangan")
-
-                        for i in range(20):
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\safe_ganghwa.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(340, 950, 500, 990, cla, img, 0.9)
-                            if imgs_ is not None and imgs_ != False:
-                                click_pos_2(480, 1010, cla)
-                                break
-                            else:
-                                click_pos_2(740, 170, cla)
-                            time.sleep(1)
-
-                        for i in range(20):
-                            result_skip = tuto_skip(cla)
-                            if result_skip == True:
-                                break
-
-                            time.sleep(1)
+                        print("title : balkeyly")
+                        click_pos_2(830, 200, cla)
+                        time.sleep(1)
+                        click_pos_2(860, 1010, cla)
+                        time.sleep(1)
                         is_stroy = True
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\dongbanja.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\daejangan.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
                         if imgs_ is not None and imgs_ != False:
-                            print("title : dongbanja")
-                            is_stroy = True
-                            click_pos_2(895, 1010, cla)
-                        else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\out_gesipan.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(0, 240, 960, 800, cla, img, 0.9)
-                            if imgs_ is not None and imgs_ != False:
-                                print("title : out_gesipan")
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                            print("title : daejangan")
+
+                            for i in range(20):
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\safe_ganghwa.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(340, 950, 500, 990, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_2(480, 1010, cla)
+                                    break
+                                else:
+                                    click_pos_2(740, 170, cla)
                                 time.sleep(1)
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\quest.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
-        if imgs_ is not None and imgs_ != False:
-            print("title : quest")
-            why = "의뢰"
-            click_pos_2(810, 155, cla)
-            # line_to_me(cla, why)
-            time.sleep(2)
 
-            for i in range(20):
+                            for i in range(20):
+                                result_skip = tuto_skip(cla)
+                                if result_skip == True:
+                                    break
 
-                result_out = out_check(cla)
-                if result_out == True:
-
-                    result_confirm = confirm_all(cla)
-                    if result_confirm == True:
-                        break
-                else:
-                    result_skip = tuto_skip(cla)
-                    if result_skip == True:
-                        break
-                    else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\quest.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_2(810, 155, cla)
+                                time.sleep(1)
                             is_stroy = True
-                            break
-                time.sleep(1)
-        else:
-            # 버섯스프
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\bag_refresh_btn.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(800, 980, 870, 1040, cla, img, 0.9)
-            if imgs_ is not None and imgs_ != False:
-                print("bag_refresh_btn")
-
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\busut_supe.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(720, 110, 960, 1000, cla, img, 0.85)
-                if imgs_ is not None and imgs_ != False:
-                    print("busut_supe", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.5)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.5)
-                    is_stroy = True
-
-            else:
-                # 사가
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\saga.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
-                if imgs_ is not None and imgs_ != False:
-
-                    for i in range(10):
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\saga_story_ravenshall_btn.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(740, 330, 840, 380, cla, img, 0.9)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                            why = "수동해야 한다"
-                            line_to_me(cla, why)
-                            myQuest_play_add(cla, "튜토육성")
-                            break
                         else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\saga.PNG"
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\dongbanja.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
                             if imgs_ is not None and imgs_ != False:
-                                click_pos_2(145, 525, cla)
+                                print("title : dongbanja")
+                                is_stroy = True
+                                click_pos_2(895, 1010, cla)
                             else:
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\saga_story_ravenshall_btn.PNG"
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\out_gesipan.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(740, 330, 840, 380, cla, img, 0.9)
+                                imgs_ = imgs_set_(0, 240, 960, 800, cla, img, 0.9)
                                 if imgs_ is not None and imgs_ != False:
+                                    print("title : out_gesipan")
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(1)
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\quest.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("title : quest")
+                why = "의뢰"
+                click_pos_2(810, 155, cla)
+                # line_to_me(cla, why)
+                time.sleep(2)
 
-                        time.sleep(1)
+                for i in range(20):
+
+                    result_out = out_check(cla)
+                    if result_out == True:
+
+                        result_confirm = confirm_all(cla)
+                        if result_confirm == True:
+                            break
+                    else:
+                        result_skip = tuto_skip(cla)
+                        if result_skip == True:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\quest.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_2(810, 155, cla)
+                                is_stroy = True
+                                break
+                    time.sleep(1)
+            else:
+                # 버섯스프
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\bag_refresh_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(800, 980, 870, 1040, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("bag_refresh_btn")
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\busut_supe.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(720, 110, 960, 1000, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("busut_supe", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                        is_stroy = True
+
+                else:
+                    # 사가
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\saga.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+
+                        for i in range(10):
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\saga_story_ravenshall_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(740, 330, 840, 380, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                why = "수동해야 한다"
+                                line_to_me(cla, why)
+                                myQuest_play_add(cla, "튜토육성")
+                                break
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\saga.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_2(145, 525, cla)
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\saga_story_ravenshall_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(740, 330, 840, 380, cla, img, 0.9)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                            time.sleep(1)
         if is_stroy == True:
             clean_screen_start(cla)
     except Exception as e:
