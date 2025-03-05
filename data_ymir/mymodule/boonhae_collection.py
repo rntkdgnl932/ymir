@@ -44,7 +44,7 @@ def collection_start(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action import out_check, juljun_off, juljun_on, menu_open
     from game_check import move_check
-    from get_item import get_item_start
+    from clean_screen import clean_screen_start
 
     try:
         print("collection_start")
@@ -237,8 +237,9 @@ def collection_start(cla):
                     time.sleep(1)
                 if is_in == False:
                     is_get = True
-            time.sleep(1)
 
+            time.sleep(1)
+        clean_screen_start(cla)
     except Exception as e:
         print(e)
         return 0
