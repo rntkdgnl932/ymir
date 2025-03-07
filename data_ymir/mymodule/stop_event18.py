@@ -77,6 +77,7 @@ def _stop_please(cla):
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
+            click_pos_2(500, 400, cla)
             result_schedule = myQuest_play_check(cla, "check")
             print("clean sreenresult_schedule", result_schedule)
             character_id = result_schedule[0][1]
@@ -87,6 +88,7 @@ def _stop_please(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
+                click_pos_2(500, 400, cla)
                 result_schedule = myQuest_play_check(cla, "check")
                 print("clean sreenresult_schedule", result_schedule)
                 character_id = result_schedule[0][1]
