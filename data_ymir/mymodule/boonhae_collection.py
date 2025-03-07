@@ -23,12 +23,8 @@ def boonhae_collection_start(cla):
 
     try:
         print("boonhae_collection_start")
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\out_zero_potion.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(615, 970, 680, 1040, cla, img, 0.9)
-        if imgs_ is not None and imgs_ != False:
-            print("out_zero_potion")
+        collection_start(cla)
+        boonhae_start(cla)
 
 
     except Exception as e:
@@ -237,6 +233,84 @@ def collection_start(cla):
                     time.sleep(1)
                 if is_in == False:
                     is_get = True
+
+            time.sleep(1)
+        clean_screen_start(cla)
+    except Exception as e:
+        print(e)
+        return 0
+
+def boonhae_start(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
+    from action import bag_open, cancle_all
+    from game_check import move_check
+    from clean_screen import clean_screen_start
+
+    try:
+        print("boonhae_start")
+
+
+
+        is_get = False
+        is_get_count = 0
+        while is_get is False:
+            is_get_count += 1
+            if is_get_count > 7:
+                is_get = True
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\boonhae_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(510, 310, 610, 375, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("boonhae_title")
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\not_checked.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(450, 460, 485, 500, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("not_checked common")
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.5)
+                if v_.onCollection_high == True:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\not_checked.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(510, 460, 560, 500, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("not_checked high")
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+
+                for i in range(5):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\boonhae_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(510, 310, 610, 375, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(625, 555, cla)
+                    else:
+                        is_get = True
+                    time.sleep(0.5)
+
+                if is_get == False:
+                    cancle_all(cla)
+                    is_get = True
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\bag_refresh_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(770, 980, 870, 1040, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("bag_refresh_btn")
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+
+                else:
+                    bag_open(cla)
 
             time.sleep(1)
         clean_screen_start(cla)

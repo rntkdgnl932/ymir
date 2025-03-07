@@ -552,7 +552,7 @@ def tuto_story(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\bag_refresh_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(800, 980, 870, 1040, cla, img, 0.9)
+                imgs_ = imgs_set_(770, 980, 870, 1040, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
                     print("bag_refresh_btn")
 

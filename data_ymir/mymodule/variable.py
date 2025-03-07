@@ -32,17 +32,18 @@ with open(file_path2, "r", encoding='utf-8-sig') as file:
 
 
 
-
 # 강제로 돈벌기
 forcee_not_sub = False
 force_sub_quest = False
 onForceGold = 5000000
 onForceGoldSpot = "none"
 # 수집(아레스에서는 다크디멘션으로 대체)
-onCollection = False
+onCollection_high = False
 
 
 # 마우스 관련
 mouse_speed = 20
 mouse_pm = 3
 mouse_move_count = 300
+
+

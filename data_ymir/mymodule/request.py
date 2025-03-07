@@ -23,9 +23,6 @@ def request_start(cla, data):
         print("request_start", data)
 
         # 의뢰_1 => 이둔골짜기
-        # 의뢰_2 => 레이븐스홀
-        # 의뢰_3 => 아스가르드성
-        # 의뢰_4 => 헤르모드의갈림길
 
         result_request_step = data.split("_")
 
@@ -39,6 +36,8 @@ def request_start(cla, data):
             print("아스가르드성")
         elif result_request_step[1] == 4:
             print("헤르모드의갈림길")
+        elif result_request_step[1] == 5:
+            print("글라시르숲")
 
 
         is__request = False
@@ -126,10 +125,32 @@ def request_start(cla, data):
                         else:
                             request_get_ready(cla, data)
                 else:
-                    print("로딩중이거나 걷는 거?")
-                    dead_check(cla)
-                    move_check(cla)
-                    QTest.qWait(1500)
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\whole_map_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(20, 30, 240, 70, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("whole_map_1")
+                        request_get_ready(cla, data)
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\whole_map_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(20, 30, 240, 70, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("whole_map_2")
+                            request_get_ready(cla, data)
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\quest.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(20, 30, 200, 80, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                request_get(cla, data)
+                            else:
+                                print("로딩중이거나 걷는 거?")
+                                dead_check(cla)
+                                move_check(cla)
             if result_notice == True:
                 request_get_ready(cla, data)
 
@@ -155,31 +176,32 @@ def request_get_ready(cla, data):
         dun_out(cla)
 
         # 의뢰_1 => 이둔골짜기
-        # 의뢰_2 => 레이븐스홀
-        # 의뢰_3 => 아스가르드성
-        # 의뢰_4 => 헤르모드의갈림길
 
         result_request_step = data.split("_")
 
         # result_request_step[1] => step
-        x_reg_2 = 55
-        y_reg_2 = 85
+        x_reg_1 = 465
+        y_reg_1 = 505
         if result_request_step[1] == "1":
             print("이둔골짜기")
-            x_reg_1 = 405
-            y_reg_1 = 815
+            # x_reg_1 = 405
+            # y_reg_1 = 815
         elif result_request_step[1] == "2":
             print("레이븐스홀")
-            x_reg_1 = 465
-            y_reg_1 = 505
+            # x_reg_1 = 465
+            # y_reg_1 = 505
         elif result_request_step[1] == "3":
             print("아스가르드성")
-            x_reg_1 = 465
-            y_reg_1 = 505
+            # x_reg_1 = 465
+            # y_reg_1 = 505
         elif result_request_step[1] == "4":
             print("헤르모드의갈림길")
-            x_reg_1 = 640
-            y_reg_1 = 455
+            # x_reg_1 = 640
+            # y_reg_1 = 455
+        elif result_request_step[1] == "5":
+            print("글라시르숲")
+            # x_reg_1 = 640
+            # y_reg_1 = 455
 
         is_spot = False
         is_spot_count = 0
@@ -188,13 +210,15 @@ def request_get_ready(cla, data):
             print("request_get_ready_count", is_spot_count)
             if is_spot_count > 15:
                 is_spot = True
+                clean_screen_start(cla)
 
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\map_in\\" + str(result_request_step[1]) + ".PNG"
+            # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\map_in\\" + str(result_request_step[1]) + ".PNG"
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\map_in\\2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(240, 30, 550, 80, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
-                print("map_in", str(result_request_step[1]))
+                print("map_in", imgs_)
 
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_notice_board.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -250,55 +274,65 @@ def request_get_ready(cla, data):
 
                     click_pos_2(55, 85, cla)
             else:
-                for i in range(10):
-                    result_out = out_check(cla)
-                    if result_out == True:
-                        # 마을은 클릭위치 다름....
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\quest.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(20, 30, 200, 80, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    request_get(cla, data)
+                    is_spot = True
+                else:
+                    for i in range(10):
+                        result_out = out_check(cla)
+                        if result_out == True:
+                            # 마을은 클릭위치 다름....
 
-                        click_pos_2(100, 50, cla)
+                            click_pos_2(100, 50, cla)
 
-                    else:
-
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\map_in\\" + str(
-                            result_request_step[1]) + ".PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(240, 30, 550, 80, cla, img, 0.85)
-                        if imgs_ is not None and imgs_ != False:
-                            print("map_in", str(result_request_step[1]))
-                            break
                         else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\asgard.PNG"
+
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\map_in\\2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(430, 500, 550, 550, cla, img, 0.7)
+                            imgs_ = imgs_set_(240, 30, 550, 80, cla, img, 0.85)
                             if imgs_ is not None and imgs_ != False:
-                                print("asgard", imgs_)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                time.sleep(2)
+                                print("map_in", imgs_)
+                                break
                             else:
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\asgard_whole_title.PNG"
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\asgard.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(20, 30, 240, 70, cla, img, 0.85)
+                                imgs_ = imgs_set_(430, 500, 550, 550, cla, img, 0.7)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("asgard_whole_title", imgs_)
-                                    click_pos_2(x_reg_1, y_reg_1, cla)
+                                    print("asgard", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(2)
                                 else:
-                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\asgard_title.PNG"
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\asgard_whole_title.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(120, 30, 240, 70, cla, img, 0.7)
+                                    imgs_ = imgs_set_(20, 30, 240, 70, cla, img, 0.85)
                                     if imgs_ is not None and imgs_ != False:
-                                        print("asgard_title", imgs_)
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        time.sleep(2)
+                                        print("asgard_whole_title", imgs_)
+                                        # x_reg_1 = 465
+                                        # y_reg_1 = 505
+                                        click_pos_2(x_reg_1, y_reg_1, cla)
+                                        # 아스가르드성
                                     else:
-                                        # clean_screen_start(cla)
-                                        clean_screen_go(cla)
-                                        print("한번만")
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\asgard_title.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(120, 30, 240, 70, cla, img, 0.9)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("asgard_title", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(2)
+                                        else:
+                                            # clean_screen_start(cla)
+                                            clean_screen_go(cla)
+                                            print("한번만")
 
-                    QTest.qWait(1000)
+                        QTest.qWait(1000)
 
             QTest.qWait(1000)
 
@@ -316,7 +350,7 @@ def request_get(cla, data):
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from game_check import move_check
     from schedule import myQuest_play_add
-    from action import confirm_all, juljun_on, attack_check, juljun_check, juljun_off
+    from action import confirm_all, juljun_on, attack_check, out_check, juljun_off, attack_check_mission
     from massenger import line_to_me
 
     prohibition = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prohibition"
@@ -332,9 +366,6 @@ def request_get(cla, data):
         complete = False
 
         # 의뢰_1 => 이둔골짜기
-        # 의뢰_2 => 레이븐스홀
-        # 의뢰_3 => 아스가르드성
-        # 의뢰_4 => 헤르모드의갈림길
 
         result_request_step = data.split("_")
         y_reg_1 = 140
@@ -350,6 +381,10 @@ def request_get(cla, data):
         elif result_request_step[1] == "4":
             print("헤르모드의갈림길")
             y_reg_1 = 250
+        elif result_request_step[1] == "5":
+            print("글라시르숲")
+            y_reg_1 = 285
+
 
         is_spot = False
         is_spot_count = 0
@@ -448,16 +483,40 @@ def request_get(cla, data):
                                             is_prohibition = True
                                     # 금지 안되어 있으면 클릭하고
                                     if is_prohibition == False:
-                                        result_giveup = giveup_check(cla, data)
+                                        result_giveup = giveup_check(cla, y_scan_1, y_scan_2)
                                         if result_giveup == False:
                                             print("kkkkkkkkkkkkkkkkkkkkkkkk")
                                             print("kkkkkkkkkkkkkkkkkkkkkkkk", y_scan_1, y_scan_2, click_y)
                                             print("kkkkkkkkkkkkkkkkkkkkkkkk")
-                                            click_pos_2(810, click_y, cla)
+
+                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\giveup_btn.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(770, y_scan_1, 910, y_scan_2, cla, img, 0.85)
+                                            if imgs_ is not None and imgs_ != False:
+                                                print("giveup_btn", y_scan_1, imgs_)
+
+                                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\move_btn.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(770, y_scan_1, 960, y_scan_2, cla, img, 0.85)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    print("move_btn", y_scan_1, imgs_)
+                                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            else:
+                                                print("클릭!!", click_y)
+                                                click_pos_2(810, click_y, cla)
                                             ok_click = True
                                             break
                                         else:
                                             print("오류 잡아냄")
+                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\giveup_btn.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(770, y_scan_1, 910, y_scan_2, cla, img, 0.85)
+                                            if imgs_ is not None and imgs_ != False:
+                                                print("giveup_btn", imgs_)
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
                                     # 금지 되어 있으면 다음꺼 클릭하기 위함인데
                                     # y_reg_3 이건 완료 또는 불가능한 최소값
                                     # 그래서 이번에 금지된것이고, y_scan_1, y_scan_2 의 범주내에 최소값이 있으면 퀘스트 완료로 간주
@@ -480,30 +539,53 @@ def request_get(cla, data):
                                                 print("complete? prerequisites", imgs_)
                                                 complete = True
                                                 break
-                                time.sleep(1)
+                                            else:
+                                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\giveup_btn.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(770, y_scan_1, 910, y_scan_2, cla, img, 0.85)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    print("giveup_btn 금지", imgs_)
+                                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                                QTest.qWait(1000)
                         if complete == False and ok_click == True:
                             # 이제 수락 받으러 가는 길
+                            print("이제 수락 받으러 가는 길")
                             for i in range(50):
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\quest.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(20, 30, 200, 80, cla, img, 0.85)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("quest", imgs_)
-                                    click_pos_2(810, click_y, cla)
+                                result_out = out_check(cla)
+                                if result_out == False:
+                                    confirm_all(cla)
+
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\quest.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(20, 30, 200, 80, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("quest", imgs_)
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\giveup_btn.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(770, 130, 910, 190, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("giveup_btn", imgs_)
+
+                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\move_btn.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(770, 130, 960, 190, cla, img, 0.85)
+                                            if imgs_ is not None and imgs_ != False:
+                                                print("move_btn", imgs_)
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
                                 else:
-                                    result_confirm = confirm_all(cla)
-                                    if result_confirm == False:
-                                        move_check(cla)
-                                    else:
-                                        break
+                                    break
                                 time.sleep(1)
 
 
                             for i in range(10):
                                 confirm_all(cla)
 
-                                result_attacl_check = attack_check(cla)
+                                result_attacl_check = attack_check_mission(cla)
                                 if result_attacl_check == False:
                                     juljun_off(cla)
                                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\click_request_btn.PNG"
@@ -580,7 +662,7 @@ def request_get(cla, data):
 
 
 
-def giveup_check(cla, data):
+def giveup_check(cla, y_scan_1, y_scan_2):
     import numpy as np
     import cv2
     import os
@@ -598,12 +680,9 @@ def giveup_check(cla, data):
     #     print("read_data", read_data)
 
     try:
-        print("giveup_check", data)
+        print("giveup_check", y_scan_1, y_scan_2)
 
         # 의뢰_1 => 이둔골짜기
-        # 의뢰_2 => 레이븐스홀
-        # 의뢰_3 => 아스가르드성
-        # 의뢰_4 => 헤르모드의갈림길
 
         is_prohibition = False
         for i in range(len(prohibition_list)):
@@ -614,19 +693,19 @@ def giveup_check(cla, data):
                 read_data) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(210, 120, 460, 190, cla, img, 0.85)
+            imgs_ = imgs_set_(210, y_scan_1, 460, y_scan_2, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("prohibition_list", imgs_)
                 is_prohibition = True
 
-        if is_prohibition == True:
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\giveup_btn.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(770, 130, 910, 190, cla, img, 0.85)
-            if imgs_ is not None and imgs_ != False:
-                print("giveup_btn", imgs_)
-                click_pos_reg(imgs_.x, imgs_.y, cla)
+        # if is_prohibition == True:
+        #     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\giveup_btn.PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(770, 130, 910, 190, cla, img, 0.85)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("giveup_btn", imgs_)
+        #         click_pos_reg(imgs_.x, imgs_.y, cla)
 
 
         return is_prohibition

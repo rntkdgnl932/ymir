@@ -187,6 +187,29 @@ def chango_maul_spot(cla):
             if imgs_ is not None and imgs_ != False:
                 print("title : chango")
 
+
+                # 바로 넣기 확인
+                for i in range(5):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\baro_on.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(860, 990, 940, 1040, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        print("baro_on", imgs_)
+                        break
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\baro_off.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(860, 990, 940, 1040, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("baro_off", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(1)
+
+
+                # 재료 넣기 준비
+
                 click_pos_2(850, 130, cla)
                 time.sleep(1)
 
@@ -373,5 +396,174 @@ def chango_in(cla):
     except Exception as e:
         print(e)
         return 0
+
+
+def chango_maul_auction(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+    from action import go_maul
+    from clean_screen import clean_screen_start
+    from get_item import get_item_start
+
+    try:
+        print("chango_maul_auction")
+
+        is_chango = False
+        is_chango_count = 0
+        while is_chango is False:
+            is_chango_count += 1
+            if is_chango_count > 10:
+                is_chango = True
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\chango.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(10, 30, 160, 80, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("title : chango")
+
+                # 바로 넣기 확인
+                for i in range(5):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\baro_on.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(860, 990, 940, 1040, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        print("baro_on", imgs_)
+                        break
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\baro_off.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(860, 990, 940, 1040, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("baro_off", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(1)
+
+                # 재료 빼기
+                chango_out(cla)
+                is_chango = True
+
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\maul_personal_chango_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(10, 60, 160, 210, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("maul_personal_chango_btn")
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\chango.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(10, 30, 160, 80, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\end_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(480, 570, 630, 630, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("end_btn")
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(1)
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\maul_personal_chango_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(10, 60, 160, 210, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("이동중")
+                                    time.sleep(1)
+                                else:
+                                    break
+                        time.sleep(1)
+                else:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\asgard_maul_in.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(10, 30, 140, 70, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\jabhwa_sangin_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(10, 60, 160, 210, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("이동중")
+                            drag_pos(90, 180, 90, 75, cla)
+                            time.sleep(1)
+                        else:
+                            click_pos_2(190, 55, cla)
+                    else:
+                        go_maul(cla)
+
+            time.sleep(1)
+        for i in range(5):
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\chango.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(10, 30, 160, 80, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                click_pos_2(930, 55, cla)
+            else:
+                break
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+def chango_out(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
+    from action import out_check, juljun_off, juljun_on, juljun_check
+    from game_check import move_check
+    from potion import potion_buy
+    from schedule import myQuest_play_check, myQuest_play_add
+
+    if cla == "one":
+        plus = 0
+    elif cla == "two":
+        plus = 960
+    elif cla == "three":
+        plus = 960 * 2
+    elif cla == "four":
+        plus = 960 * 3
+    elif cla == "five":
+        plus = 960 * 4
+    elif cla == "six":
+        plus = 960 * 5
+
+    try:
+        print("chango_out")
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\bag_auction_item.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_for = imgs_set_for(20, 140, 250, 1020, cla, img, 0.8)
+        if imgs_for is not None and imgs_for != False:
+            print("bag_auction_item", imgs_for)
+
+            if len(imgs_for) > 0:
+                for i in range(len(imgs_for)):
+                    click__ = len(imgs_for) - 1 - i
+                    click_pos_reg(imgs_for[click__][0] - 15, imgs_for[click__][1] + 15, cla)
+                    time.sleep(1)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
 
 

@@ -16,15 +16,16 @@ def go_test():
     import random
     import pytesseract
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos, text_check_get, text_check_get_black_white
-    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check
+    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, bag_open
     from game_check import move_check, dun_check
     from get_item import get_item_start, get_event, get_pass
     from potion import potion_buy
-    from chango import go_chango, chango_start
+    from chango import go_chango, chango_start, chango_maul_auction
     from request import request_get, request_start
     from clean_screen import clean_screen_go
     from dungeon import dungeon_in
-    from boonhae_collection import collection_start
+    from boonhae_collection import collection_start, boonhae_start
+    from auction_game import auction_in, auction_low_num, auction_qun_num, auction_start
 
     print("test")
     cla = "one"
@@ -48,17 +49,63 @@ def go_test():
 
         # request_get(cla, "외뢰_2")
 
-        # request_start(cla, "외뢰_1")
-
-        # dungeon_in(cla, "발할라_일반_혼돈_4")
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\collection_title_point_1.PNG"
+        auction_start(cla)
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\cancle_all\\cancle_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(50, 60, 300, 105, cla, img, 0.9)
+        imgs_ = imgs_set_(340, 530, 480, 750, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
-            print("collection_title_point_1", imgs_)
+            print("cancle_btn", imgs_)
 
-        collection_start(cla)
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_cancle.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(370, 530, 560, 750, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("request_cancle", imgs_)
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\cancle_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(370, 530, 560, 750, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("cancle_btn", imgs_)
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\confirm_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 540, 750, 750, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("confirm_1", imgs_)
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\cancle_all\\cancle_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(340, 540, 480, 750, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("cancle_btn", imgs_)
+
+        # result_low = auction_low_num(cla)
+        # print("==========================================================================")
+        # result_qun = auction_qun_num(cla, 630, 660)
+        # print("==========================================================================")
+        # result_price = auction_qun_num(cla, 665, 700)
+        #
+        # print("result_low", result_low)
+        # print("result_qun", result_qun)
+        # print("result_price", result_price)
+        #
+        # result_ = int(result_low * result_qun)
+        #
+        # print("result_", result_)
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\enroll_information_title.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(410, 310, 540, 360, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("enroll_information_title", imgs_)
+
 
 
         # ################### collection ##################

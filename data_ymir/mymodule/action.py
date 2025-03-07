@@ -41,6 +41,7 @@ def out_check(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     try:
+        # print("out_check")
         is_out = False
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\out_check\\small_out.PNG"
@@ -258,7 +259,7 @@ def confirm_all(cla):
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\end_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(480, 570, 630, 630, cla, img, 0.85)
+        imgs_ = imgs_set_(480, 570, 750, 750, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             print("end_btn")
             click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -268,7 +269,7 @@ def confirm_all(cla):
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\confirm_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(400, 540, 600, 660, cla, img, 0.7)
+        imgs_ = imgs_set_(400, 540, 750, 750, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
             print("confirm_1")
             click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -277,7 +278,7 @@ def confirm_all(cla):
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\soolock_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(400, 540, 650, 750, cla, img, 0.7)
+            imgs_ = imgs_set_(400, 540, 750, 750, cla, img, 0.7)
             if imgs_ is not None and imgs_ != False:
                 print("soolock_1")
                 click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -286,7 +287,7 @@ def confirm_all(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\select_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(400, 540, 650, 750, cla, img, 0.7)
+                imgs_ = imgs_set_(400, 540, 750, 750, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
                     print("select_1")
                     click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -295,7 +296,7 @@ def confirm_all(cla):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_confirm.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(100, 655, 960, 710, cla, img, 0.85)
+                    imgs_ = imgs_set_(100, 655, 750, 750, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         print("request_confirm", imgs_)
                         click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -304,7 +305,7 @@ def confirm_all(cla):
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\move_btn_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(470, 570, 630, 660, cla, img, 0.85)
+                        imgs_ = imgs_set_(470, 570, 750, 750, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             print("move_btn_1", imgs_)
                             click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -329,7 +330,7 @@ def cancle_all(cla):
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\cancle_all\\cancle_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(340, 540, 480, 660, cla, img, 0.7)
+        imgs_ = imgs_set_(340, 530, 480, 750, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
             print("cancle_btn")
             click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -347,11 +348,20 @@ def cancle_all(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_cancle.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(370, 655, 480, 710, cla, img, 0.85)
+                imgs_ = imgs_set_(370, 530, 560, 750, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
                     print("request_cancle", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     is_cancle = True
+                else:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\cancle_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(370, 530, 560, 750, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("boonhae cancle_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        is_cancle = True
 
 
 
@@ -491,6 +501,37 @@ def attack_check(cla):
         print(e)
         return 0
 
+def attack_check_mission(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, text_check_get_black_white, click_pos_2
+    try:
+        is_data = False
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\attack_check\\attack.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 900, 600, 960, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("attack")
+
+            is_data = True
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\attack_check\\ready.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 900, 600, 960, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("ready")
+            is_data = False
+
+
+        return is_data
+    except Exception as e:
+        print(e)
+        return 0
 
 def chajib_check(cla):
     import numpy as np
@@ -523,6 +564,66 @@ def chajib_check(cla):
         print(e)
         return 0
 
+
+def bag_open_check(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    try:
+        is_data = False
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\bag_refresh_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(770, 980, 870, 1040, cla, img, 0.9)
+        if imgs_ is not None and imgs_ != False:
+            print("bag_refresh_btn")
+            is_data = True
+
+
+        return is_data
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def bag_open(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen import clean_screen_start
+    try:
+        is_data = False
+        is_data_count = 0
+        while is_data is False:
+            is_data_count += 1
+            if is_data_count > 7:
+                is_data = True
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\bag_refresh_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(770, 980, 870, 1040, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("bag_refresh_btn")
+                is_data = True
+            else:
+                result_out = out_check(cla)
+                if result_out == True:
+                    click_pos_2(870, 55, cla)
+                else:
+                    clean_screen_start(cla)
+            QTest.qWait(1000)
+
+
+        return is_data
+    except Exception as e:
+        print(e)
+        return 0
 
 def dun_check(cla):
     import numpy as np

@@ -880,17 +880,33 @@ class FirstTab(QWidget):
         # 콜렉션 온오프(수집 온오프)
         self.onActivated_slelect_collection_toggle_read()
 
-        self.collection_on_off = QGroupBox('수집 On/Off')
-        print("dark_demention", v_.onCollection)
-        if v_.onCollection == True:
+        self.collection_on_off = QGroupBox('분해 On/Off')
+
+
+        # 값 재조정
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        dir_toggle = "C:\\my_games\\" + str(v_.game_folder) + "\\mysettings\\collection"
+        file_path = dir_path + "\\mysettings\\collection\\collection_high.txt"
+
+        if os.path.isfile(file_path) == True:
+            with open(file_path, "r", encoding='utf-8-sig') as file:
+                read_data = file.read()
+                print("read_data", read_data)
+
+            if read_data == "on":
+                v_.onCollection_high = True
+
+        print("onCollection_common", v_.onCollection_high)
+        if v_.onCollection_high == True:
             tgl_now = "On"
         else:
             tgl_now = "Off"
-        self.now_toggle = QLabel("수집 : " + tgl_now + "\n")
+
+        self.now_toggle = QLabel("고급 : " + tgl_now)
         # 토글 버튼
         self.tgl = QCheckBox("On / Off")
         self.tgl.adjustSize()
-        self.tgl.setChecked(v_.onCollection)
+        self.tgl.setChecked(v_.onCollection_high)
         self.tgl.toggled.connect(self.onActivated_slelect_collection_toggle)
 
         tgl33 = QHBoxLayout()
@@ -1097,7 +1113,7 @@ class FirstTab(QWidget):
         dun_g2_name.addItems(dun_g2_list)
 
         dun_g2_stair = QComboBox()
-        dun_g2_stair_list = ['구역', '1', '2', '3', '4']
+        dun_g2_stair_list = ['구역', '1', '2', '3', '4', '5']
         dun_g2_stair.addItems(dun_g2_stair_list)
 
         # dun_g2_step = QComboBox()
@@ -1552,7 +1568,7 @@ class FirstTab(QWidget):
         self.onActivated_slelect_gold_read()
 
     def onActivated_slelect_collection_toggle_read(self):
-        print('onCollection read', v_.onCollection)
+        print('onCollection read', v_.onCollection_high)
         dir_path = "C:\\my_games\\" + str(v_.game_folder)
         dir_toggle = "C:\\my_games\\" + str(v_.game_folder) + "\\mysettings\\collection"
         file_path = dir_path + "\\mysettings\\collection\\collection_toggle.txt"
@@ -1565,25 +1581,25 @@ class FirstTab(QWidget):
                     read_tgl = file.read()
                     if read_tgl == "on":
                         isToggle = True
-                        v_.onCollection = True
+                        v_.onCollection_high = True
                     else:
                         isToggle = True
-                        v_.onCollection = False
+                        v_.onCollection_high = False
             else:
                 if os.path.isdir(dir_toggle) == False:
                     print('토글 디렉토리 존재하지 않음')
                     os.makedirs(dir_toggle)
                 with open(file_path, "w", encoding='utf-8-sig') as file:
                     file.write("off")
-        return v_.onCollection
+        return v_.onCollection_high
 
     def onActivated_slelect_collection_toggle(self, e):
         # global onCollection
-        v_.onCollection = e
-        print('onCollection change', v_.onCollection)
+        v_.onCollection_high = e
+        print('onCollection change', v_.onCollection_high)
         dir_path = "C:\\my_games\\" + str(v_.game_folder)
         dir_toggle = "C:\\my_games\\" + str(v_.game_folder) + "\\mysettings\\collection"
-        file_path = dir_path + "\\mysettings\\collection\\collection_toggle.txt"
+        file_path = dir_path + "\\mysettings\\collection\\collection_high.txt"
 
         isToggle = False
         while isToggle is False:
@@ -1600,12 +1616,12 @@ class FirstTab(QWidget):
                     os.makedirs(dir_toggle)
                 with open(file_path, "w", encoding='utf-8-sig') as file:
                     file.write("off")
-        if v_.onCollection == True:
+        if v_.onCollection_high == True:
             tgl_now = "On"
         else:
             tgl_now = "Off"
-        self.now_toggle.setText("다크디멘션 : " + str(tgl_now) + "\n")
-        self.tgl.setChecked(v_.onCollection)
+        self.now_toggle.setText("고급 : " + tgl_now)
+        self.tgl.setChecked(v_.onCollection_high)
         #self.set_rand_int()
 
     def onActivated_cla(self, text):
