@@ -49,7 +49,7 @@ def go_test():
 
         # request_get(cla, "외뢰_2")
 
-        get_sangjum_gyohwan(cla)
+        clean_screen_go(cla)
 
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\cancle_all\\cancle_btn.PNG"

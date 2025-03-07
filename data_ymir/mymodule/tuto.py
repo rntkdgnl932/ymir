@@ -602,6 +602,16 @@ def tuto_story(cla):
                                     if imgs_ is not None and imgs_ != False:
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
 
+                    else:
+                        # 아티팩트
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\artifact.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("artifact", imgs_)
+                            myQuest_play_add(cla, "튜토육성")
+
                             time.sleep(1)
         if is_stroy == True:
             clean_screen_start(cla)
