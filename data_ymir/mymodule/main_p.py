@@ -66,6 +66,7 @@ from dead_die import dead_check
 from request import request_start
 from dungeon import dungeon_start
 from migoong import migoong_start
+from auction_game import auction_start
 
 sys.setrecursionlimit(10 ** 7)
 # pyqt5 관련###################################################
@@ -4030,6 +4031,9 @@ class game_Playing(QThread):
                                     print("start")
                                 elif result_schedule_ == "각종템받기":
                                     get_item_start(v_.now_cla)
+                                    myQuest_play_add(v_.now_cla, result_schedule_)
+                                elif result_schedule_ == "거래소등록":
+                                    auction_start(v_.now_cla)
                                     myQuest_play_add(v_.now_cla, result_schedule_)
                                 elif "발키리" in result_schedule_:
                                     dungeon_start(v_.now_cla, result_schedule_)
