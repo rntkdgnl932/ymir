@@ -18,7 +18,7 @@ def go_test():
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos, text_check_get, text_check_get_black_white
     from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, bag_open
     from game_check import move_check, dun_check
-    from get_item import get_item_start, get_event, get_pass
+    from get_item import get_item_start, get_event, get_pass, get_sangjum_gyohwan
     from potion import potion_buy
     from chango import go_chango, chango_start, chango_maul_auction
     from request import request_get, request_start
@@ -49,7 +49,9 @@ def go_test():
 
         # request_get(cla, "외뢰_2")
 
-        auction_start(cla)
+        get_sangjum_gyohwan(cla)
+
+
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\cancle_all\\cancle_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

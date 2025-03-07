@@ -441,7 +441,7 @@ def get_sangjum_gyohwan(cla):
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
     from clean_screen import clean_screen_start
     try:
@@ -627,7 +627,152 @@ def get_sangjum_gyohwan(cla):
                         else:
                             click_pos_2(870, 770, cla)
                         time.sleep(1)
+                #
+                # 마나재생물약
 
+                # 소모품 클릭하기
+
+                is_somopoom = False
+                for i in range(5):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\moogi_ganghwasuk_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(270, 110, 500, 210, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        is_somopoom = True
+                        break
+                    else:
+                        click_pos_2(30, 210, cla)
+                    time.sleep(1)
+                if is_somopoom == True:
+
+                    x_reg = 0
+                    for i in range(10):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\mana_potion_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(160, 110, 950, 210, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("mana_potion_1", imgs_)
+                            x_reg = imgs_.x
+                            break
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\right_drag_1.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(160, 110, 950, 210, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                drag_pos(760, 350, 370, 350, cla)
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\right_drag_2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(160, 110, 950, 210, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    drag_pos(760, 350, 370, 350, cla)
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\left_drag_1.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(160, 110, 950, 210, cla, img, 0.9)
+                                    if imgs_ is not None and imgs_ != False:
+                                        drag_pos(370, 350, 760, 350, cla)
+                        QTest.qWait(1000)
+                    if x_reg != 0:
+                        # 위에꺼
+                        for i in range(7):
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\soldout_notice.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 510, 600, 580, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("top soldout_notice", imgs_)
+                                break
+
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\not_buy_notice.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 510, 600, 580, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("top not_buy_notice", imgs_)
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\product_buy_title.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(400, 300, 550, 390, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\buy_btn.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(470, 680, 620, 750, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\max.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(620, 640, 700, 700, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                time.sleep(1)
+                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\buy_btn.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(470, 680, 620, 750, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        else:
+                                            break
+                                    else:
+                                        click_pos_2(x_reg, 350, cla)
+                            time.sleep(0.5)
+                        # 밑에꺼
+                        for i in range(7):
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\soldout_notice.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 510, 600, 580, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("bottom soldout_notice", imgs_)
+                                break
+
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\not_buy_notice.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 510, 600, 580, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("bottom not_buy_notice", imgs_)
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\product_buy_title.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(400, 300, 550, 390, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\buy_btn.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(470, 680, 620, 750, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\max.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(620, 640, 700, 700, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                time.sleep(1)
+                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\buy_btn.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(470, 680, 620, 750, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        else:
+                                            break
+                                    else:
+                                        click_pos_2(x_reg, 770, cla)
+                            time.sleep(0.5)
                 # 다 샀으면 나가기
                 for i in range(10):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\sangjum.PNG"
