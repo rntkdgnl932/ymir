@@ -61,6 +61,7 @@ def auction_start(cla):
 
     from function_game import imgs_set_, text_check_get_reg, in_number_check, int_put_, change_number
     try:
+        # 창고에 가서 물품 꺼내고
 
         # 거래소 들어가서
 
@@ -80,6 +81,50 @@ def auction_start(cla):
         print("result", result)
 
         # 판매한다.
+
+        # 마무리로 창고에 다시 넣는다다
+
+    except Exeption as e:
+        print(e)
+
+
+def auction_in(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg, in_number_check, int_put_, change_number
+    from action import menu_open
+
+    try:
+        print("auction_in")
+
+        is_action = False
+        is_action_count = 0
+
+        while is_action is False:
+            is_action_count += 1
+            if is_action_count > 7:
+                is_action = True
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\auction.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 200, 90, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("auction", imgs_)
+                is_action = True
+
+            else:
+                menu_open(cla)
+                time.sleep(0.3)
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\menu_auction.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(650, 430, 750, 520, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("menu_auction", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
 
     except Exception as e:
         print(e)

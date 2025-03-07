@@ -83,6 +83,8 @@ def clean_screen_go(cla):
                 if result_juljun == True:
                     juljun_off(cla)
 
+                _stop_please(cla)
+
                 confirm_all(cla)
 
                 cancle_all(cla)
