@@ -358,7 +358,7 @@ def dungeon_in(cla, data):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
-    from action import menu_open, out_check, go_maul
+    from action import menu_open, out_check, go_maul, confirm_all
     from schedule import myQuest_play_add
 
 
@@ -452,6 +452,10 @@ def dungeon_in(cla, data):
                             print("im_fix_notice", imgs_)
                             fix = True
                             break
+                        else:
+                            result_confirm = confirm_all(cla)
+                            if result_confirm == True:
+                                break
                         time.sleep(0.1)
                     if fix == True:
                         myQuest_play_add(cla, data)
@@ -475,7 +479,9 @@ def dungeon_in(cla, data):
                                     print("title : balhala", imgs_)
                                     click_pos_2(820, 1010, cla)
                                 else:
-                                    break
+                                    result_confirm = confirm_all(cla)
+                                    if result_confirm == True:
+                                        break
                             time.sleep(0.5)
 
                         if out_after_notice == True:
