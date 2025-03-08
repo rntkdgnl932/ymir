@@ -203,21 +203,12 @@ def menu_open(cla):
 
         while is_menu is False:
             is_menu_count += 1
-            if 7 < is_menu_count < 10:
+            if 8 < is_menu_count < 11:
                 print("메뉴 안 열려??")
 
-                click_pos_2(195, 55, cla)
-                time.sleep(1)
+                dun_out(cla)
 
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\out_btn_545_595.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(400, 400, 740, 700, cla, img, 0.7)
-                if imgs_ is not None and imgs_ != False:
-                    print("out_btn_545_595", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                time.sleep(1)
-            elif is_menu_count > 10:
+            elif is_menu_count > 11:
                 print("이레도 메뉴 안 열려??")
                 why = "메뉴 안 열려"
                 line_to_me(cla, why)
@@ -230,7 +221,16 @@ def menu_open(cla):
                 imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
                     print("menu_post")
-                    is_menu = True
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
+                                      this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("menu_open : menu_point_2")
+                        get_post(cla)
+                    else:
+                        is_menu = True
                 else:
 
                     result_out = out_check(cla)
@@ -310,6 +310,15 @@ def confirm_all(cla):
                             print("move_btn_1", imgs_)
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                             is_confirm = True
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\out_btn_545_595.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 400, 740, 700, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("out_btn_545_595", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                is_confirm = True
 
 
         return is_confirm
