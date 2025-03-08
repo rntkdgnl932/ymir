@@ -830,15 +830,12 @@ def dun_out(cla):
 
         while is_dun is True:
             is_dun_count += 1
-            if is_dun_count > 7:
-                is_dun = False
-
-            result_confirm = confirm_all(cla)
-            if result_confirm == False:
-                click_pos_2(195, 55, cla)
-            else:
-                is_dun = False
-                QTest.qWait(1000)
+            print("dun_out", is_dun_count)
+            is_dun = dun_check(cla)
+            if is_dun == True:
+                result_confirm = confirm_all(cla)
+                if result_confirm == False:
+                    click_pos_2(195, 55, cla)
 
             QTest.qWait(1000)
 
