@@ -165,7 +165,7 @@ def request_start(cla, data):
 def request_get_ready(cla, data):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from clean_screen import clean_screen_start, clean_screen_go
     from action import out_check, confirm_all, dun_out
     from game_check import error_check
@@ -259,9 +259,16 @@ def request_get_ready(cla, data):
                             else:
                                 result_out = out_check(cla)
                                 if result_out == True:
-                                    request_get(cla, data)
-                                    is_spot = True
-                                    break
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\personal_chango_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(700, 200, 960, 1040, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        drag_pos(80, 90, 80, 180, cla)
+                                    else:
+                                        request_get(cla, data)
+                                        is_spot = True
+                                        break
                             QTest.qWait(1000)
                 else:
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\elite.PNG"
