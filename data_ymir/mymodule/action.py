@@ -183,22 +183,22 @@ def menu_open(cla):
         is_menu = False
         is_menu_count = 0
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
-        if imgs_ is not None and imgs_ != False:
-            print("menu_post")
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
-                              this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("menu_open : menu_point_2")
-                get_post(cla)
-            else:
-                is_menu = True
+        # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("menu_post")
+        #     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
+        #                       this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("menu_open : menu_point_2")
+        #         get_post(cla)
+        #     else:
+        #         is_menu = True
 
 
         while is_menu is False:

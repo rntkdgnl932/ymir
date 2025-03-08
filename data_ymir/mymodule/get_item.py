@@ -259,7 +259,7 @@ def get_post(cla):
                     time.sleep(1)
 
             else:
-                menu_open(cla)
+
                 is_in = False
                 for i in range(5):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\post.PNG"
@@ -270,6 +270,8 @@ def get_post(cla):
                         is_in = True
                         break
                     else:
+                        menu_open(cla)
+
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
