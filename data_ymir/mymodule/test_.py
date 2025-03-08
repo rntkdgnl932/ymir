@@ -49,43 +49,12 @@ def go_test():
 
         # request_get(cla, "외뢰_2")
 
-        clean_screen_go(cla)
-
-
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\cancle_all\\cancle_btn.PNG"
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_complete_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(340, 530, 480, 750, cla, img, 0.7)
+        imgs_ = imgs_set_(835, 135, 920, 190, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
-            print("cancle_btn", imgs_)
-
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_cancle.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(370, 530, 560, 750, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("request_cancle", imgs_)
-
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\cancle_btn.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(370, 530, 560, 750, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("cancle_btn", imgs_)
-
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\confirm_1.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(400, 540, 750, 750, cla, img, 0.7)
-        if imgs_ is not None and imgs_ != False:
-            print("confirm_1", imgs_)
-
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\cancle_all\\cancle_btn.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(340, 540, 480, 750, cla, img, 0.7)
-        if imgs_ is not None and imgs_ != False:
-            print("cancle_btn", imgs_)
+            print("request_complete_btn", imgs_)
 
         # result_low = auction_low_num(cla)
         # print("==========================================================================")
