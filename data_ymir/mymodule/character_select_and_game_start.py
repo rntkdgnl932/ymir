@@ -345,6 +345,7 @@ def character_change(cla, character_id):
                         click_pos_2(375, 1000, cla)
                 else:
                     print("같은 번호의 캐릭이라서 체인지 안함")
+                    cha_select = True
 
     except Exception as e:
         print(e)
