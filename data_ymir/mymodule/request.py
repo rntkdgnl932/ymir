@@ -92,7 +92,47 @@ def request_start(cla, data):
                         request_get_ready(cla, data)
 
                     else:
-                        request_get_ready(cla, data)
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\click_request_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(835, 135, 920, 190, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("click_request_btn", imgs_)
+                            is__request_count = 0
+                            result_attack = attack_check(cla)
+                            if result_attack == True:
+                                potion_check(cla)
+                            else:
+                                juljun_off(cla)
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\click_request_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(835, 135, 900, 190, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("click_request_btn", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                                result_notice = out_click_check(cla, data)
+
+                                confirm_all(cla)
+
+                                if result_notice == False:
+                                    juljun_on(cla)
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_complete_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(835, 135, 920, 190, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("request_complete_btn", imgs_)
+                                is__request_count = 0
+                                juljun_off(cla)
+                                time.sleep(2)
+                                click_pos_reg(imgs_.x - 70, imgs_.y, cla)
+                                time.sleep(2)
+                                request_get_ready(cla, data)
+                            else:
+                                request_get_ready(cla, data)
             else:
                 result_out = out_check(cla)
                 if result_out == True:
@@ -123,7 +163,34 @@ def request_start(cla, data):
                             click_pos_reg(imgs_.x - 70, imgs_.y, cla)
                             request_get_ready(cla, data)
                         else:
-                            request_get_ready(cla, data)
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\click_request_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(835, 135, 900, 190, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("click_request_btn", imgs_)
+                                is__request_count = 0
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                                result_notice = out_click_check(cla, data)
+
+                                confirm_all(cla)
+
+                                if result_notice == False:
+                                    juljun_on(cla)
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_complete_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(835, 135, 920, 190, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("request_complete_btn", imgs_)
+                                    is__request_count = 0
+                                    juljun_off(cla)
+                                    click_pos_reg(imgs_.x - 70, imgs_.y, cla)
+                                    request_get_ready(cla, data)
+                                else:
+                                    request_get_ready(cla, data)
                 else:
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\whole_map_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -559,6 +626,9 @@ def request_get(cla, data):
                         if complete == False and ok_click == True:
                             # 이제 수락 받으러 가는 길
                             print("이제 수락 받으러 가는 길")
+
+
+
                             for i in range(50):
                                 result_out = out_check(cla)
                                 if result_out == False:
@@ -594,7 +664,9 @@ def request_get(cla, data):
 
                                 result_attacl_check = attack_check_mission(cla)
                                 if result_attacl_check == False:
+
                                     juljun_off(cla)
+
                                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_click_btn.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -602,11 +674,20 @@ def request_get(cla, data):
                                     if imgs_ is not None and imgs_ != False:
                                         print("request_click_btn", imgs_)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\click_request_btn.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(835, 135, 900, 190, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("click_request_btn", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
 
-                                        result_notice = out_click_check(cla, data)
+                                    result_notice = out_click_check(cla, data)
 
-                                        if result_notice == False:
-                                            juljun_on(cla)
+                                    if result_notice == False:
+                                        juljun_on(cla)
+
                                 else:
                                     break
                                 time.sleep(1)
