@@ -91,6 +91,7 @@ def dead_recovery(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen import clean_screen_start
     from schedule import myQuest_play_add, myQuest_play_check
+    from mission import mission_get_complete
 
     try:
         print("dead_recovery")
@@ -103,6 +104,8 @@ def dead_recovery(cla):
 
         if result_schedule_ == "튜토육성" or "의뢰" in result_schedule_ or "임무" in result_schedule_:
             myQuest_play_add(cla, result_schedule_)
+            if "임무" in result_schedule_:
+                mission_get_complete(cla, result_schedule_)
 
         # 스케쥴부터 불러오기
         is_recovery = False

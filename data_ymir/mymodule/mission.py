@@ -650,3 +650,126 @@ def mission_get(cla, data):
         return 0
 
 
+def mission_get_complete(cla, data):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
+    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open, dun_out
+    from get_item import get_item_start
+    from schedule import myQuest_play_add
+    from clean_screen import clean_screen_start
+
+    print("mission_get_complete")
+
+    if cla == "one":
+        plus = 0
+    elif cla == "two":
+        plus = 960
+    elif cla == "three":
+        plus = 960 * 2
+    elif cla == "four":
+        plus = 960 * 3
+    elif cla == "five":
+        plus = 960 * 4
+    elif cla == "six":
+        plus = 960 * 5
+
+    try:
+
+        # 먼저 던전이면 나가기
+        dun_out(cla)
+
+        # 드래그 횟수
+        drag_count = 0
+
+        # 임무_필드_2
+        result_data = data.split("_")
+
+        # 세부클릭 미리 설정
+        if result_data[1] == "필드":
+            if int(result_data[2]) > 4:
+                y_multiply = 5
+            else:
+                y_multiply = int(result_data[2])
+        elif result_data[1] == "정예":
+            if int(result_data[2]) > 2:
+                y_multiply = 3
+            else:
+                y_multiply = int(result_data[2])
+
+        y_click = 105 + (y_multiply * 35)
+
+        get_complete = False
+
+        is_get = False
+        is_get_count = 0
+
+        while is_get is False:
+            is_get_count += 1
+            if is_get_count > 10:
+                is_get = True
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\mission.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("title : mission")
+
+                print("y_click", y_click)
+
+                if get_complete == False:
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\all_get_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(820, 910, 950, 1040, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("all_get_btn")
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\anymore_get_notice.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(370, 510, 500, 570, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("anymore_get_notice")
+                            get_complete = True
+                            break
+                        time.sleep(0.1)
+
+                if get_complete == True:
+                    is_get = True
+
+            else:
+                menu_open(cla)
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\mission.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\menu_mission.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(350, 430, 520, 510, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("menu_mission")
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(1)
+
+            time.sleep(1)
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
