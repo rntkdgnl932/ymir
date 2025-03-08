@@ -72,27 +72,27 @@ def _stop_please(cla):
                                 time.sleep(1)
             time.sleep(1)
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            click_pos_2(500, 400, cla)
-            result_schedule = myQuest_play_check(cla, "check")
-            print("clean sreenresult_schedule", result_schedule)
-            character_id = result_schedule[0][1]
-            game_start_screen(cla, character_id)
-        else:
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                click_pos_2(500, 400, cla)
-                result_schedule = myQuest_play_check(cla, "check")
-                print("clean sreenresult_schedule", result_schedule)
-                character_id = result_schedule[0][1]
-                game_start_screen(cla, character_id)
+        # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     click_pos_2(500, 400, cla)
+        #     result_schedule = myQuest_play_check(cla, "check")
+        #     print("clean sreenresult_schedule", result_schedule)
+        #     character_id = result_schedule[0][1]
+        #     game_start_screen(cla, character_id)
+        # else:
+        #     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.8)
+        #     if imgs_ is not None and imgs_ != False:
+        #         click_pos_2(500, 400, cla)
+        #         result_schedule = myQuest_play_check(cla, "check")
+        #         print("clean sreenresult_schedule", result_schedule)
+        #         character_id = result_schedule[0][1]
+        #         game_start_screen(cla, character_id)
         # full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder) + "\\imgs\\18\\18_2.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
         # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

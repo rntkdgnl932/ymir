@@ -38,42 +38,45 @@ def game_start_screen(cla, character_id):
 
                 ready = False
 
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout.PNG"
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ready_cancle_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.8)
+                imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     ready = True
                 else:
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ready_cancle_btn.PNG"
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ready_cancle_btn2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         ready = True
+
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\down_load_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.8)
+                        imgs_ = imgs_set_(300, 400, 660, 530, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            _stop_please(cla)
-                            click_pos_2(500, 400, cla)
                             ready = True
                         else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ready_cancle_btn2.PNG"
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
+                            imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 ready = True
                             else:
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\down_load_1.PNG"
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(300, 400, 660, 530, cla, img, 0.8)
+                                imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
+                                    _stop_please(cla)
+                                    click_pos_2(500, 400, cla)
                                     ready = True
+
 
                 if ready == True:
                     game_ready(cla)
