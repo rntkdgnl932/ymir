@@ -270,8 +270,6 @@ def get_post(cla):
                         is_in = True
                         break
                     else:
-                        menu_open(cla)
-
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -280,6 +278,8 @@ def get_post(cla):
                         if imgs_ is not None and imgs_ != False:
                             print("menu_point_2")
                             click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
+                        else:
+                            menu_open(cla)
                     time.sleep(1)
                 if is_in == False:
                     is_get = True

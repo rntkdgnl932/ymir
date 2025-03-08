@@ -382,7 +382,7 @@ def chango_in(cla):
                     time.sleep(0.5)
                     click_pos_2(550, 610, cla)
                 else:
-                    click_pos_reg(x_reg_1, y_reg_1, cla)
+                    click_pos_2(x_reg_1, y_reg_1, cla)
                 time.sleep(0.5)
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\bag_auction_item.PNG"
