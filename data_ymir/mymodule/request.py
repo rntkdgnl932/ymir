@@ -69,7 +69,7 @@ def request_start(cla, data):
                         imgs_ = imgs_set_(835, 135, 900, 190, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             print("request_click_btn", imgs_)
-                            click_pos_reg(imgs_.x - 70, imgs_.y, cla)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
 
                         result_notice = out_click_check(cla, data)
 
@@ -103,7 +103,7 @@ def request_start(cla, data):
                     if imgs_ is not None and imgs_ != False:
                         print("request_click_btn", imgs_)
                         is__request_count = 0
-                        click_pos_reg(imgs_.x - 70, imgs_.y, cla)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
 
                         result_notice = out_click_check(cla, data)
 
@@ -601,7 +601,7 @@ def request_get(cla, data):
                                     imgs_ = imgs_set_(835, 135, 900, 190, cla, img, 0.85)
                                     if imgs_ is not None and imgs_ != False:
                                         print("request_click_btn", imgs_)
-                                        click_pos_reg(imgs_.x - 70, imgs_.y, cla)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
 
                                         result_notice = out_click_check(cla, data)
 
