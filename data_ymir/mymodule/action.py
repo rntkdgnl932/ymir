@@ -40,6 +40,7 @@ def out_check(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from dead_die import dead_recovery
     try:
         # print("out_check")
         is_out = False
@@ -108,6 +109,16 @@ def out_check(cla):
                                 if imgs_ is not None and imgs_ != False:
                                     print("out_check event_1818 : ", imgs_)
                                     is_out = False
+
+        if is_out == True:
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dead_die\\out_dead_point.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 850, 560, 900, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("out_dead_point", imgs_)
+                dead_recovery(cla)
+
 
         return is_out
     except Exception as e:
