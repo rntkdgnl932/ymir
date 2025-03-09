@@ -566,6 +566,23 @@ def mission_get(cla, data):
                             y_click -= 35
                         if y_click < 140 or y_click > 285:
                             is_get = True
+                            for i in range(10):
+
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\mission_ing_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 320, 560, 400, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_get = True
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\jadong_start_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(680, 980, 820, 1040, cla, img, 0.9)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(1)
 
 
 
