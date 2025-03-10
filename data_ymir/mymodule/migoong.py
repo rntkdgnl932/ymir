@@ -317,8 +317,19 @@ def random_spot(cla, data):
             if read_data[1] == "스비파":
 
                 if int(read_data[2]) < 4:
-                    ran_x = random.randint(290, 650)
-                    ran_y = random.randint(400, 720)
+                    # ran_x = random.randint(290, 650)
+                    # ran_y = random.randint(400, 720)
+
+                    ran_ready = random.randint(1, 3)
+                    if ran_ready == 1:
+                        ran_x = 335
+                        ran_y = 645
+                    elif ran_ready == 2:
+                        ran_x = 485
+                        ran_y = 620
+                    elif ran_ready == 3:
+                        ran_x = 650
+                        ran_y = 720
                 elif int(read_data[2]) < 6:
                     ran_x = random.randint(290, 650)
                     ran_y = random.randint(380, 750)
