@@ -145,7 +145,7 @@ def get_pass(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
-    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
+    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open, cancle_all
     from clean_screen import clean_screen_start
     try:
         print("get_pass")
@@ -156,6 +156,7 @@ def get_pass(cla):
             is_get_count += 1
             if is_get_count > 10:
                 is_get = True
+                clean_screen_start(cla)
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\pass.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -177,7 +178,11 @@ def get_pass(cla):
                     time.sleep(0.5)
 
                 else:
-                    is_get = True
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        is_get = True
+                    else:
+                        clean_screen_start(cla)
 
             else:
                 result_out = out_check(cla)

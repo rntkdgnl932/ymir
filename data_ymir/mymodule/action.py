@@ -270,69 +270,87 @@ def confirm_all(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     try:
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\end_btn.PNG"
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\pass.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(480, 570, 750, 750, cla, img, 0.85)
+        imgs_ = imgs_set_(420, 350, 540, 400, cla, img, 0.9)
         if imgs_ is not None and imgs_ != False:
-            print("end_btn")
-            click_pos_reg(imgs_.x, imgs_.y, cla)
+            print("confirm_all : pass")
+            cancle_all(cla)
 
-        is_confirm = False
-
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\confirm_1.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(400, 540, 750, 750, cla, img, 0.7)
-        if imgs_ is not None and imgs_ != False:
-            print("confirm_1")
-            click_pos_reg(imgs_.x, imgs_.y, cla)
-            is_confirm = True
         else:
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\soolock_1.PNG"
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\sangjum.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(400, 540, 750, 750, cla, img, 0.7)
+            imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
             if imgs_ is not None and imgs_ != False:
-                print("soolock_1")
-                click_pos_reg(imgs_.x, imgs_.y, cla)
-                is_confirm = True
+                print("confirm_all : sangjum")
+                cancle_all(cla)
+
             else:
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\select_1.PNG"
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\potion\\end_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(480, 570, 750, 750, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("end_btn")
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                is_confirm = False
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\confirm_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(400, 540, 750, 750, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
-                    print("select_1")
+                    print("confirm_1")
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     is_confirm = True
                 else:
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_confirm.PNG"
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\soolock_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(100, 655, 750, 750, cla, img, 0.85)
+                    imgs_ = imgs_set_(400, 540, 750, 750, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
-                        print("request_confirm", imgs_)
+                        print("soolock_1")
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         is_confirm = True
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\move_btn_1.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\select_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(470, 570, 750, 750, cla, img, 0.85)
+                        imgs_ = imgs_set_(400, 540, 750, 750, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            print("move_btn_1", imgs_)
+                            print("select_1")
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                             is_confirm = True
                         else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\out_btn_545_595.PNG"
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_confirm.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(400, 400, 740, 700, cla, img, 0.7)
+                            imgs_ = imgs_set_(100, 655, 750, 750, cla, img, 0.85)
                             if imgs_ is not None and imgs_ != False:
-                                print("out_btn_545_595", imgs_)
+                                print("request_confirm", imgs_)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 is_confirm = True
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\move_btn_1.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(470, 570, 750, 750, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("move_btn_1", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    is_confirm = True
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\out_btn_545_595.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(400, 400, 740, 700, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("out_btn_545_595", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        is_confirm = True
 
 
         return is_confirm
