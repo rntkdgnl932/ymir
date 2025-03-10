@@ -247,6 +247,9 @@ def menu_open(cla):
                     result_out = out_check(cla)
                     if result_out == True:
                         print("out")
+                        result_confirm = confirm_all(cla)
+                        if result_confirm == True:
+                            time.sleep(0.5)
                         click_pos_2(915, 45, cla)
                     else:
                         clean_screen_start(cla)
