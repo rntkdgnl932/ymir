@@ -322,14 +322,14 @@ def random_spot(cla, data):
 
                     ran_ready = random.randint(1, 3)
                     if ran_ready == 1:
-                        ran_x = 335
-                        ran_y = 645
-                    elif ran_ready == 2:
-                        ran_x = 485
+                        ran_x = 405
                         ran_y = 620
-                    elif ran_ready == 3:
-                        ran_x = 650
+                    elif ran_ready == 2:
+                        ran_x = 410
                         ran_y = 720
+                    elif ran_ready == 3:
+                        ran_x = 490
+                        ran_y = 705
                 elif int(read_data[2]) < 6:
                     ran_x = random.randint(290, 650)
                     ran_y = random.randint(380, 750)
