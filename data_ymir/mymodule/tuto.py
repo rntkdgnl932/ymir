@@ -266,16 +266,24 @@ def tuto_click(cla):
                             print("im_move_not")
                             im_move_not = True
                         else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\not_ing_notice.PNG"
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\im_not_move_notice_2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(330, 480, 660, 600, cla, img, 0.7)
+                            imgs_ = imgs_set_(300, 400, 700, 800, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
-                                print("not_ing_notice")
-                                myQuest_play_add(cla, "튜토육성")
-                                # 나갔다가 들어오면 됨
+                                print("im_not_move_notice_2")
+                                im_move_not = True
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\grow\\not_ing_notice.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(330, 480, 660, 600, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("not_ing_notice")
+                                    myQuest_play_add(cla, "튜토육성")
+                                    # 나갔다가 들어오면 됨
 
-                                break
+                                    break
 
                     time.sleep(0.1)
                 if im_move_not == True:
