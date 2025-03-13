@@ -56,6 +56,23 @@ def go_test():
         if imgs_ is not None and imgs_ != False:
             print("request_complete_btn", imgs_)
 
+        # for i in range(10):
+        #     full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+        #         v_.data_folder) + "\\imgs\\check\\game_title_1.PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("game_title_1", imgs_)
+        #         result_confirm = confirm_all(cla)
+        #         if result_confirm == False:
+        #             click_pos_2(935, 15, cla)
+        #     else:
+        #         break
+        #     QTest.qWait(1000)
+
+        attack_check(cla)
+
         # result_low = auction_low_num(cla)
         # print("==========================================================================")
         # result_qun = auction_qun_num(cla, 630, 660)

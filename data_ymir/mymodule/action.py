@@ -269,6 +269,7 @@ def confirm_all(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     try:
+        is_confirm = False
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\pass.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -296,7 +297,7 @@ def confirm_all(cla):
                     print("end_btn")
                     click_pos_reg(imgs_.x, imgs_.y, cla)
 
-                is_confirm = False
+
 
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\confirm_all\\confirm_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
