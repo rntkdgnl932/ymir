@@ -103,9 +103,12 @@ def dead_recovery(cla):
         result_schedule_ = result_schedule[0][2]
 
         if result_schedule_ == "튜토육성" or "의뢰" in result_schedule_ or "임무" in result_schedule_:
-            myQuest_play_add(cla, result_schedule_)
+
             if "임무" in result_schedule_:
                 mission_get_complete(cla, result_schedule_)
+
+            myQuest_play_add(cla, result_schedule_)
+
 
         # 스케쥴부터 불러오기
         is_recovery = False

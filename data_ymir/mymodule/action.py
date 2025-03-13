@@ -183,6 +183,7 @@ def menu_open(cla):
     from clean_screen import clean_screen_start
     from get_item import get_post
     from massenger import line_to_me
+    from dead_die import dead_check
 
     try:
 

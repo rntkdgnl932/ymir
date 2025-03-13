@@ -17,6 +17,7 @@ def clean_screen_start(cla):
     from game_check import error_check2
     from action import out_check
     from dead_die import dead_check
+    from function_game import imgs_set_
     try:
 
         clean = False
