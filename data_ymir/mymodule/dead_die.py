@@ -41,7 +41,7 @@ def dead_check(cla):
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dead_die\\out_dead_point.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(400, 850, 560, 900, cla, img, 0.8)
+        imgs_ = imgs_set_(350, 850, 560, 900, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("out_dead_point", imgs_)
             dead_recovery(cla)
