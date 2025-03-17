@@ -38,7 +38,7 @@ def collection_start(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, menu_open
+    from action import out_check, juljun_off, juljun_on, menu_open_pure
     from game_check import move_check
     from clean_screen import clean_screen_start
 
@@ -211,7 +211,7 @@ def collection_start(cla):
                     time.sleep(1)
 
             else:
-                menu_open(cla)
+
                 is_in = False
                 for i in range(5):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\collection.PNG"
@@ -222,15 +222,25 @@ def collection_start(cla):
                         is_in = True
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
-                                          this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            print("menu_point_2")
-                            click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
-                    time.sleep(1)
+
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
+                                              this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_point_2")
+                                click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
+                        else:
+                            menu_open_pure(cla)
+                    time.sleep(0.5)
+                    QTest.qWait(1000)
                 if is_in == False:
                     is_get = True
 

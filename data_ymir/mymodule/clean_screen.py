@@ -62,7 +62,7 @@ def clean_screen_go(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import juljun_check, juljun_off, confirm_all, cancle_all
+    from action import juljun_check, juljun_off, confirm_all, cancle_all, fix_bag
     from character_select_and_game_start import game_start_screen
     from schedule import myQuest_play_check
     from stop_event18 import _stop_please
@@ -138,9 +138,19 @@ def clean_screen_go(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_4.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
+                imgs_ = imgs_set_for(0, 0, 550, 1040, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
-                    print("clean_screen close_4 : ", imgs_)
+                    print("clean_screen close_4 1 : ", imgs_)
+                    if len(imgs_) > 0:
+                        for i in range(len(imgs_)):
+                            click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
+                            time.sleep(0.5)
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_4.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_for(610, 0, 960, 1040, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("clean_screen close_4 2 : ", imgs_)
                     if len(imgs_) > 0:
                         for i in range(len(imgs_)):
                             click_pos_reg(imgs_[i][0], imgs_[i][1], cla)

@@ -14,7 +14,7 @@ def jadong_start(cla, data):
     import cv2
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action import juljun_check, juljun_on, juljun_off, attack_check, attack_on
+    from action import juljun_check, juljun_on, juljun_off, attack_check, attack_on, fix_bag
     from potion import potion_check
     # 사냥터
     dir_path = "C:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder)
@@ -74,6 +74,8 @@ def jadong_start(cla, data):
             # 절전모드인지 확인하고
             result_juljun = juljun_check(cla)
             if result_juljun == True:
+
+                fix_bag(cla)
 
                 if result_map == "none":
                     print("error...")

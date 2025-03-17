@@ -51,16 +51,11 @@ def migoong_start(cla, data):
 def migoong_check(cla, data):
     import numpy as np
     import cv2
-    import pyautogui
-    import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
-    from action import out_check, juljun_off, juljun_on, juljun_check, attack_on, attack_check
-    from game_check import move_check
-    from action import attack_check, chajib_check, attack_on, chajib_on
+    from function_game import imgs_set_
+    from action import out_check, juljun_on, juljun_check
+    from action import attack_check, fix_bag
     from potion import potion_check
-    from chango import go_chango, chango_start
-    from request import request_get, request_start
-    from clean_screen import clean_screen_go, clean_screen_start
+    from clean_screen import clean_screen_start
 
     try:
         print("migoong_check", data)
@@ -82,10 +77,13 @@ def migoong_check(cla, data):
 
         result_juljun = juljun_check(cla)
         if result_juljun == True:
+
+            fix_bag(cla)
+
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\migoong\\juljun\\" + str(des) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(20, 30, 200, 90, cla, img, 0.85)
+            imgs_ = imgs_set_(20, 30, 200, 90, cla, img, 0.9)
             if imgs_ is not None and imgs_ != False:
                 print("migoong juljun :", str(des), imgs_)
                 result_attack = attack_check(cla)
@@ -101,7 +99,7 @@ def migoong_check(cla, data):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\migoong\\out\\" + str(des) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(20, 30, 200, 90, cla, img, 0.85)
+                imgs_ = imgs_set_(20, 30, 200, 90, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
                     print("migoong out :", str(des), imgs_)
                     juljun_on(cla)
@@ -253,7 +251,7 @@ def migoong_in(cla, data):
 
 
             else:
-                menu_open(cla)
+
                 for i in range(5):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\migoong.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -262,13 +260,19 @@ def migoong_in(cla, data):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\migoong\\menu_migoong.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(400, 490, 470, 580, cla, img, 0.85)
+                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\migoong\\menu_migoong.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 490, 470, 580, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        else:
+                            menu_open(cla)
                     QTest.qWait(1000)
 
             QTest.qWait(1000)
@@ -303,6 +307,11 @@ def random_spot(cla, data):
         # read_data[1] => 스비파, 카라
         # read_data[2] => 층수
 
+        if read_data[1] == "스비파":
+            des = "sbipa"
+        elif read_data[1] == "카라":
+            des = 'kara'
+
         ran_x = 650
         ran_y = 725
 
@@ -314,13 +323,14 @@ def random_spot(cla, data):
             if is_spot_count > 30:
                 is_spot = True
 
-            if read_data[1] == "스비파":
 
-                if int(read_data[2]) < 4:
-                    # ran_x = random.randint(290, 650)
-                    # ran_y = random.randint(400, 720)
 
-                    ran_ready = random.randint(1, 3)
+            if int(read_data[2]) < 4:
+                # ran_x = random.randint(290, 650)
+                # ran_y = random.randint(400, 720)
+
+                ran_ready = random.randint(1, 3)
+                if read_data[1] == "스비파":
                     if ran_ready == 1:
                         ran_x = 405
                         ran_y = 620
@@ -330,16 +340,29 @@ def random_spot(cla, data):
                     elif ran_ready == 3:
                         ran_x = 490
                         ran_y = 705
-                elif int(read_data[2]) < 6:
-                    ran_x = random.randint(290, 650)
-                    ran_y = random.randint(380, 750)
-
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\migoong\\map_sbipa.PNG"
+                elif read_data[1] == "카라":
+                    if ran_ready == 1:
+                        ran_x = 630
+                        ran_y = 465
+                    elif ran_ready == 2:
+                        ran_x = 435
+                        ran_y = 370
+                    elif ran_ready == 3:
+                        ran_x = 450
+                        ran_y = 540
+            elif int(read_data[2]) < 6:
+                if read_data[1] == "스비파":
+                    ran_x = 470
+                    ran_y = 560
+                elif read_data[1] == "카라":
+                    ran_x = 470
+                    ran_y = 560
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\migoong\\map_" + str(des) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(190, 30, 400, 100, cla, img, 0.85)
+            imgs_ = imgs_set_(190, 30, 400, 100, cla, img, 0.9)
             if imgs_ is not None and imgs_ != False:
-                print("map_sbipa", imgs_)
+                print("map_", str(des),imgs_)
 
                 is_foot = False
 
@@ -368,12 +391,12 @@ def random_spot(cla, data):
             else:
                 result_out = out_check(cla)
                 if result_out == True:
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\migoong\\out\\sbipa.PNG"
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\migoong\\out\\" + str(des) + ".PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 160, 100, cla, img, 0.85)
+                    imgs_ = imgs_set_(0, 30, 160, 100, cla, img, 0.9)
                     if imgs_ is not None and imgs_ != False:
-                        print("sbipa", imgs_)
+                        print(str(des), imgs_)
                         click_pos_2(85, 50, cla)
                     else:
                         # 들어가기 ㄱ
@@ -394,14 +417,7 @@ def step_check(cla, step):
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
-    from action import menu_open, juljun_off, juljun_on, juljun_check, confirm_all, attack_check
-    from game_check import move_check
-    from get_item import get_item_start
-    from potion import potion_buy
-    from chango import go_chango, chango_start
-    from request import request_get, request_start
-    from clean_screen import clean_screen_go
+    from function_game import imgs_set_, click_pos_2
 
     step_ready = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\step_num"
     step_list = os.listdir(step_ready)

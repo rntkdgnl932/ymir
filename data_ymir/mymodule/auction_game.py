@@ -141,8 +141,7 @@ def auction_in(cla):
 
 
             else:
-                menu_open(cla)
-                time.sleep(0.3)
+
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\menu_auction.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -150,6 +149,9 @@ def auction_in(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("menu_auction", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+                    menu_open(cla)
+                    time.sleep(0.3)
             QTest.qWait(1000)
 
     except Exception as e:
@@ -215,8 +217,7 @@ def auction_sell(cla):
 
 
             else:
-                menu_open(cla)
-                time.sleep(0.3)
+
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\menu_auction.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -224,6 +225,9 @@ def auction_sell(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("menu_auction", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+                    menu_open(cla)
+                    time.sleep(0.3)
             QTest.qWait(1000)
 
     except Exception as e:

@@ -13,7 +13,7 @@ def request_start(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action import juljun_check, juljun_off, juljun_on, attack_check, out_check, confirm_all
+    from action import juljun_check, juljun_off, juljun_on, attack_check, out_check, confirm_all, fix_bag
     from potion import potion_check
     from game_check import move_check
     from dead_die import dead_check
@@ -51,6 +51,9 @@ def request_start(cla, data):
             result_notice = False
             result_juljun = juljun_check(cla)
             if result_juljun == True:
+
+                fix_bag(cla)
+
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_click_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

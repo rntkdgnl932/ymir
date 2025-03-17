@@ -16,7 +16,7 @@ def potion_check(cla):
     import random
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, juljun_check
+    from action import out_check, juljun_off, fix_bag, juljun_check
     from get_item import get_item_start
 
     ########
@@ -67,6 +67,8 @@ def potion_check(cla):
         else:
             result_juljun = juljun_check(cla)
             if result_juljun == True:
+
+                fix_bag(cla)
 
                 is_potion = False
                 for r in range(50):

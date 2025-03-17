@@ -4,7 +4,7 @@ import time
 import requests
 
 import variable as v_
-
+from PyQt5.QtTest import *
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
 
@@ -12,11 +12,8 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def mission_start(cla, data):
     import numpy as np
     import cv2
-    import pyautogui
-    import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, juljun_check
-    from get_item import get_item_start
+    from function_game import imgs_set_
+    from action import juljun_on, juljun_check, fix_bag
     from potion import potion_check
 
     print("mission_start", data)
@@ -24,6 +21,9 @@ def mission_start(cla, data):
     try:
         result_juljun = juljun_check(cla)
         if result_juljun == True:
+
+            fix_bag(cla)
+
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\juljun_mission_ing.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -641,7 +641,6 @@ def mission_get(cla, data):
                     
 
             else:
-                menu_open(cla)
 
                 for i in range(10):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\mission.PNG"
@@ -651,14 +650,22 @@ def mission_get(cla, data):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\menu_mission.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(350, 430, 520, 510, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            print("menu_mission")
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(1)
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\menu_mission.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(350, 430, 520, 510, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_mission")
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                menu_open(cla)
+                    time.sleep(0.5)
+                    QTest.qWait(1000)
 
             time.sleep(1)
 
@@ -764,8 +771,6 @@ def mission_get_complete(cla, data):
                     is_get = True
 
             else:
-                menu_open(cla)
-
                 for i in range(10):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\mission.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -774,14 +779,22 @@ def mission_get_complete(cla, data):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\menu_mission.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(350, 430, 520, 510, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            print("menu_mission")
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(1)
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\menu_mission.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(350, 430, 520, 510, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_mission")
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        else:
+                            menu_open(cla)
+                    time.sleep(0.5)
+                    QTest.qWait(1000)
 
             time.sleep(1)
 

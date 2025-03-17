@@ -16,7 +16,7 @@ def go_test():
     import random
     import pytesseract
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos, text_check_get, text_check_get_black_white
-    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, bag_open
+    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, bag_open, fix_bag
     from game_check import move_check, dun_check
     from get_item import get_item_start, get_event, get_pass, get_sangjum_gyohwan
     from potion import potion_buy
@@ -26,6 +26,7 @@ def go_test():
     from dungeon import dungeon_in
     from boonhae_collection import collection_start, boonhae_start
     from auction_game import auction_in, auction_low_num, auction_qun_num, auction_start
+    from migoong import migoong_start
 
     print("test")
     cla = "one"
@@ -48,6 +49,8 @@ def go_test():
     try:
 
         # request_get(cla, "외뢰_2")
+        # 미궁_스비파_5
+        migoong_start(cla, "미궁_카라_1")
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_complete_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -71,7 +74,7 @@ def go_test():
         #         break
         #     QTest.qWait(1000)
 
-        attack_check(cla)
+        # attack_check(cla)
 
         # result_low = auction_low_num(cla)
         # print("==========================================================================")

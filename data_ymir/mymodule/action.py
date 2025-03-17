@@ -89,26 +89,34 @@ def out_check(cla):
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_4.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 80, 960, 1040, cla, img, 0.7)
+                        imgs_ = imgs_set_(0, 30, 550, 1040, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            print("out_check close_4 : ", imgs_)
+                            print("out_check close_4 1: ", imgs_)
                             is_out = False
                         else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_4.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(650, 550, 750, 650, cla, img, 0.7)
+                            imgs_ = imgs_set_(610, 30, 960, 1040, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
-                                print("out_check : menu_post")
+                                print("out_check close_4 1: ", imgs_)
                                 is_out = False
                             else:
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\18\\event_1818.PNG"
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.7)
+                                imgs_ = imgs_set_(650, 550, 750, 650, cla, img, 0.7)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("out_check event_1818 : ", imgs_)
+                                    print("out_check : menu_post")
                                     is_out = False
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\18\\event_1818.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(0, 0, 960, 1040, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("out_check event_1818 : ", imgs_)
+                                        is_out = False
 
         if is_out == True:
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dead_die\\out_dead_point.PNG"
@@ -174,6 +182,7 @@ def small_ui_big_change(cla):
     except Exception as e:
         print(e)
         return 0
+
 def menu_open(cla):
     import numpy as np
     import cv2
@@ -243,6 +252,64 @@ def menu_open(cla):
                         get_post(cla)
                     else:
                         is_menu = True
+                else:
+
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        print("out")
+                        result_confirm = confirm_all(cla)
+                        if result_confirm == True:
+                            time.sleep(0.5)
+                        click_pos_2(915, 45, cla)
+                    else:
+                        clean_screen_start(cla)
+            QTest.qWait(1000)
+
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def menu_open_pure(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen import clean_screen_start
+    from get_item import get_post
+    from massenger import line_to_me
+    from dead_die import dead_check
+
+    try:
+
+
+        is_menu = False
+        is_menu_count = 0
+
+        while is_menu is False:
+            is_menu_count += 1
+            if 8 < is_menu_count < 11:
+                print("메뉴 안 열려??")
+
+                dun_out(cla)
+
+            elif is_menu_count > 11:
+                print("이레도 메뉴 안 열려??")
+                why = "메뉴 안 열려"
+                line_to_me(cla, why)
+                macro_out(cla)
+
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("menu_post")
+                    is_menu = True
                 else:
 
                     result_out = out_check(cla)
@@ -434,9 +501,33 @@ def juljun_check(cla):
             print("juljun_on")
             is_juljun = True
 
-
-
         return is_juljun
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def fix_bag(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from boonhae_collection import boonhae_collection_start
+    try:
+        for i in range(10):
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\juljun\\lack_of_space.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(10, 160, 100, 200, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("lack_of_space")
+                boonhae_collection_start(cla)
+                juljun_on(cla)
+                break
+            time.sleep(0.1)
+
+
     except Exception as e:
         print(e)
         return 0

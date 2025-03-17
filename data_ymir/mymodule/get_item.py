@@ -212,7 +212,8 @@ def get_post(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
+    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open_pure
+    from boonhae_collection import boonhae_collection_start
     try:
         print("get_post")
 
@@ -235,33 +236,67 @@ def get_post(cla):
                 click_pos_2(870, 100, cla)
                 time.sleep(0.2)
 
+                is_collection = False
+
                 for i in range(10):
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\post_point_1.PNG"
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\bag_lack_of_space.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(100, 80, 160, 330, cla, img, 0.9)
+                    imgs_ = imgs_set_(370, 510, 600, 600, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
-                        print("post_point_1", imgs_)
-                        click_pos_reg(imgs_.x - 50, imgs_.y + 10, cla)
-                        time.sleep(0.2)
-                        click_pos_2(870, 100, cla)
-                        time.sleep(0.2)
-                        click_pos_2(870, 100, cla)
-                        time.sleep(0.2)
-                    else:
+                        print("bag_lack_of_space", imgs_)
+                        is_collection = True
+                        boonhae_collection_start(cla)
                         break
                     QTest.qWait(500)
-                is_get = True
-                for i in range(5):
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\post.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
-                    if imgs_ is not None and imgs_ != False:
-                        click_pos_2(20, 50, cla)
-                    else:
-                        break
-                    time.sleep(1)
+                if is_collection == False:
+                    for i in range(10):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\post_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(100, 80, 160, 330, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("post_point_1", imgs_)
+                            click_pos_reg(imgs_.x - 50, imgs_.y + 10, cla)
+                            time.sleep(0.2)
+                            click_pos_2(870, 100, cla)
+                            time.sleep(0.2)
+                            click_pos_2(870, 100, cla)
+                            time.sleep(0.2)
+                        else:
+                            break
+                        QTest.qWait(500)
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\post_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(100, 80, 160, 330, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("post_point_1", imgs_)
+                            click_pos_reg(imgs_.x - 50, imgs_.y + 10, cla)
+                            time.sleep(0.2)
+                            click_pos_2(870, 100, cla)
+                            time.sleep(0.2)
+                            click_pos_2(870, 100, cla)
+                            time.sleep(0.2)
+                        else:
+                            for i in range(5):
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\post.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_2(20, 50, cla)
+                                else:
+                                    is_get = True
+                                    break
+                                time.sleep(1)
+                        QTest.qWait(500)
+
+
+
+
 
             else:
 
@@ -284,7 +319,7 @@ def get_post(cla):
                             print("menu_point_2")
                             click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
                         else:
-                            menu_open(cla)
+                            menu_open_pure(cla)
                     time.sleep(1)
                 if is_in == False:
                     is_get = True
@@ -346,7 +381,7 @@ def get_main(cla):
                     time.sleep(1)
 
             else:
-                menu_open(cla)
+
                 is_in = False
                 for i in range(5):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\main.PNG"
@@ -357,15 +392,24 @@ def get_main(cla):
                         is_in = True
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
-                                          this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            print("menu_point_2")
-                            click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
-                    time.sleep(1)
+
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
+                                              this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_point_2")
+                                click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
+                        else:
+                            menu_open(cla)
+                    time.sleep(0.5)
+                    QTest.qWait(1000)
                 if is_in == False:
                     is_get = True
             time.sleep(1)
@@ -414,7 +458,7 @@ def get_upjuk(cla):
                     time.sleep(1)
 
             else:
-                menu_open(cla)
+
                 is_in = False
                 for i in range(5):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\upjuk.PNG"
@@ -425,15 +469,23 @@ def get_upjuk(cla):
                         is_in = True
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
-                                          this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            print("menu_point_2")
-                            click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
-                    time.sleep(1)
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
+                                              this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_point_2")
+                                click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
+                        else:
+                            menu_open(cla)
+                    time.sleep(0.5)
+                    QTest.qWait(1000)
                 if is_in == False:
                     is_get = True
             time.sleep(1)
@@ -853,7 +905,7 @@ def get_daily_mission(cla):
                     time.sleep(1)
 
             else:
-                menu_open(cla)
+
                 is_in = False
                 for i in range(5):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\daily_mission.PNG"
@@ -864,15 +916,23 @@ def get_daily_mission(cla):
                         is_in = True
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
-                                          this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            print("menu_point_2")
-                            click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
-                    time.sleep(1)
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
+                                              this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_point_2")
+                                click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
+                        else:
+                            menu_open(cla)
+                    time.sleep(0.5)
+                    QTest.qWait(1000)
                 if is_in == False:
                     is_get = True
             time.sleep(1)

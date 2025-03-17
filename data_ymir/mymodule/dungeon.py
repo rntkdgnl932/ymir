@@ -66,7 +66,7 @@ def dungeon_balkeyly(cla, data):
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
     from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check
     from game_check import move_check
-    from action import attack_check, chajib_check, attack_on, chajib_on
+    from action import attack_check, chajib_check, attack_on, chajib_on, fix_bag
     from potion import potion_check
     from chango import go_chango, chango_start
     from request import request_get, request_start
@@ -109,6 +109,9 @@ def dungeon_balkeyly(cla, data):
 
         result_juljun = juljun_check(cla)
         if result_juljun == True:
+
+            fix_bag(cla)
+
             is_in = False
             for i in range(len(juljun_ready_list)):
                 result_list = juljun_ready_list[i].split(".")
@@ -503,7 +506,7 @@ def dungeon_in(cla, data):
 
 
             else:
-                menu_open(cla)
+
                 for i in range(5):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\balhala.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -512,12 +515,19 @@ def dungeon_in(cla, data):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\menu_balhala.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(350, 490, 420, 580, cla, img, 0.85)
+                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\menu_balhala.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(350, 490, 420, 580, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        else:
+                            menu_open(cla)
 
                     QTest.qWait(1000)
 
