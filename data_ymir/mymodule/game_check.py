@@ -137,7 +137,7 @@ def move_check(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\check\\move\\move_2.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(60, 90, 120, 150, cla, img, 0.9)
+                imgs_ = imgs_set_(60, 90, 120, 150, cla, img, 0.95)
                 if imgs_ is not None and imgs_ != False:
                     print("move_2", imgs_)
                     is_count += 1
