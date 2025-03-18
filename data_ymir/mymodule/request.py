@@ -237,10 +237,12 @@ def request_get_ready(cla, data):
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from clean_screen import clean_screen_start, clean_screen_go
-    from action import out_check, confirm_all, dun_out
+    from action import out_check, confirm_all, dun_out, juljun_off
     from game_check import error_check
     try:
         print("request_get_ready", data)
+
+        juljun_off(cla)
 
         # 던전이면 나가기
         dun_out(cla)

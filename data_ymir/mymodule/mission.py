@@ -97,8 +97,14 @@ def mission_get(cla, data):
 
     try:
 
+        juljun_off(cla)
+
+        print('huhh')
+
         # 먼저 던전이면 나가기
         dun_out(cla)
+
+        print('jiji')
 
         # 드래그 횟수
         drag_count = 0
@@ -662,8 +668,8 @@ def mission_get(cla, data):
                             if imgs_ is not None and imgs_ != False:
                                 print("menu_mission")
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
-                            else:
-                                menu_open(cla)
+                        else:
+                            menu_open(cla)
                     time.sleep(0.5)
                     QTest.qWait(1000)
 
