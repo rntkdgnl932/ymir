@@ -685,10 +685,8 @@ def mission_get_complete(cla, data):
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
-    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open, dun_out
-    from get_item import get_item_start
-    from schedule import myQuest_play_add
+    from function_game import imgs_set_, click_pos_reg
+    from action import menu_open, dun_out
     from clean_screen import clean_screen_start
 
     print("mission_get_complete")
@@ -798,12 +796,13 @@ def mission_get_complete(cla, data):
                                 print("menu_mission")
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                         else:
+                            print("시팔 이거냐?")
                             menu_open(cla)
                     time.sleep(0.5)
                     QTest.qWait(1000)
 
             time.sleep(1)
-
+        clean_screen_start(cla)
     except Exception as e:
         print(e)
         return 0
