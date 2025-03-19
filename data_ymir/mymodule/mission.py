@@ -796,7 +796,6 @@ def mission_get_complete(cla, data):
                                 print("menu_mission")
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                         else:
-                            print("시팔 이거냐?")
                             menu_open(cla)
                     time.sleep(0.5)
                     QTest.qWait(1000)
