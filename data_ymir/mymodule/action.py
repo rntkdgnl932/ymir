@@ -196,7 +196,7 @@ def menu_open(cla):
 
     try:
 
-        print("시팔 이거 들어오긴 한거냐")
+        print("시팔 이거 들어오긴 한거냐냐")
 
         is_post = False
         this_point_x = 720
