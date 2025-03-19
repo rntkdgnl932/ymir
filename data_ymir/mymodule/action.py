@@ -255,6 +255,7 @@ def menu_open(cla):
                 else:
 
                     result_out = out_check(cla)
+                    print("menu__open,, result_out", result_out)
                     if result_out == True:
                         print("out")
                         result_confirm = confirm_all(cla)
