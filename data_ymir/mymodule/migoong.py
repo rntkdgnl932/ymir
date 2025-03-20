@@ -290,10 +290,6 @@ def random_spot(cla, data):
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
     from action import out_check, attack_on, juljun_on, juljun_check, confirm_all, attack_check
     from game_check import move_check
-    from get_item import get_item_start
-    from potion import potion_buy
-    from chango import go_chango, chango_start
-    from request import request_get, request_start
     from clean_screen import clean_screen_start
 
     try:
@@ -381,7 +377,11 @@ def random_spot(cla, data):
                 if is_foot == True:
                     result_out = out_check(cla)
                     if result_out == True:
-                        time.sleep(7)
+                        for i in range(7):
+                            result_move = move_check(cla)
+                            if result_move == True:
+                                break
+                            time.sleep(1)
                         attack_on(cla)
                         juljun_on(cla)
                         result_attack = attack_check(cla)

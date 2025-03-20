@@ -146,7 +146,7 @@ def move_check(cla):
                         is_ = True
                 else:
                     is_not_count += 1
-                    if is_not_count > 4:
+                    if is_not_count > 3:
                         is_ = True
 
 

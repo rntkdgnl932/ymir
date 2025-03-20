@@ -102,7 +102,7 @@ def dead_recovery(cla):
         character_id = result_schedule[0][1]
         result_schedule_ = result_schedule[0][2]
 
-        if result_schedule_ == "튜토육성" or "의뢰" in result_schedule_ or "임무" in result_schedule_:
+        if result_schedule_ == "튜토육성" or "의뢰" in result_schedule_ or "임무" in result_schedule_ or "혼돈" in result_schedule_ or "폴크" in result_schedule_:
 
             if "임무" in result_schedule_:
                 mission_get_complete(cla, result_schedule_)

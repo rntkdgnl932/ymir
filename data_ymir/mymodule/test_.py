@@ -23,7 +23,7 @@ def go_test():
     from chango import go_chango, chango_start, chango_maul_auction
     from request import request_get, request_start
     from clean_screen import clean_screen_go
-    from dungeon import dungeon_in
+    from dungeon import dungeon_in, random_spot_dun, dungeon_hondon_folk
     from boonhae_collection import collection_start, boonhae_start
     from auction_game import auction_in, auction_low_num, auction_qun_num, auction_start
     from migoong import migoong_start
@@ -50,14 +50,45 @@ def go_test():
 
         # request_get(cla, "외뢰_2")
         # 미궁_스비파_5
-        migoong_start(cla, "미궁_카라_1")
+        # migoong_start(cla, "미궁_카라_1")
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_complete_btn.PNG"
+        # data = "혼돈_일반_5"
+        # #
+        # # random_spot_dun(cla, data)
+        #
+        # dungeon_hondon_folk(cla, data)
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\is_pic\\balkeyly.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(835, 135, 920, 190, cla, img, 0.85)
+        imgs_ = imgs_set_(690, 310, 945, 655, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
-            print("request_complete_btn", imgs_)
+            print("balkeyly :", imgs_)
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\is_pic\\hondon.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(690, 310, 945, 655, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("hondon :", imgs_)
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\is_pic\\folk.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(690, 310, 945, 655, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("folk :", imgs_)
+        click_pos_2(480, 520, cla)
+        time.sleep(3)
+        for i in range(15):
+            click_pos_2(855, 890, cla)
+            time.sleep(0.05)
+        time.sleep(5)
+        for i in range(15):
+            click_pos_2(855, 890, cla)
+            time.sleep(0.05)
+        time.sleep(3)
+        for i in range(15):
+            click_pos_2(855, 890, cla)
+            time.sleep(0.05)
 
         # for i in range(10):
         #     full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(

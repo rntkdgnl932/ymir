@@ -524,6 +524,20 @@ def get_sangjum_gyohwan(cla):
                 print("title : sangjum")
                 is_get = True
 
+                ########################################################
+                #######################특별##############################
+                ########################################################
+                # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event"
+                # img_array = np.fromfile(full_path, np.uint8)
+                # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                # imgs_ = imgs_set_(0, 110, 100, 150, cla, img, 0.9)
+                # if imgs_ is not None and imgs_ != False:
+
+
+                ########################################################
+                #######################기본##############################
+                ########################################################
+
                 # 소환하러 클릭하기
                 for i in range(5):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\sohwan_btn.PNG"
@@ -843,6 +857,10 @@ def get_sangjum_gyohwan(cla):
                     else:
                         break
                     time.sleep(0.3)
+
+                ########################################################
+                ########################################################
+                ########################################################
 
             else:
                 result_out = out_check(cla)
