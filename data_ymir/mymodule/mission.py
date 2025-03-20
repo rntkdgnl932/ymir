@@ -13,12 +13,15 @@ def mission_start(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_
-    from action import juljun_on, juljun_check, fix_bag
+    from action import juljun_on, juljun_check, fix_bag, attack_check
     from potion import potion_check
 
     print("mission_start", data)
     # 임무_필드_2
     try:
+
+
+
         result_juljun = juljun_check(cla)
         if result_juljun == True:
 
@@ -49,6 +52,11 @@ def mission_start(cla, data):
                             time.sleep(10)
                             juljun_on(cla)
                         else:
+                            result_attack = attack_check(cla)
+                            if result_attack == False:
+                                mission_get(cla, data)
+                                time.sleep(10)
+                                juljun_on(cla)
 
                             result_buy = potion_check(cla)
                             if result_buy == True:
