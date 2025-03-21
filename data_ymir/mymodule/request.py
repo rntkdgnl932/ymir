@@ -738,8 +738,15 @@ def request_get(cla, data):
                             if imgs_ is not None and imgs_ != False:
                                 drag_pos(90, 75, 90, 180, cla)
                             else:
-                                click_pos_2(190, 55, cla)
-                                time.sleep(1)
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\maul_personal_chango_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(10, 60, 160, 210, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    drag_pos(90, 75, 90, 180, cla)
+                                else:
+                                    click_pos_2(190, 55, cla)
+                                    time.sleep(1)
 
                     QTest.qWait(1000)
 
