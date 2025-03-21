@@ -92,6 +92,8 @@ def dead_recovery(cla):
     from clean_screen import clean_screen_start
     from schedule import myQuest_play_add, myQuest_play_check
     from mission import mission_get_complete
+    from massenger import line_to_me
+    from action import macro_out
 
     try:
         print("dead_recovery")
@@ -143,7 +145,21 @@ def dead_recovery(cla):
                         click_pos_2(100, 850, cla)
                         time.sleep(0.5)
                         click_pos_2(150, 945, cla)
-                        time.sleep(0.5)
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dead_die\\i_have_a_little_money_notice.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(380, 500, 600, 600, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("i_have_a_little_money_notice", imgs_)
+                            why = "죽었는데 돈 없다고 난리"
+                            line_to_me(cla, why)
+                            macro_out(cla)
+                            is_recovery = True
+                        time.sleep(0.1)
+
+
                 else:
                     clean_screen_start(cla)
                     is_recovery = True
