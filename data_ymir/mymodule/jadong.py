@@ -121,6 +121,7 @@ def jadong_spot_in(cla, data):
     import numpy as np
     import cv2
     import os
+    import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action import out_check, attack_on, confirm_all
     from clean_screen import clean_screen_start
@@ -340,7 +341,26 @@ def jadong_spot_in(cla, data):
                                     else:
                                         result_out = out_check(cla)
                                         if result_out == True:
-                                            attack_on(cla)
+                                            if spot[0] == "lv47파괴의땅의요툰파멸자":
+
+                                                ran_spot = random.randint(1, 4)
+
+                                                if ran_spot == 4:
+                                                    attack_on(cla)
+                                                else:
+                                                    if ran_spot == 1:
+                                                        x_reg = 480
+                                                        y_reg = 540
+                                                    elif ran_spot == 2:
+                                                        x_reg = 600
+                                                        y_reg = 450
+                                                    elif ran_spot == 3:
+                                                        x_reg = 590
+                                                        y_reg = 590
+
+                                                    random_spot_in(cla, x_reg, y_reg)
+                                            else:
+                                                attack_on(cla)
                                             is_spot = True
                                             break
                                     QTest.qWait(1000)
@@ -388,6 +408,70 @@ def jadong_spot_in(cla, data):
                             else:
                                 clean_screen_start(cla)
                     QTest.qWait(1000)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+def random_spot_in(cla, x_reg, y_reg):
+    import numpy as np
+    import cv2
+    import os
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action import out_check, attack_on, confirm_all
+    from clean_screen import clean_screen_start
+    from game_check import move_check
+
+
+    try:
+        print("random_spot_in", x_reg, y_reg)
+
+        is_spot = False
+        is_spot_count = 0
+        while is_spot is False:
+            is_spot_count += 1
+            print("random_spot_in_count", is_spot_count)
+            if is_spot_count > 15:
+                is_spot = True
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\des_map_in.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(680, 970, 960, 1040, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("des_map_in")
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\migoong\\foot_point.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(230, 250, 730, 800, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("foot_point", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(1)
+
+                    for i in range(10):
+                        result_out = out_check(cla)
+                        if result_out == True:
+                            result_move = move_check(cla)
+                            if result_move == True:
+                                attack_on(cla)
+                                is_spot = True
+                        time.sleep(0.5)
+
+
+
+                else:
+                    click_pos_2(x_reg, y_reg, cla)
+                    QTest.qWait(100)
+
+            else:
+                result_out = out_check(cla)
+                if result_out == True:
+                    click_pos_2(100, 50, cla)
+                else:
+                    clean_screen_start(cla)
+            QTest.qWait(1000)
 
 
     except Exception as e:

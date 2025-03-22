@@ -27,6 +27,7 @@ def go_test():
     from boonhae_collection import collection_start, boonhae_start, collection_upgrade
     from auction_game import auction_in, auction_low_num, auction_qun_num, auction_start
     from migoong import migoong_start
+    from jadong import random_spot_in
 
     print("test")
     cla = "one"
@@ -58,7 +59,7 @@ def go_test():
         #
         # dungeon_hondon_folk(cla, data)
 
-        collection_start(cla)
+        random_spot_in(cla, 555, 590)
 
 
 
