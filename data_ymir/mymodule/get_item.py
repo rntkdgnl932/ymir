@@ -28,6 +28,7 @@ def get_item_start(cla):
         get_post(cla)
         get_main(cla)
         get_upjuk(cla)
+        get_daily_mission(cla)
         get_sangjum_gyohwan(cla)
 
 
@@ -41,7 +42,7 @@ def get_event(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
-    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
+    from action import out_check
     from clean_screen import clean_screen_start
     try:
         print("get_event")
@@ -145,7 +146,7 @@ def get_pass(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
-    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open, cancle_all
+    from action import out_check
     from clean_screen import clean_screen_start
     try:
         print("get_pass")
@@ -212,7 +213,7 @@ def get_post(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open_pure
+    from action import menu_open_pure
     from boonhae_collection import boonhae_collection_start
     try:
         print("get_post")
@@ -338,7 +339,7 @@ def get_main(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
+    from action import menu_open_pure
     try:
         print("get_main")
 
@@ -407,7 +408,7 @@ def get_main(cla):
                                 print("menu_point_2")
                                 click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
                         else:
-                            menu_open(cla)
+                            menu_open_pure(cla)
                     time.sleep(0.5)
                     QTest.qWait(1000)
                 if is_in == False:
@@ -424,7 +425,7 @@ def get_upjuk(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
+    from action import menu_open_pure
     try:
         print("get_upjuk")
 
@@ -483,7 +484,7 @@ def get_upjuk(cla):
                                 print("menu_point_2")
                                 click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
                         else:
-                            menu_open(cla)
+                            menu_open_pure(cla)
                     time.sleep(0.5)
                     QTest.qWait(1000)
                 if is_in == False:
@@ -501,7 +502,7 @@ def get_sangjum_gyohwan(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
-    from action import out_check, juljun_off, juljun_on, juljun_check, menu_open
+    from action import out_check, menu_open_pure
     from clean_screen import clean_screen_start
     try:
         print("get_sangjum_gyohwan")
@@ -889,7 +890,7 @@ def get_daily_mission(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action import menu_open
+    from action import menu_open_pure
     try:
         print("get_daily_mission")
 
@@ -910,6 +911,17 @@ def get_daily_mission(cla):
             if imgs_ is not None and imgs_ != False:
                 print("title : daily_mission")
                 click_pos_2(870, 130, cla)
+                time.sleep(0.5)
+                click_pos_2(870, 130, cla)
+                time.sleep(0.5)
+                click_pos_2(440, 105, cla)
+                time.sleep(0.5)
+                click_pos_2(440, 105, cla)
+                time.sleep(0.5)
+                click_pos_2(770, 105, cla)
+                time.sleep(0.5)
+                click_pos_2(770, 105, cla)
+                time.sleep(0.5)
                 is_get = True
                 for i in range(5):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\daily_mission.PNG"
@@ -948,7 +960,7 @@ def get_daily_mission(cla):
                                 print("menu_point_2")
                                 click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
                         else:
-                            menu_open(cla)
+                            menu_open_pure(cla)
                     time.sleep(0.5)
                     QTest.qWait(1000)
                 if is_in == False:

@@ -16,7 +16,7 @@ def go_test():
     import random
     import pytesseract
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos, text_check_get, text_check_get_black_white
-    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, bag_open, fix_bag
+    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, bag_open, fix_bag, menu_open
     from game_check import move_check, dun_check
     from get_item import get_item_start, get_event, get_pass, get_sangjum_gyohwan
     from potion import potion_buy
@@ -24,7 +24,7 @@ def go_test():
     from request import request_get, request_start
     from clean_screen import clean_screen_go
     from dungeon import dungeon_in, random_spot_dun, dungeon_hondon_folk
-    from boonhae_collection import collection_start, boonhae_start
+    from boonhae_collection import collection_start, boonhae_start, collection_upgrade
     from auction_game import auction_in, auction_low_num, auction_qun_num, auction_start
     from migoong import migoong_start
 
@@ -58,37 +58,41 @@ def go_test():
         #
         # dungeon_hondon_folk(cla, data)
 
+        collection_start(cla)
+
+
+
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\is_pic\\balkeyly.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(690, 310, 945, 655, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             print("balkeyly :", imgs_)
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\is_pic\\hondon.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(690, 310, 945, 655, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("hondon :", imgs_)
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\is_pic\\folk.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(690, 310, 945, 655, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("folk :", imgs_)
-        click_pos_2(480, 520, cla)
-        time.sleep(3)
-        for i in range(15):
-            click_pos_2(855, 890, cla)
-            time.sleep(0.05)
-        time.sleep(5)
-        for i in range(15):
-            click_pos_2(855, 890, cla)
-            time.sleep(0.05)
-        time.sleep(3)
-        for i in range(15):
-            click_pos_2(855, 890, cla)
-            time.sleep(0.05)
+        # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\is_pic\\hondon.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(690, 310, 945, 655, cla, img, 0.85)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("hondon :", imgs_)
+        # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\is_pic\\folk.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(690, 310, 945, 655, cla, img, 0.85)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("folk :", imgs_)
+        # click_pos_2(480, 520, cla)
+        # time.sleep(3)
+        # for i in range(15):
+        #     click_pos_2(855, 890, cla)
+        #     time.sleep(0.05)
+        # time.sleep(5)
+        # for i in range(15):
+        #     click_pos_2(855, 890, cla)
+        #     time.sleep(0.05)
+        # time.sleep(3)
+        # for i in range(15):
+        #     click_pos_2(855, 890, cla)
+        #     time.sleep(0.05)
 
         # for i in range(10):
         #     full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
