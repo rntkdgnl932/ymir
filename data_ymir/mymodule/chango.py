@@ -329,6 +329,19 @@ def chango_in(cla):
     try:
         print("chango_in")
 
+        for i in range(20):
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\time_setting_item_notice.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(300, 500, 530, 570, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("time_setting_item_notice", imgs_)
+                break
+            else:
+                click_pos_2(735, 180, cla)
+            time.sleep(0.5)
+
+
         x_reg_1 = 0
         y_reg_1 = 0
 

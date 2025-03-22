@@ -282,7 +282,7 @@ def get_post(cla):
                             click_pos_2(870, 100, cla)
                             time.sleep(0.2)
                         else:
-                            for i in range(5):
+                            for c in range(5):
                                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\post.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -311,14 +311,19 @@ def get_post(cla):
                         is_in = True
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
-                                          this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            print("menu_point_2")
-                            click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
+                                              this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_point_2")
+                                click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
                         else:
                             menu_open_pure(cla)
                     time.sleep(1)
