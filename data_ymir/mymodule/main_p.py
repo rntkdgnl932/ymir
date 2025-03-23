@@ -191,7 +191,7 @@ class MyApp(QDialog):
             last_monitor_number = idx
 
         if line_[1] == "super_coob":
-            x_reg = 960
+            x_reg = 960 * 3
         elif last_monitor_number == 1:
             x_reg = 0
         elif last_monitor_number == 2:

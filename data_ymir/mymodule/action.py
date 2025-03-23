@@ -265,17 +265,19 @@ def menu_open(cla):
                         else:
                             is_menu = True
                 else:
-
-                    result_out = out_check(cla)
-                    print("menu__open,, result_out", result_out)
-                    if result_out == True:
-                        print("out")
-                        result_confirm = confirm_all(cla)
-                        if result_confirm == True:
-                            time.sleep(0.5)
-                        click_pos_2(915, 45, cla)
-                    else:
-                        clean_screen_start(cla)
+                    confirm_all(cla)
+                    clean_screen_start(cla)
+                    click_pos_2(915, 45, cla)
+                    # result_out = out_check(cla)
+                    # print("menu__open,, result_out", result_out)
+                    # if result_out == True:
+                    #     print("out")
+                    #     result_confirm = confirm_all(cla)
+                    #     if result_confirm == True:
+                    #         time.sleep(0.5)
+                    #     click_pos_2(915, 45, cla)
+                    # else:
+                    #     clean_screen_start(cla)
             QTest.qWait(1000)
 
 
