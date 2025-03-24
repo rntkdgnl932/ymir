@@ -67,6 +67,7 @@ def chaejib_start(cla):
                     if imgs_ is not None and imgs_ != False:
                         if chaejib_time > 3600:
                             chaejib = False
+                            myQuest_play_add(cla, "채집하기")
                         if chaejib_time % 60 == 0:
                             now_minute = chaejib_time // 60
                             print("채집시간 60분 중", str(now_minute), "분 지났다.")
