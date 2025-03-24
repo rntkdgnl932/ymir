@@ -24,7 +24,7 @@ def get_item_start(cla):
     try:
         chango_start(cla)
 
-        get_just_wonjung(cla)
+        # get_just_wonjung(cla)
 
         get_event(cla)
         get_pass(cla)
