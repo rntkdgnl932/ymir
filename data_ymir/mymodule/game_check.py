@@ -222,31 +222,30 @@ def error_check(cla):
     from action import macro_out
     from massenger import line_to_me
     try:
+        is_err = False
+        for i in range(5):
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\move_ticket_lack_notice.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(240, 30, 550, 80, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("move_ticket_lack_notice")
+                why = "이동서 부족하다는 에러"
+                line_to_me(cla, why)
+                macro_out(cla)
+                break
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chaejib\\not_complete_quest_notice.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(340, 380, 600, 470, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("not_complete_quest_notice", imgs_)
+                    is_err = True
+                    break
 
-        for i in range(5):
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\move_ticket_lack_notice.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(240, 30, 550, 80, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                print("move_ticket_lack_notice")
-                why = "이동서 부족하다는 에러"
-                line_to_me(cla, why)
-                macro_out(cla)
-                break
             time.sleep(0.2)
-        for i in range(5):
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\move_ticket_lack_notice.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(240, 30, 550, 80, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                print("move_ticket_lack_notice")
-                why = "이동서 부족하다는 에러"
-                line_to_me(cla, why)
-                macro_out(cla)
-                break
-            time.sleep(0.2)
+        return is_err
     except Exception as e:
         print(e)
         return 0

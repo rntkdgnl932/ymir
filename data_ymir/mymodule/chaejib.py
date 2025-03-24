@@ -17,6 +17,7 @@ def chaejib_start(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action import juljun_check, juljun_on, juljun_off, attack_check, attack_on, fix_bag, juljun_time_check, chaejib_check, chaejib_on
     from potion import potion_check
+    from schedule import myQuest_play_add
     # 사냥터
     dir_path = "C:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder)
     file_data = dir_path + "\\jadong\\asgard.txt"
@@ -134,6 +135,7 @@ def chaejib_spot_in(cla, data, data_x, data_y):
     from clean_screen import clean_screen_start
     from potion import potion_buy
     from game_check import check_start, error_check
+    from schedule import myQuest_play_add
 
     # 사냥터
     dir_path = "C:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder)
@@ -347,6 +349,7 @@ def chaejib_spot_in(cla, data, data_x, data_y):
                             else:
                                 # 마지막으로 추출한 값을 클릭
                                 print("3")
+                                result_err = False
                                 for i in range(5):
                                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\im_move_btn.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
@@ -355,7 +358,7 @@ def chaejib_spot_in(cla, data, data_x, data_y):
                                     if imgs_ is not None and imgs_ != False:
                                         confirm_all(cla)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        error_check(cla)
+                                        result_err = error_check(cla)
                                         time.sleep(1)
                                         break
                                     else:
@@ -367,26 +370,34 @@ def chaejib_spot_in(cla, data, data_x, data_y):
                                         click_pos_2(result_x_reg, result_y_reg, cla)
                                         time.sleep(0.2)
                                     QTest.qWait(500)
-
-                                for i in range(10):
-                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\im_move_btn.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(780, 980, 870, 1035, cla, img, 0.85)
-                                    if imgs_ is not None and imgs_ != False:
-                                        confirm_all(cla)
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        error_check(cla)
-                                        time.sleep(1)
-                                    else:
-                                        result_out = out_check(cla)
-                                        if result_out == True:
-                                            print("도착했으니...랜덤지침대로 옮겨서 채집쓰")
-                                            random_spot_in_chaejib(cla, data_x, data_y)
-                                            is_spot = True
-                                            break
-                                    QTest.qWait(1000)
-
+                                if result_err == False:
+                                    for i in range(10):
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\im_move_btn.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(780, 980, 870, 1035, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            confirm_all(cla)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            result_err = error_check(cla)
+                                            if result_err == True:
+                                                myQuest_play_add(cla, "채집하기")
+                                                is_spot = True
+                                                clean_screen_start(cla)
+                                                break
+                                            time.sleep(1)
+                                        else:
+                                            result_out = out_check(cla)
+                                            if result_out == True:
+                                                print("도착했으니...랜덤지침대로 옮겨서 채집쓰")
+                                                random_spot_in_chaejib(cla, data_x, data_y)
+                                                is_spot = True
+                                                break
+                                        QTest.qWait(1000)
+                                else:
+                                    myQuest_play_add(cla, "채집하기")
+                                    is_spot = True
+                                    clean_screen_start(cla)
 
                         else:
                             click_pos_2(70, 50, cla)
