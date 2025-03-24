@@ -317,7 +317,11 @@ def auction_fast_sell(cla):
 
                     if is_recall == False:
                         is_action = True
-                        # 팔아버리자
+                        # 장비만 팔아버리자
+                        click_pos_2(795, 125, cla)
+                        time.sleep(0.3)
+                        click_pos_2(795, 125, cla)
+                        time.sleep(0.3)
                         auction_fast_sell_item(cla)
 
 

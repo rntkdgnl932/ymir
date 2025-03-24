@@ -200,14 +200,22 @@ def collection_start(cla):
 
                 is_get = True
                 for i in range(5):
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\collection.PNG"
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\touch_me_close_notice.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                    imgs_ = imgs_set_(380, 980, 600, 1040, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
-                        click_pos_2(20, 50, cla)
+                        print("touch_me_close_notice", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
                     else:
-                        break
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\collection.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(20, 50, cla)
+                        else:
+                            break
                     time.sleep(1)
 
             else:
@@ -272,7 +280,7 @@ def collection_upgrade(cla, y_click):
         is_get_count = 0
         while is_get is False:
             is_get_count += 1
-            if is_get_count > 7:
+            if is_get_count > 20:
                 is_get = True
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\collection.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -300,7 +308,7 @@ def collection_upgrade(cla, y_click):
 
                     while upgrade is True:
                         upgrade_count += 1
-                        if upgrade_count > 15:
+                        if upgrade_count > 20:
                             upgrade = False
 
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\touch_me_close_notice.PNG"
@@ -390,6 +398,16 @@ def collection_upgrade(cla, y_click):
                         is_collec = False
 
                         for i in range(5):
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\boonhae_collection\\touch_me_close_notice.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(380, 980, 600, 1040, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("touch_me_close_notice", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(1)
+
+
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\collection.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

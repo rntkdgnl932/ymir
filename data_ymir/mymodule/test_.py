@@ -61,7 +61,9 @@ def go_test():
         #
         # dungeon_hondon_folk(cla, data)
 
-        get_just_wonjung(cla)
+        # get_just_wonjung(cla)
+
+        auction_fast_start(cla)
 
 
         # auction_fast_start(cla)
