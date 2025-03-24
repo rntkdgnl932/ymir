@@ -14,11 +14,8 @@ def chango_start(cla):
     import cv2
     import pyautogui
     import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import cancle_all, juljun_off, juljun_on, juljun_check
-    from game_check import move_check
-    from potion import potion_buy
-    from schedule import myQuest_play_check, myQuest_play_add
+    from function_game import imgs_set_
+    from action import cancle_all
 
     try:
 
@@ -163,12 +160,9 @@ def go_chango(cla):
 def chango_maul_spot(cla):
     import numpy as np
     import cv2
-    import pyautogui
-    import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from action import go_maul
-    from clean_screen import clean_screen_start
-    from get_item import get_item_start
+    from auction_game import auction_fast_start
 
     try:
         print("chango_maul_spot")
@@ -284,6 +278,7 @@ def chango_maul_spot(cla):
                             click_pos_2(190, 55, cla)
                     else:
                         go_maul(cla)
+                        auction_fast_start(cla)
 
             time.sleep(1)
         for i in range(5):
@@ -341,70 +336,114 @@ def chango_in(cla):
                 click_pos_2(735, 180, cla)
             time.sleep(0.5)
 
-
-        x_reg_1 = 0
-        y_reg_1 = 0
-
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\bag_time_item.PNG"
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\empty_bag.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_for = imgs_set_for(730, 110, 960, 1000, cla, img, 0.8)
-        if imgs_for is not None and imgs_for != False:
-            print("bag_time_item", imgs_for)
-
-            if len(imgs_for) > 0:
-                x_reg_1 = imgs_for[len(imgs_for) - 1][0]
-                y_reg_1 = imgs_for[len(imgs_for) - 1][1]
-                # for i in range(len(imgs_for)):
-                #     click_pos_reg(imgs_for[i][0] - 15, imgs_for[i][1] + 15, cla)
-                #     time.sleep(1)
-        if x_reg_1 != 0:
-            print("x_reg_1", x_reg_1)
-            print("y_reg_1", y_reg_1)
-            if x_reg_1 < 900 + plus:
-                x_reg_1 = x_reg_1 + 40
-            else:
-                x_reg_1 = 735 + plus
-                y_reg_1 = y_reg_1 + 70
-
-            for i in range(20):
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\chango_max_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(570, 520, 650, 590, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("chango_max_btn", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.5)
-                    click_pos_2(550, 610, cla)
-                else:
-                    click_pos_reg(x_reg_1, y_reg_1, cla)
-                time.sleep(0.5)
-        else:
-            print("clean")
-            x_reg_1 = 735
-            y_reg_1 = 175
-            for i in range(20):
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\chango_max_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(570, 520, 650, 590, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("chango_max_btn", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.5)
-                    click_pos_2(550, 610, cla)
-                else:
-                    click_pos_2(x_reg_1, y_reg_1, cla)
-                time.sleep(0.5)
-
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\bag_auction_item.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(730, 110, 960, 1000, cla, img, 0.8)
+        imgs_ = imgs_set_(700, 200, 940, 400, cla, img, 0.9)
         if imgs_ is not None and imgs_ != False:
-            print("bag_auction_item", imgs_)
-            y_reg_2 = imgs_.y
+            print("empty_bag", imgs_)
+        else:
+            x_reg_1 = 0
+            y_reg_1 = 0
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\bag_time_item.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_for = imgs_set_for(730, 110, 960, 1000, cla, img, 0.8)
+            if imgs_for is not None and imgs_for != False:
+                print("bag_time_item", imgs_for)
+
+                if len(imgs_for) > 0:
+                    x_reg_1 = imgs_for[len(imgs_for) - 1][0]
+                    y_reg_1 = imgs_for[len(imgs_for) - 1][1]
+                    # for i in range(len(imgs_for)):
+                    #     click_pos_reg(imgs_for[i][0] - 15, imgs_for[i][1] + 15, cla)
+                    #     time.sleep(1)
+            if x_reg_1 != 0:
+                print("x_reg_1", x_reg_1)
+                print("y_reg_1", y_reg_1)
+                if x_reg_1 < 900 + plus:
+                    x_reg_1 = x_reg_1 + 40
+                else:
+                    x_reg_1 = 735 + plus
+                    y_reg_1 = y_reg_1 + 70
+
+                for i in range(20):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\chango_max_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(570, 520, 650, 590, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("chango_max_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                        click_pos_2(550, 610, cla)
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\empty_bag.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(700, 200, 940, 400, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("empty_bag", imgs_)
+                            break
+                        else:
+                            click_pos_reg(x_reg_1, y_reg_1, cla)
+                    time.sleep(0.5)
+            else:
+                print("clean")
+                x_reg_1 = 735
+                y_reg_1 = 175
+                for i in range(20):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\chango_max_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(570, 520, 650, 590, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("chango_max_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                        click_pos_2(550, 610, cla)
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\empty_bag.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(700, 200, 940, 400, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("empty_bag", imgs_)
+                            break
+                        else:
+                            click_pos_2(x_reg_1, y_reg_1, cla)
+                    time.sleep(0.5)
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\bag_auction_item.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(730, 110, 960, 1000, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("bag_auction_item", imgs_)
+                y_reg_2 = imgs_.y
+
+        # 마지막으로 열쇠는 빼기
+        for i in range(10):
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\gold_key.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(15, 140, 255, 1010, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("gold_key", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\old_key.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(15, 140, 255, 1010, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("old_key", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+                    break
+            QTest.qWait(1000)
+
 
     except Exception as e:
         print(e)

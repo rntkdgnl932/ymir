@@ -9,18 +9,6 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 
 
 def migoong_start(cla, data):
-    import numpy as np
-    import cv2
-    import pyautogui
-    import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
-    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check
-    from game_check import move_check
-    from action import attack_check, chajib_check, attack_on, chajib_on
-    from potion import potion_check
-    from chango import go_chango, chango_start
-    from request import request_get, request_start
-    from clean_screen import clean_screen_go
 
     try:
         print("migoong_start", data)
@@ -33,7 +21,7 @@ def migoong_start(cla, data):
         # read_data[1] => 스비파, 카라
         # read_data[2] => 층수
 
-        if read_data[1] == "스비파":
+        if read_data[1] == "스비파" or read_data[1] == "카라":
             migoong_check(cla, data)
         elif read_data[1] == "카라":
             migoong_check(cla, data)
@@ -52,7 +40,7 @@ def migoong_check(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_
-    from action import out_check, juljun_on, juljun_check
+    from action import out_check, juljun_on, juljun_check, juljun_time_check
     from action import attack_check, fix_bag
     from potion import potion_check
     from clean_screen import clean_screen_start
@@ -89,6 +77,7 @@ def migoong_check(cla, data):
                 result_attack = attack_check(cla)
                 if result_attack == True:
                     potion_check(cla)
+                    juljun_time_check(cla)
                 else:
                     random_spot(cla, data)
             else:

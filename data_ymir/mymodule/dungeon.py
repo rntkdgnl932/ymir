@@ -9,18 +9,6 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 
 
 def dungeon_start(cla, data):
-    import numpy as np
-    import cv2
-    import pyautogui
-    import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
-    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check
-    from game_check import move_check
-    from action import attack_check, chajib_check, attack_on, chajib_on
-    from potion import potion_check
-    from chango import go_chango, chango_start
-    from request import request_get, request_start
-    from clean_screen import clean_screen_go
 
     juljun_ready = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\balkeyly\\juljun"
     juljun_ready_list = os.listdir(juljun_ready)
@@ -65,7 +53,7 @@ def dungeon_balkeyly(cla, data):
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
     from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check
     from game_check import move_check
-    from action import attack_check, chajib_check, attack_on, chajib_on, fix_bag
+    from action import attack_check, chaejib_check, attack_on, chaejib_on, fix_bag
     from potion import potion_check
     from chango import go_chango, chango_start
     from request import request_get, request_start
@@ -136,8 +124,8 @@ def dungeon_balkeyly(cla, data):
 
                         if str(des) == "amber_room" and v_.amber == True:
 
-                            result_chajib = chajib_check(cla)
-                            if result_chajib == False:
+                            result_chaejib = chaejib_check(cla)
+                            if result_chaejib == False:
                                 juljun_off(cla)
 
                                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\balkeyly\\juljun\\amber_room.PNG"
@@ -145,14 +133,14 @@ def dungeon_balkeyly(cla, data):
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(10, 40, 150, 90, cla, img, 0.85)
                                 if imgs_ is not None and imgs_ != False:
-                                    chajib_on(cla)
+                                    chaejib_on(cla)
                                 else:
                                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\balkeyly\\out\\amber_room.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                     imgs_ = imgs_set_(10, 40, 150, 90, cla, img, 0.85)
                                     if imgs_ is not None and imgs_ != False:
-                                        chajib_on(cla)
+                                        chaejib_on(cla)
                             else:
                                 juljun_off(cla)
 
@@ -220,21 +208,21 @@ def dungeon_balkeyly(cla, data):
 
                             if v_.amber == True:
                                 juljun_on(cla)
-                                result_chajib = chajib_check(cla)
-                                if result_chajib == False:
+                                result_chaejib = chaejib_check(cla)
+                                if result_chaejib == False:
                                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\balkeyly\\juljun\\amber_room.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                     imgs_ = imgs_set_(10, 40, 150, 90, cla, img, 0.85)
                                     if imgs_ is not None and imgs_ != False:
-                                        chajib_on(cla)
+                                        chaejib_on(cla)
                                     else:
                                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\balkeyly\\out\\amber_room.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                         imgs_ = imgs_set_(10, 40, 150, 90, cla, img, 0.85)
                                         if imgs_ is not None and imgs_ != False:
-                                            chajib_on(cla)
+                                            chaejib_on(cla)
                                 else:
                                     juljun_off(cla)
                                     for x in range(300):
@@ -349,7 +337,7 @@ def dungeon_hondon_folk(cla, data):
     import cv2
     from function_game import imgs_set_
     from action import out_check, juljun_check, juljun_on
-    from action import attack_check, chajib_check, attack_on, chajib_on, fix_bag
+    from action import attack_check, attack_on, fix_bag
     from clean_screen import clean_screen_go, clean_screen_start
     from potion import potion_check
 

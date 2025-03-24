@@ -15,18 +15,7 @@ def boss_check(cla):
     import pyautogui
     import random
     import pytesseract
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos, text_check_get, text_check_get_black_white
-    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, bag_open, fix_bag
-    from game_check import move_check, dun_check
-    from get_item import get_item_start, get_event, get_pass, get_sangjum_gyohwan
-    from potion import potion_buy
-    from chango import go_chango, chango_start, chango_maul_auction
-    from request import request_get, request_start
-    from clean_screen import clean_screen_go
-    from dungeon import dungeon_in, random_spot_dun, dungeon_hondon_folk
-    from boonhae_collection import collection_start, boonhae_start
-    from auction_game import auction_in, auction_low_num, auction_qun_num, auction_start
-    from migoong import migoong_start
+    from function_game import imgs_set_
 
     print("boss_check")
 

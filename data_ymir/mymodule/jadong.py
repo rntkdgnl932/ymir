@@ -14,7 +14,7 @@ def jadong_start(cla, data):
     import cv2
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action import juljun_check, juljun_on, juljun_off, attack_check, attack_on, fix_bag
+    from action import juljun_check, juljun_on, juljun_off, attack_check, attack_on, fix_bag, juljun_time_check
     from potion import potion_check
     # 사냥터
     dir_path = "C:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder)
@@ -94,6 +94,8 @@ def jadong_start(cla, data):
                             juljun_on(cla)
                         # 물약체크
                         potion_check(cla)
+                        # 절전모드 중 정리하기
+                        juljun_time_check(cla)
                     else:
                         print("여기 사냥터가 아니군")
                         jadong_spot_in(cla, data)
@@ -278,15 +280,59 @@ def jadong_spot_in(cla, data):
                             # 몬스터 클릭해주기
 
                             is_mon = False
-                            for i in range(4):
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\mon_btn_" + str(i) + ".PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(700, 180, 800, 900, cla, img, 0.85)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("is_mon", i, imgs_)
-                                    is_mon = True
-                                    break
+
+                            if spot[4] == "랜드마크":
+                                for i in range(4):
+                                    landmark = i
+                                    if landmark == 2:
+                                        landmark = 0
+                                    elif landmark == 3:
+                                        landmark = 1
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\landmark_btn_" + str(landmark) + ".PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(700, 180, 800, 900, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("is_mon", i, imgs_)
+                                        is_mon = True
+                                        break
+                                    else:
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\is_landmark_title.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(700, 180, 800, 900, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        QTest.qWait(1000)
+                            else:
+
+
+                                for i in range(4):
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\mon_btn_" + str(i) + ".PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(700, 180, 800, 900, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("is_mon", i, imgs_)
+                                        is_mon = True
+                                        break
+                                    else:
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\is_mon_title.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(700, 180, 800, 900, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        QTest.qWait(1000)
+                            print("1")
+                            if is_mon == False:
+                                if spot[4] == "랜드마크":
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\is_landmark_title.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(700, 180, 800, 900, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
                                 else:
                                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\is_mon_title.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
@@ -294,15 +340,6 @@ def jadong_spot_in(cla, data):
                                     imgs_ = imgs_set_(700, 180, 800, 900, cla, img, 0.85)
                                     if imgs_ is not None and imgs_ != False:
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    QTest.qWait(1000)
-                            print("1")
-                            if is_mon == False:
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\jadong\\is_mon_title.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(700, 180, 800, 900, cla, img, 0.85)
-                                if imgs_ is not None and imgs_ != False:
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
                                 print("2")
                             else:
                                 # 마지막으로 추출한 값을 클릭

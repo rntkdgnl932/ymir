@@ -3,3 +3,4 @@
 트롤의유적_troltemple
 트롤의무덤_troltomb
 아스가르드성_asgardcastle
+글라시르숲_glasirsoop

@@ -105,9 +105,9 @@ def clean_screen_go(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
+                imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
-                    print("clean_screen close_1 : ", imgs_, len(imgs_))
+                    print("clean_screen close_1 : ", imgs_)
                     if len(imgs_) > 0:
                         for i in range(len(imgs_)):
                             click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
@@ -116,7 +116,7 @@ def clean_screen_go(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_2.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
+                imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
                     print("clean_screen close_2 : ", imgs_)
                     if len(imgs_) > 0:
@@ -127,7 +127,7 @@ def clean_screen_go(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_3.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.7)
+                imgs_ = imgs_set_for(0, 0, 960, 1040, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
                     print("clean_screen close_3 : ", imgs_)
                     if len(imgs_) > 0:
@@ -138,7 +138,7 @@ def clean_screen_go(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_4.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_for(0, 0, 550, 1040, cla, img, 0.7)
+                imgs_ = imgs_set_for(0, 0, 550, 1040, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
                     print("clean_screen close_4 1 : ", imgs_)
                     if len(imgs_) > 0:
@@ -148,7 +148,7 @@ def clean_screen_go(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_4.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_for(610, 0, 960, 1040, cla, img, 0.7)
+                imgs_ = imgs_set_for(610, 0, 960, 1040, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
                     print("clean_screen close_4 2 : ", imgs_)
                     if len(imgs_) > 0:

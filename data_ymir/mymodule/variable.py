@@ -12,6 +12,7 @@ amber = True
 this_game = "y_game"
 game_folder = "ymir"
 data_folder = "data_ymir"
+notification_count = 0
 
 # 버젼
 

@@ -16,18 +16,20 @@ def go_test():
     import random
     import pytesseract
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos, text_check_get, text_check_get_black_white
-    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, bag_open, fix_bag, menu_open
+    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, bag_open, fix_bag, menu_open, juljun_time_check, dun_out
     from game_check import move_check, dun_check
-    from get_item import get_item_start, get_event, get_pass, get_sangjum_gyohwan
+    from get_item import get_item_start, get_event, get_pass, get_sangjum_gyohwan, get_just_wonjung
     from potion import potion_buy
-    from chango import go_chango, chango_start, chango_maul_auction
+    from chango import go_chango, chango_start, chango_maul_auction, chango_in
     from request import request_get, request_start
     from clean_screen import clean_screen_go
     from dungeon import dungeon_in, random_spot_dun, dungeon_hondon_folk
     from boonhae_collection import collection_start, boonhae_start, collection_upgrade
-    from auction_game import auction_in, auction_low_num, auction_qun_num, auction_start
+    from auction_game import auction_in, auction_low_num, auction_qun_num, auction_start, auction_fast_start
     from migoong import migoong_start
-    from jadong import random_spot_in
+    from jadong import random_spot_in, jadong_start
+    from upgrade import upgrade_start
+    from chaejib import chaejib_start
 
     print("test")
     cla = "one"
@@ -59,16 +61,11 @@ def go_test():
         #
         # dungeon_hondon_folk(cla, data)
 
-        random_spot_in(cla, 555, 590)
+        get_just_wonjung(cla)
 
 
+        # auction_fast_start(cla)
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\is_pic\\balkeyly.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(690, 310, 945, 655, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("balkeyly :", imgs_)
         # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\is_pic\\hondon.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
         # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

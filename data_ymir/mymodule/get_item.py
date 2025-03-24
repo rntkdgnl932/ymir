@@ -17,11 +17,14 @@ def get_item_start(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action import out_check, juljun_off, juljun_on, juljun_check
     from chango import chango_start
+    from upgrade import upgrade_start
 
     print("get_item_start")
 
     try:
         chango_start(cla)
+
+        get_just_wonjung(cla)
 
         get_event(cla)
         get_pass(cla)
@@ -31,10 +34,196 @@ def get_item_start(cla):
         get_daily_mission(cla)
         get_sangjum_gyohwan(cla)
 
+        upgrade_start(cla)
 
     except Exception as e:
         print(e)
         return 0
+
+
+
+def get_just_wonjung(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
+    from action import menu_open_pure
+    from boonhae_collection import boonhae_collection_start
+    try:
+        print("get_just_wonjung")
+
+        # 보스 원정
+        just_wonjung_in_out(cla, "boss")
+
+        # # 레이드 원정
+        just_wonjung_in_out(cla, "raid")
+
+    except Exception as e:
+        print(e)
+        return 0
+
+def just_wonjung_in_out(cla, data):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
+    from action import menu_open_pure, dun_out, out_check, macro_out, confirm_all
+    from game_check import loading_check, dun_check
+    from massenger import line_to_me
+
+    try:
+        print("just_wonjung_in_out", data)
+
+        is_get = False
+        is_get_count = 0
+        while is_get is False:
+            is_get_count += 1
+            if is_get_count > 20:
+                is_get = True
+                why = "원정에 문제 있다 1"
+                line_to_me(cla, why)
+                macro_out(cla)
+
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\wonjung\\wonjung_mission.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(775, 75, 875, 115, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("wonjung_mission", imgs_)
+
+                click_pos_2(195, 55, cla)
+                time.sleep(1)
+                confirm_all(cla)
+
+                is_dun = True
+                is_dun_count = 0
+                while is_dun is True:
+                    is_dun_count += 1
+                    if is_dun_count > 100:
+                        is_get = True
+                        is_dun = False
+                        why = "원정에 문제 있다 2"
+                        line_to_me(cla, why)
+                        macro_out(cla)
+                    if is_dun_count % 5 == 0:
+                        print("dun_out", str(is_dun_count), "초")
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\wonjung\\wonjung_mission.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(775, 75, 875, 115, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            result_confirm = confirm_all(cla)
+                            if result_confirm == False:
+                                click_pos_2(195, 55, cla)
+                                time.sleep(1)
+                                confirm_all(cla)
+
+                        else:
+                            is_dun = False
+                            is_get = True
+                    QTest.qWait(1000)
+
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\wonjung.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("title : wonjung")
+
+
+                    if data == "boss":
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\wonjung\\hogny.PNG"
+                    if data == "raid":
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\wonjung\\yarn_hamash.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(750, 240, 900, 310, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("hogny", imgs_)
+
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\wonjung\\wonjung_information_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(400, 300, 550, 400, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("wonjung_create_title", imgs_)
+                            click_pos_2(690, 700, cla)
+
+                            for i in range(15):
+                                result_out = out_check(cla)
+                                if result_out == True:
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\wonjung\\wonjung_information_title.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(400, 300, 550, 400, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("wonjung_create_title", imgs_)
+                                        click_pos_2(690, 700, cla)
+                                    else:
+                                        loading_check(cla)
+                                QTest.qWait(1000)
+
+                        else:
+
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\wonjung\\wonjung_create_title.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 300, 550, 400, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("wonjung_create_title", imgs_)
+                                click_pos_2(480, 730, cla)
+                            else:
+                                click_pos_2(880, 1020, cla)
+                    else:
+                        if data == "boss":
+                            click_pos_2(50, 85, cla)
+                        if data == "raid":
+                            click_pos_2(150, 85, cla)
+
+
+                else:
+
+                    is_in = False
+                    for i in range(5):
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\wonjung.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            is_in = True
+                            break
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_wonjung.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(350, 550, 430, 640, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("menu_wonjung", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                menu_open_pure(cla)
+                        time.sleep(1)
+                    if is_in == False:
+                        is_get = True
+            time.sleep(1)
+
+    except Exception as e:
+        print(e)
+        return 0
+
 
 def get_event(cla):
     import numpy as np

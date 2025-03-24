@@ -61,7 +61,9 @@ def game_start():
                 else:
                     print("버젼 같아서 대기...")
         else:
-            print("대기중...실행버튼을 눌러 실행해주세요.")
+            if v_.notification_count % 300 == 0:
+                print("대기중...실행버튼을 눌러 실행해주세요.")
+            v_.notification_count += 1
         return play_game
     except Exception as e:
         print(e)

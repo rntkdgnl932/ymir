@@ -11,21 +11,15 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 
 
 def boonhae_collection_start(cla):
-    import numpy as np
-    import cv2
-    import pyautogui
-    import random
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, juljun_off, juljun_on, juljun_check
-    from game_check import move_check
-    from get_item import get_item_start
 
 
     try:
-        print("boonhae_collection_start")
-        collection_start(cla)
-        boonhae_start(cla)
 
+        print("boonhae_collection_start")
+
+        collection_start(cla)
+
+        boonhae_start(cla)
 
     except Exception as e:
         print(e)
@@ -39,7 +33,7 @@ def collection_start(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action import out_check, juljun_off, juljun_on, menu_open_pure
-    from game_check import move_check
+    from auction_game import auction_fast_start
     from clean_screen import clean_screen_start
 
     try:
@@ -577,6 +571,7 @@ def boonhae_start(cla):
                     bag_open(cla)
 
             time.sleep(1)
+
         clean_screen_start(cla)
     except Exception as e:
         print(e)

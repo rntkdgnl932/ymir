@@ -6,7 +6,9 @@
 정예트롤의무덤1층_jungyetroltomb1
 정예트롤의무덤2층_jungyetroltomb2
 헤르모드의갈림길_helemode
-트롤의유적하층_
-트롤의유적상층_
-정예트롤의유적하층_
-정예트롤의유적상층_
+트롤의유적하층_troltempleunder
+트롤의유적상층_troltempletop
+정예트롤의유적하층_elitetroltempleunder
+정예트롤의유적상층_elitetroltempletop
+글라시르숲_glasirsoop
+에시르산_esirmountain
