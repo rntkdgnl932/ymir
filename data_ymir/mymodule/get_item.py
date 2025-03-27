@@ -249,20 +249,42 @@ def get_event(cla):
             if imgs_ is not None and imgs_ != False:
                 print("title : event")
 
+                is_title_point = False
+                this_point_name = "none"
+
+
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_title_point_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(275, 380, 300, 720, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("event_title_point_1", imgs_)
+
+                    is_title_point = True
+                    this_point_name = "event_title_point_1"
+
                     click_pos_reg(imgs_.x - 50, imgs_.y + 15, cla)
                     time.sleep(0.5)
+                else:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_title_point_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(275, 380, 300, 720, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("event_title_point_2", imgs_)
+                        is_title_point = True
+                        this_point_name = "event_title_point_2"
+                        click_pos_reg(imgs_.x - 50, imgs_.y + 15, cla)
+                        time.sleep(0.5)
+
+                if is_title_point == True:
                     for i in range(15):
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_title_point_1.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\" + str(this_point_name) + ".PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(275, 380, 300, 720, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
+
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_des_point_1.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -285,7 +307,30 @@ def get_event(cla):
                                     click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
                                     time.sleep(0.5)
                                 else:
-                                    break
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_des_point_3.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(340, 500, 810, 720, cla, img, 0.9)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("event_des_point_3", imgs_)
+                                        click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                                        time.sleep(0.5)
+                                        click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                                        time.sleep(0.5)
+                                    else:
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_des_point_4.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(340, 500, 810, 720, cla, img, 0.9)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("event_des_point_4", imgs_)
+                                            click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                                            time.sleep(0.5)
+                                            click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                                            time.sleep(0.5)
+                                        else:
+                                            break
+
                         else:
                             break
                         time.sleep(0.5)
@@ -301,7 +346,15 @@ def get_event(cla):
                             is_point = True
                             break
                         else:
-                            drag_pos(220, 680, 220, 420, cla)
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_title_point_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(275, 380, 300, 720, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                is_point = True
+                                break
+                            else:
+                                drag_pos(220, 680, 220, 420, cla)
                         QTest.qWait(1000)
                     if is_point == False:
                         is_get = True

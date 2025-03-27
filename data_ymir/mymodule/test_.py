@@ -63,7 +63,7 @@ def go_test():
 
         # get_just_wonjung(cla)
 
-        auction_fast_start(cla)
+        get_event(cla)
 
 
         # auction_fast_start(cla)
