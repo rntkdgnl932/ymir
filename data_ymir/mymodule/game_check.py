@@ -260,7 +260,6 @@ def error_check2(cla):
     from action import macro_out
     from massenger import line_to_me
     try:
-
         black_screen = False
 
         for i in range(5):

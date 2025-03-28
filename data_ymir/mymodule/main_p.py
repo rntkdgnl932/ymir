@@ -4211,6 +4211,14 @@ class game_Playing(QThread):
                                     myQuest_play_add(v_.now_cla, result_schedule_)
                                 elif result_schedule_ == "채집하기":
                                     chaejib_start(v_.now_cla)
+
+
+                                elif "임무" in result_schedule_:
+                                    mission_start(v_.now_cla, result_schedule_)
+                                elif "의뢰" in result_schedule_:
+                                    request_start(v_.now_cla, result_schedule_)
+
+
                                 elif "발키리" in result_schedule_ or "혼돈" in result_schedule_ or "폴크" in result_schedule_:
                                     dungeon_start(v_.now_cla, result_schedule_)
                                 elif "미궁" in result_schedule_:
@@ -4218,10 +4226,8 @@ class game_Playing(QThread):
                                 elif "자동" in result_schedule_:
                                     result_jadong = result_schedule_.split("_")
                                     jadong_start(v_.now_cla, result_jadong[1])
-                                elif "임무" in result_schedule_:
-                                    mission_start(v_.now_cla, result_schedule_)
-                                elif "의뢰" in result_schedule_:
-                                    request_start(v_.now_cla, result_schedule_)
+
+
 
 
 

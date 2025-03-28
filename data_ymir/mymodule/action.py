@@ -524,7 +524,6 @@ def juljun_check(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from game_check import error_check2
     try:
-
         error_check2(cla)
 
         is_juljun = False

@@ -16,11 +16,10 @@ def mission_start(cla, data):
     from action import juljun_on, juljun_check, fix_bag, attack_check
     from potion import potion_check
 
-    print("mission_start", data)
-    # 임무_필드_2
+
     try:
-
-
+        print("", data)
+        # 임무_필드_2
 
         result_juljun = juljun_check(cla)
         if result_juljun == True:
@@ -88,7 +87,7 @@ def mission_get(cla, data):
     from schedule import myQuest_play_add
     from clean_screen import clean_screen_start
 
-    print("mission_get")
+    print("mission_get", data)
 
     if cla == "one":
         plus = 0
