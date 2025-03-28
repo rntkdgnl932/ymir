@@ -1091,11 +1091,11 @@ class FirstTab(QWidget):
         self.dun_group_1 = QGroupBox('임무')
         dun_g1_name = QComboBox()
         # list4 = ['던전 선택', '일반_업보', '일반_지옥', '일반_죄악', '일반_저주', '특수_마족', '특수_아르카스', '파티_묘지']
-        dun_g1_list = ['임무선택', '필드', '정예']
+        dun_g1_list = ['임무선택', '필드', '정예', '미궁']
         dun_g1_name.addItems(dun_g1_list)
 
         dun_g1_stair = QComboBox()
-        dun_g1_stair_list = ['몇번째', '1', '2', '3', '4', '5', '6', '7']
+        dun_g1_stair_list = ['몇번째', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
         dun_g1_stair.addItems(dun_g1_stair_list)
 
         # dun_g1_step = QComboBox()

@@ -122,13 +122,18 @@ def mission_get(cla, data):
 
         # 세부클릭 미리 설정
         if result_data[1] == "필드":
-            if int(result_data[2]) > 4:
-                y_multiply = 5
+            if int(result_data[2]) > 10:
+                y_multiply = 1
             else:
                 y_multiply = int(result_data[2])
         elif result_data[1] == "정예":
-            if int(result_data[2]) > 2:
-                y_multiply = 3
+            if int(result_data[2]) > 7:
+                y_multiply = 8
+            else:
+                y_multiply = int(result_data[2])
+        elif result_data[1] == "미궁":
+            if int(result_data[2]) > 4:
+                y_multiply = 5
             else:
                 y_multiply = int(result_data[2])
 
@@ -188,6 +193,11 @@ def mission_get(cla, data):
                     click_pos_2(150, 85, cla)
                     time.sleep(0.2)
                     click_pos_2(150, 85, cla)
+                    time.sleep(0.2)
+                elif result_data[1] == "미궁":
+                    click_pos_2(250, 85, cla)
+                    time.sleep(0.2)
+                    click_pos_2(250, 85, cla)
                     time.sleep(0.2)
 
                 # 세부클릭하기
@@ -725,13 +735,18 @@ def mission_get_complete(cla, data):
 
         # 세부클릭 미리 설정
         if result_data[1] == "필드":
-            if int(result_data[2]) > 4:
-                y_multiply = 5
+            if int(result_data[2]) > 10:
+                y_multiply = 1
             else:
                 y_multiply = int(result_data[2])
         elif result_data[1] == "정예":
-            if int(result_data[2]) > 2:
-                y_multiply = 3
+            if int(result_data[2]) > 7:
+                y_multiply = 8
+            else:
+                y_multiply = int(result_data[2])
+        elif result_data[1] == "미궁":
+            if int(result_data[2]) > 4:
+                y_multiply = 5
             else:
                 y_multiply = int(result_data[2])
 
