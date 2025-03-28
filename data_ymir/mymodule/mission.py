@@ -630,6 +630,15 @@ def mission_get(cla, data):
                                 clean_screen_start(cla)
                                 myQuest_play_add(cla, data)
                                 break
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\have_not_mission_notice.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 500, 560, 600, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    clean_screen_start(cla)
+                                    myQuest_play_add(cla, data)
+                                    break
 
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\mission\\on.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
