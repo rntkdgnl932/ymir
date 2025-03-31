@@ -590,31 +590,33 @@ def tuto_story(cla):
                     imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
                     if imgs_ is not None and imgs_ != False:
 
-                        for i in range(10):
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\saga_story_ravenshall_btn.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(740, 330, 840, 380, cla, img, 0.9)
-                            if imgs_ is not None and imgs_ != False:
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                why = "수동해야 한다"
-                                line_to_me(cla, why)
-                                myQuest_play_add(cla, "튜토육성")
-                                break
-                            else:
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\saga.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
-                                if imgs_ is not None and imgs_ != False:
-                                    click_pos_2(145, 525, cla)
-                                else:
-                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\saga_story_ravenshall_btn.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(740, 330, 840, 380, cla, img, 0.9)
-                                    if imgs_ is not None and imgs_ != False:
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        why = "수동해야 한다"
+                        line_to_me(cla, why)
+                        myQuest_play_add(cla, "튜토육성")
+
+                        # for i in range(10):
+                        #     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\saga_story_ravenshall_btn.PNG"
+                        #     img_array = np.fromfile(full_path, np.uint8)
+                        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        #     imgs_ = imgs_set_(740, 330, 840, 380, cla, img, 0.9)
+                        #     if imgs_ is not None and imgs_ != False:
+                        #         click_pos_reg(imgs_.x, imgs_.y, cla)
+                        #
+                        #         break
+                        #     else:
+                        #         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\saga.PNG"
+                        #         img_array = np.fromfile(full_path, np.uint8)
+                        #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        #         imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                        #         if imgs_ is not None and imgs_ != False:
+                        #             click_pos_2(145, 525, cla)
+                        #         else:
+                        #             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\saga_story_ravenshall_btn.PNG"
+                        #             img_array = np.fromfile(full_path, np.uint8)
+                        #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        #             imgs_ = imgs_set_(740, 330, 840, 380, cla, img, 0.9)
+                        #             if imgs_ is not None and imgs_ != False:
+                        #                 click_pos_reg(imgs_.x, imgs_.y, cla)
 
                     else:
                         # 아티팩트
