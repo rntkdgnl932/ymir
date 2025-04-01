@@ -47,11 +47,13 @@ def go_chango(cla):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action import out_check, macro_out
+    from action import out_check, macro_out, dun_out
     from clean_screen import clean_screen_start
     from game_check import error_check
     try:
         print("go_chango")
+
+        dun_out(cla)
 
         is_spot = False
         is_spot_count = 0
