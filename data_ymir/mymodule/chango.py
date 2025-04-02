@@ -53,7 +53,7 @@ def go_chango(cla):
     try:
         print("go_chango")
 
-        dun_out(cla)
+
 
         is_spot = False
         is_spot_count = 0
@@ -62,6 +62,8 @@ def go_chango(cla):
             print("chango_count", is_spot_count)
             if is_spot_count > 15:
                 is_spot = True
+
+            dun_out(cla)
 
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\asgard_castle.PNG"
             img_array = np.fromfile(full_path, np.uint8)
