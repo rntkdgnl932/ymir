@@ -407,25 +407,28 @@ def get_pass(cla):
             if imgs_ is not None and imgs_ != False:
                 print("title : pass")
 
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_title_point_1.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(275, 380, 300, 720, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("event_title_point_1", imgs_)
-                    click_pos_reg(imgs_.x - 50, imgs_.y + 15, cla)
-                    time.sleep(0.5)
-                    click_pos_2(765, 695, cla)
-                    time.sleep(0.5)
-                    click_pos_2(765, 695, cla)
+                is_get = True
+
+                for i in range(5):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\event_title_point_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(275, 380, 300, 720, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("event_title_point_1", imgs_)
+                        click_pos_reg(imgs_.x - 50, imgs_.y + 15, cla)
+                        time.sleep(0.5)
+                        click_pos_2(765, 695, cla)
+                        time.sleep(0.5)
+                        click_pos_2(765, 695, cla)
+                        time.sleep(0.5)
+                    else:
+                        break
                     time.sleep(0.5)
 
-                else:
-                    result_out = out_check(cla)
-                    if result_out == True:
-                        is_get = True
-                    else:
-                        clean_screen_start(cla)
+                result_out = out_check(cla)
+                if result_out == False:
+                    clean_screen_start(cla)
 
             else:
                 result_out = out_check(cla)
