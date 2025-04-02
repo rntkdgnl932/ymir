@@ -474,30 +474,17 @@ def auction_sell_item_start(cla, click_x, click_y):
                         is_action = True
                         cancle_all(cla)
                     else:
-                        print("가격 읽어오고 팔자")
-                        result_low = auction_low_num(cla)
-                        print("==========================================================================")
-                        for i in range(10):
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\num_enroll_title.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(420, 320, 530, 380, cla, img, 0.9)
-                            if imgs_ is not None and imgs_ != False:
-                                print("num_enroll_title", imgs_)
-                                click_pos_2(560, 640, cla)
-                                time.sleep(0.5)
-                                click_pos_2(560, 640, cla)
-                                time.sleep(0.5)
-                                click_pos_2(560, 710, cla)
-                                time.sleep(0.5)
-                                break
-                            else:
-                                click_pos_2(544, 644, cla)
-                            QTest.qWait(1000)
-                        result_qun = auction_qun_num(cla, 630, 660)
-
-                        result_ = int(result_low * result_qun)
-                        if result_ > 10:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\no_information.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(590, 570, 655, 595, cla, img, 0.95)
+                        if imgs_ is not None and imgs_ != False:
+                            print("no_information", imgs_)
+                            is_action = True
+                            cancle_all(cla)
+                        else:
+                            print("가격 읽어오고 팔자")
+                            result_low = auction_low_num(cla)
                             print("==========================================================================")
                             for i in range(10):
                                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\num_enroll_title.PNG"
@@ -506,14 +493,36 @@ def auction_sell_item_start(cla, click_x, click_y):
                                 imgs_ = imgs_set_(420, 320, 530, 380, cla, img, 0.9)
                                 if imgs_ is not None and imgs_ != False:
                                     print("num_enroll_title", imgs_)
+                                    click_pos_2(560, 640, cla)
+                                    time.sleep(0.5)
+                                    click_pos_2(560, 640, cla)
+                                    time.sleep(0.5)
+                                    click_pos_2(560, 710, cla)
+                                    time.sleep(0.5)
                                     break
                                 else:
-                                    click_pos_2(544, 684, cla)
+                                    click_pos_2(544, 644, cla)
                                 QTest.qWait(1000)
-                            sell_click(cla, result_)
-                        else:
-                            cancle_all(cla)
-                        is_action = True
+                            result_qun = auction_qun_num(cla, 630, 660)
+
+                            result_ = int(result_low * result_qun)
+                            if result_ > 10:
+                                print("==========================================================================")
+                                for i in range(10):
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\num_enroll_title.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(420, 320, 530, 380, cla, img, 0.9)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("num_enroll_title", imgs_)
+                                        break
+                                    else:
+                                        click_pos_2(544, 684, cla)
+                                    QTest.qWait(1000)
+                                sell_click(cla, result_)
+                            else:
+                                cancle_all(cla)
+                            is_action = True
 
                 else:
                     click_pos_reg(click_x, click_y, cla)
