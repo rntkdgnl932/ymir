@@ -832,6 +832,29 @@ def get_sangjum_gyohwan(cla):
                                 imgs_ = imgs_set_(470, 680, 620, 750, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    sold_out = False
+                                    for s in range(10):
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\soldout_notice.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(400, 510, 600, 580, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("top soldout_notice", imgs_)
+                                            sold_out = True
+                                            break
+                                        time.sleep(0.1)
+                                    if sold_out == True:
+                                        for s in range(7):
+                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\product_buy_title.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(400, 300, 550, 390, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_2(730, 350, cla)
+                                            else:
+                                                break
+                                            time.sleep(0.5)
+
                             else:
                                 break
                         else:
@@ -870,6 +893,28 @@ def get_sangjum_gyohwan(cla):
                                 imgs_ = imgs_set_(470, 680, 620, 750, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    sold_out = False
+                                    for s in range(10):
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\soldout_notice.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(400, 510, 600, 580, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("top soldout_notice", imgs_)
+                                            sold_out = True
+                                            break
+                                        time.sleep(0.1)
+                                    if sold_out == True:
+                                        for s in range(7):
+                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\product_buy_title.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(400, 300, 550, 390, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_2(730, 350, cla)
+                                            else:
+                                                break
+                                            time.sleep(0.5)
                             else:
                                 break
                         else:
@@ -908,6 +953,28 @@ def get_sangjum_gyohwan(cla):
                                 imgs_ = imgs_set_(470, 680, 620, 750, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    sold_out = False
+                                    for s in range(10):
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\soldout_notice.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(400, 510, 600, 580, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("top soldout_notice", imgs_)
+                                            sold_out = True
+                                            break
+                                        time.sleep(0.1)
+                                    if sold_out == True:
+                                        for s in range(7):
+                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\product_buy_title.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(400, 300, 550, 390, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_2(730, 350, cla)
+                                            else:
+                                                break
+                                            time.sleep(0.5)
                             else:
                                 break
                         else:
@@ -946,6 +1013,28 @@ def get_sangjum_gyohwan(cla):
                                 imgs_ = imgs_set_(470, 680, 620, 750, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    sold_out = False
+                                    for s in range(10):
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\soldout_notice.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(400, 510, 600, 580, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("top soldout_notice", imgs_)
+                                            sold_out = True
+                                            break
+                                        time.sleep(0.1)
+                                    if sold_out == True:
+                                        for s in range(7):
+                                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\product_buy_title.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(400, 300, 550, 390, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_2(730, 350, cla)
+                                            else:
+                                                break
+                                            time.sleep(0.5)
                             else:
                                 break
                         else:
