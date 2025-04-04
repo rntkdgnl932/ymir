@@ -63,8 +63,16 @@ def go_test():
 
         # get_just_wonjung(cla)
 
-        get_daily_mission(cla)
-        get_sangjum_gyohwan(cla)
+        # \menu_
+        # this_point_x
+        # this_point_x_plus = 80
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(790, 550, 830, 590, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("menu_open : get_post", imgs_)
 
 
         # auction_fast_start(cla)

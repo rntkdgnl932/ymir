@@ -870,12 +870,12 @@ def dungeon_in(cla, data):
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+                        imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\menu_balhala.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(350, 490, 420, 580, cla, img, 0.85)
+                            imgs_ = imgs_set_(350, 490, 520, 580, cla, img, 0.85)
                             if imgs_ is not None and imgs_ != False:
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                         else:

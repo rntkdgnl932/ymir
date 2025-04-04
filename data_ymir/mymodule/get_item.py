@@ -7,7 +7,7 @@ import variable as v_
 from PyQt5.QtTest import *
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
-
+this_point_x_plus = 80
 
 def get_item_start(cla):
     import numpy as np
@@ -204,12 +204,12 @@ def just_wonjung_in_out(cla, data):
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+                            imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
                                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_wonjung.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(350, 550, 430, 640, cla, img, 0.7)
+                                imgs_ = imgs_set_(350, 550, 520, 640, cla, img, 0.7)
                                 if imgs_ is not None and imgs_ != False:
                                     print("menu_wonjung", imgs_)
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -463,7 +463,7 @@ def get_post(cla):
     try:
         print("get_post")
 
-        this_point_x = 720
+        this_point_x = 730 + this_point_x_plus
         this_point_y = 573
         plus_minus = 20
 
@@ -559,7 +559,7 @@ def get_post(cla):
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+                        imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
@@ -593,7 +593,7 @@ def get_main(cla):
     try:
         print("get_main")
 
-        this_point_x = 355
+        this_point_x = 365 + this_point_x_plus
         this_point_y = 450
         plus_minus = 20
 
@@ -646,7 +646,7 @@ def get_main(cla):
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+                        imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
 
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
@@ -679,7 +679,7 @@ def get_upjuk(cla):
     try:
         print("get_upjuk")
 
-        this_point_x = 540
+        this_point_x = 600 + this_point_x_plus
         this_point_y = 573
         plus_minus = 20
 
@@ -723,7 +723,7 @@ def get_upjuk(cla):
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+                        imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
@@ -756,10 +756,6 @@ def get_sangjum_gyohwan(cla):
     from clean_screen import clean_screen_start
     try:
         print("get_sangjum_gyohwan")
-
-        this_point_x = 350
-        this_point_y = 573
-        plus_minus = 20
 
         is_get = False
         is_get_count = 0
@@ -1233,7 +1229,7 @@ def get_daily_mission(cla):
     try:
         print("get_daily_mission")
 
-        this_point_x = 450
+        this_point_x = 460 + this_point_x_plus
         this_point_y = 448
         plus_minus = 20
 
@@ -1288,7 +1284,7 @@ def get_daily_mission(cla):
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+                        imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)

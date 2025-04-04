@@ -7,6 +7,8 @@ import variable as v_
 from PyQt5.QtTest import *
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
+this_point_x_plus = 80
+
 def macro_out(cla):
     import numpy as np
     import cv2
@@ -133,9 +135,9 @@ def close_check(cla):
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(650, 550, 750, 650, cla, img, 0.7)
+                            imgs_ = imgs_set_(650, 550, 850, 650, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                print("out_check : menu_post")
+                                print("out_check : menu_post", imgs_)
                                 is_out = False
                             else:
                                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\18\\event_1818.PNG"
@@ -242,10 +244,10 @@ def menu_open(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+                imgs_ = imgs_set_(650, 550, 850, 650, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("menu_post(menu_open)")
-                    this_point_x = 720
+                    this_point_x = 720 + this_point_x_plus
                     this_point_y = 510
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -259,7 +261,7 @@ def menu_open(cla):
 
 
                     else:
-                        this_point_x = 450
+                        this_point_x = 450 + this_point_x_plus
                         this_point_y = 448
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -271,7 +273,7 @@ def menu_open(cla):
                             get_daily_mission(cla)
                             is_menu_count = 0
                         else:
-                            this_point_x = 720
+                            this_point_x = 720 + this_point_x_plus
                             this_point_y = 573
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
@@ -342,7 +344,7 @@ def menu_open_pure(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+                imgs_ = imgs_set_(650, 550, 850, 650, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("menu_post")
                     is_menu = True
