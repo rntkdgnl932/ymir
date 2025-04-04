@@ -827,6 +827,9 @@ def out_click_check(cla, data):
         print("out_click_check")
 
         error = False
+
+        not_move = False
+
         for i in range(10):
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\scan_notice.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -835,6 +838,7 @@ def out_click_check(cla, data):
             if imgs_ is not None and imgs_ != False:
                 print("scan_notice", imgs_)
                 error = True
+                break
             else:
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\soojib_notice.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -843,6 +847,16 @@ def out_click_check(cla, data):
                 if imgs_ is not None and imgs_ != False:
                     print("scan_notice", imgs_)
                     error = True
+                    break
+                else:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\not_im_move_notice.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(300, 90, 640, 160, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("not_im_move_notice", imgs_)
+                        not_move = True
+                        break
             QTest.qWait(100)
 
         for x in range(10):
@@ -858,6 +872,9 @@ def out_click_check(cla, data):
                 time.sleep(100)
                 break
             time.sleep(0.1)
+
+        if not_move == True:
+            myQuest_play_add(cla, data)
 
 
         return error

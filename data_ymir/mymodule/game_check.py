@@ -87,6 +87,7 @@ def check_start(cla):
                 print("login_failed")
                 macro_out = True
                 why = "게임접속실패"
+            
 
         if macro_out == True:
             line_to_me(cla, why)
