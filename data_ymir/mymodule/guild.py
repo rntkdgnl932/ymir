@@ -101,34 +101,55 @@ def guild_check(cla):
                 #####################
                 # 기술
                 #####################
-                for i in range(35):
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\cancle.PNG"
+                for i in range(10):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\guild_money_title.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(340, 570, 480, 620, cla, img, 0.85)
+                    imgs_ = imgs_set_(420, 300, 540, 360, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
-                        print("cancle 1", imgs_)
+                        print("guild_money_title", imgs_)
+                        click_pos_2(540, 740, cla)
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\guild_money_title.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild_skill.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(420, 300, 540, 360, cla, img, 0.85)
+                        imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
-                            print("guild_money_title", imgs_)
-                            click_pos_2(540, 740, cla)
+                            print("title : guild_skill")
+                            click_pos_2(240, 540, cla)
                         else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild_skill.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.85)
-                            if imgs_ is not None and imgs_ != False:
-                                print("title : guild_skill")
-                                click_pos_2(240, 540, cla)
-                            else:
-                                click_pos_2(880, 380, cla)
-                                time.sleep(1)
-                    QTest.qWait(500)
+                            click_pos_2(880, 380, cla)
+                            time.sleep(1)
+                QTest.qWait(500)
+                # for i in range(35):
+                #     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\cancle.PNG"
+                #     img_array = np.fromfile(full_path, np.uint8)
+                #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #     imgs_ = imgs_set_(340, 570, 480, 620, cla, img, 0.85)
+                #     if imgs_ is not None and imgs_ != False:
+                #         print("cancle 1", imgs_)
+                #         break
+                #     else:
+                #         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\guild_money_title.PNG"
+                #         img_array = np.fromfile(full_path, np.uint8)
+                #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #         imgs_ = imgs_set_(420, 300, 540, 360, cla, img, 0.85)
+                #         if imgs_ is not None and imgs_ != False:
+                #             print("guild_money_title", imgs_)
+                #             click_pos_2(540, 740, cla)
+                #         else:
+                #             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild_skill.PNG"
+                #             img_array = np.fromfile(full_path, np.uint8)
+                #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #             imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.85)
+                #             if imgs_ is not None and imgs_ != False:
+                #                 print("title : guild_skill")
+                #                 click_pos_2(240, 540, cla)
+                #             else:
+                #                 click_pos_2(880, 380, cla)
+                #                 time.sleep(1)
+                #     QTest.qWait(500)
                 for i in range(10):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -154,13 +175,21 @@ def guild_check(cla):
                                 print("cancle 2", imgs_)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                             else:
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild_skill.PNG"
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\guild_money_title.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.85)
+                                imgs_ = imgs_set_(420, 300, 540, 360, cla, img, 0.85)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("title : guild_skill")
-                                    click_pos_2(30, 50, cla)
+                                    print("guild_money_title", imgs_)
+                                    click_pos_2(540, 740, cla)
+                                else:
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild_skill.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("title : guild_skill")
+                                        click_pos_2(30, 50, cla)
 
                     QTest.qWait(1000)
 
