@@ -195,7 +195,7 @@ def guild_check(cla):
 
 
                 #####################
-                # 창고
+                # 창고[기부]
                 #####################
                 for i in range(10):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\anymore_donation_notice.PNG"
@@ -238,16 +238,15 @@ def guild_check(cla):
                                 else:
                                     click_pos_2(310, 390, cla)
                             else:
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild_chango.PNG"
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.85)
+                                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("title : guild_chango")
-                                    click_pos_2(200, 1000, cla)
-                                else:
-                                    click_pos_2(720, 470, cla)
-                                    time.sleep(1)
+                                    print("title : guild")
+                                    click_pos_2(530, 275, cla)
+
+                                QTest.qWait(1000)
                     QTest.qWait(500)
                 for i in range(10):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild.PNG"
