@@ -214,6 +214,9 @@ def menu_open(cla):
     from massenger import line_to_me
     from guild import guild_check
 
+    from schedule import myQuest_play_check
+    from character_select_and_game_start import character_change
+
     try:
 
         is_post = False
@@ -288,9 +291,18 @@ def menu_open(cla):
 
                                 is_menu = True
                 else:
-                    confirm_all(cla)
-                    clean_screen_start(cla)
-                    click_pos_2(915, 45, cla)
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\character__select__btn2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, 950, 960, 1040, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        result_schedule = myQuest_play_check(v_.now_cla, "check")
+                        character_id = result_schedule[0][1]
+                        character_change(cla, character_id)
+                    else:
+                        confirm_all(cla)
+                        clean_screen_start(cla)
+                        click_pos_2(915, 45, cla)
                     # result_out = out_check(cla)
                     # print("menu__open,, result_out", result_out)
                     # if result_out == True:
@@ -317,9 +329,9 @@ def menu_open_pure(cla):
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen import clean_screen_start
-    from get_item import get_post
     from massenger import line_to_me
-    from dead_die import dead_check
+    from schedule import myQuest_play_check
+    from character_select_and_game_start import character_change
 
     try:
 
@@ -350,6 +362,7 @@ def menu_open_pure(cla):
                     is_menu = True
                 else:
 
+
                     result_out = out_check(cla)
                     if result_out == True:
                         print("out")
@@ -358,7 +371,16 @@ def menu_open_pure(cla):
                             time.sleep(0.5)
                         click_pos_2(915, 45, cla)
                     else:
-                        clean_screen_start(cla)
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\character__select__btn2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 950, 960, 1040, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            result_schedule = myQuest_play_check(v_.now_cla, "check")
+                            character_id = result_schedule[0][1]
+                            character_change(cla, character_id)
+                        else:
+                            clean_screen_start(cla)
             QTest.qWait(1000)
 
 
