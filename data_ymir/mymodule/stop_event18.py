@@ -20,6 +20,9 @@ def _stop_please(cla):
         is_18 = False
         while is_18 is False:
             is_18 = True
+
+            check_start(cla)
+
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\18\\18_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -72,7 +75,7 @@ def _stop_please(cla):
             time.sleep(1)
 
         print("stop plz, check_start")
-        check_start(cla)
+
 
 
 

@@ -30,7 +30,8 @@ def check_start(cla):
             why = "장시간 1????"
             line_to_me(cla, why)
             # 다시 시작
-            macro_out(cla)
+            confirm_all(cla)
+            # macro_out(cla)
             time.sleep(1)
         else:
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\jangsigan_2.PNG"
@@ -40,7 +41,8 @@ def check_start(cla):
             if imgs_ is not None and imgs_ != False:
                 why = "장시간 2????"
                 line_to_me(cla, why)
-                macro_out(cla)
+                # macro_out(cla)
+                confirm_all(cla)
         # 캐릭터 선택
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\login_character_title.PNG"
         img_array = np.fromfile(full_path, np.uint8)
