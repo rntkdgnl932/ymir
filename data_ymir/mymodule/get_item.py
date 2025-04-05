@@ -76,6 +76,20 @@ def just_wonjung_in_out(cla, data):
     try:
         print("just_wonjung_in_out", data)
 
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\wonjung\\complete_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(280, 710, 480, 800, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("complete_btn", imgs_)
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\wonjung\\complete_confirm_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(480, 710, 670, 800, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("complete_confirm_btn", imgs_)
+
         is_get = False
         is_get_count = 0
         while is_get is False:

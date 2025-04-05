@@ -27,8 +27,8 @@ def check_start(cla):
         imgs_ = imgs_set_(0, 60, 880, 930, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
             print("long_time")
-            why = "장시간 1????"
-            line_to_me(cla, why)
+            # why = "장시간 1????"
+            # line_to_me(cla, why)
             # 다시 시작
             confirm_all(cla)
             # macro_out(cla)
