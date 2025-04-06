@@ -250,46 +250,46 @@ def menu_open(cla):
                 imgs_ = imgs_set_(650, 550, 850, 650, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("menu_post(menu_open)")
-                    this_point_x = 720 + this_point_x_plus
-                    this_point_y = 510
+                    # # this_point_x = 720 + this_point_x_plus
+                    # # this_point_y = 510
+                    # # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
+                    # # img_array = np.fromfile(full_path, np.uint8)
+                    # # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    # # imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
+                    # #                   this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
+                    # # if imgs_ is not None and imgs_ != False:
+                    # #     print("menu_open : guild_check")
+                    # #     guild_check(cla)
+                    # #     is_menu_count = 0
+                    #
+                    #
+                    # else:
+                    this_point_x = 450 + this_point_x_plus
+                    this_point_y = 448
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
                                       this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("menu_open : guild_check")
-                        guild_check(cla)
+                        print("menu_open : get_daily_mission")
+                        get_daily_mission(cla)
                         is_menu_count = 0
-
-
                     else:
-                        this_point_x = 450 + this_point_x_plus
-                        this_point_y = 448
+                        this_point_x = 720 + this_point_x_plus
+                        this_point_y = 573
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
                                           this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("menu_open : get_daily_mission")
-                            get_daily_mission(cla)
+                            print("menu_open : get_post")
+                            get_post(cla)
                             is_menu_count = 0
                         else:
-                            this_point_x = 720 + this_point_x_plus
-                            this_point_y = 573
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(this_point_x - plus_minus, this_point_y - plus_minus,
-                                              this_point_x + plus_minus, this_point_y + plus_minus, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("menu_open : get_post")
-                                get_post(cla)
-                                is_menu_count = 0
-                            else:
 
-                                is_menu = True
+                            is_menu = True
                 else:
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\character__select__btn2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
