@@ -67,12 +67,57 @@ def go_test():
         # this_point_x
         # this_point_x_plus = 80
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(790, 550, 830, 590, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("menu_open : get_post", imgs_)
+        for i in range(10):
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\anymore_donation_notice.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(350, 500, 500, 580, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("anymore_donation_notice", imgs_)
+                is_get = True
+                break
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\donation_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(480, 570, 630, 630, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("donation_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\guild_donation_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(420, 300, 540, 390, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("guild_donation_title", imgs_)
+
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\donation_money.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(420, 420, 500, 500, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("donation_money", imgs_)
+
+                            click_pos_reg(695, 655, cla)
+
+                            time.sleep(0.5)
+
+                            click_pos_2(610, 710, cla)
+                        else:
+                            click_pos_2(310, 390, cla)
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("title : guild")
+                            click_pos_2(530, 275, cla)
+
+                        QTest.qWait(1000)
+            QTest.qWait(500)
 
 
         # auction_fast_start(cla)

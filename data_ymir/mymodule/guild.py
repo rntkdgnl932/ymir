@@ -68,16 +68,63 @@ def guild_check(cla):
                         print("anymore_aim_notice", imgs_)
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild_hwaldong.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\anymore_get_notice.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.85)
+                        imgs_ = imgs_set_(380, 500, 600, 600, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
-                            print("title : guild_hwaldong")
-                            click_pos_2(870, 1010, cla)
+                            print("anymore_get_notice", imgs_)
+                            break
                         else:
-                            click_pos_2(800, 380, cla)
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild_hwaldong.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("title : guild_hwaldong")
+                                click_pos_2(870, 1010, cla)
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_2(800, 380, cla)
                     QTest.qWait(500)
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\anymore_aim_notice.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(380, 500, 600, 600, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("anymore_aim_notice", imgs_)
+                        break
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\anymore_get_notice.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(380, 500, 600, 600, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("anymore_get_notice", imgs_)
+                            break
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild_hwaldong.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("title : guild_hwaldong")
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\all_get_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(720, 970, 860, 1030, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    click_pos_2(55, 145, cla)
+                    QTest.qWait(500)
+
                 for i in range(10):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -119,8 +166,13 @@ def guild_check(cla):
                             print("title : guild_skill")
                             click_pos_2(240, 540, cla)
                         else:
-                            click_pos_2(880, 380, cla)
-                            time.sleep(1)
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_2(880, 380, cla)
+                                time.sleep(1)
                 QTest.qWait(500)
                 # for i in range(35):
                 #     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\cancle.PNG"
@@ -249,14 +301,12 @@ def guild_check(cla):
                                 QTest.qWait(1000)
                     QTest.qWait(500)
                 for i in range(10):
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild.PNG"
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\guild_donation_title.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.9)
+                    imgs_ = imgs_set_(420, 300, 540, 390, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
-                        print("title : guild")
-                        break
-                    else:
+
                         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\cancle.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -272,14 +322,8 @@ def guild_check(cla):
                             if imgs_ is not None and imgs_ != False:
                                 print("cancle 2", imgs_)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
-                            else:
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\guild_chango.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(30, 30, 160, 80, cla, img, 0.85)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("title : guild_chango")
-                                    click_pos_2(30, 50, cla)
+                    else:
+                        break
                     QTest.qWait(1000)
 
                 if is_get == True:
