@@ -46,11 +46,10 @@ def check_start(cla):
             imgs_ = imgs_set_(460, 350, 600, 500, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("ymir_logo", imgs_)
+                why = "접속 실패...."
+                line_to_me(cla, why)
+                # 다시 시작
                 macro_out(cla)
-                # why = "접속 실패...."
-                # line_to_me(cla, why)
-                # # 다시 시작
-                # macro_out(cla)
 
 
         # 장시간
