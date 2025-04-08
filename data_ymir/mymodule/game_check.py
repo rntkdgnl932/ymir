@@ -18,7 +18,40 @@ def check_start(cla):
     from action import confirm_all, macro_out
     from massenger import line_to_me
     try:
-        print("game_check")
+        print("game_check : check_start")
+
+        # logo
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ymir_logo.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(460, 350, 600, 500, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("ymir_logo...")
+
+            for i in range(20):
+                result_confirm = confirm_all(cla)
+                if result_confirm == False:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ymir_logo.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(460, 350, 600, 500, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("ymir_logo", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(1)
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\ymir_logo.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(460, 350, 600, 500, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("ymir_logo", imgs_)
+                macro_out(cla)
+                # why = "접속 실패...."
+                # line_to_me(cla, why)
+                # # 다시 시작
+                # macro_out(cla)
+
 
         # 장시간
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\long_time.PNG"
