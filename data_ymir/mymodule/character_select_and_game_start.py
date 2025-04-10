@@ -536,7 +536,7 @@ def download_game(cla):
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\logout2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.8)
+            imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.9)
             if imgs_ is not None and imgs_ != False:
                 game_ready = False
                 print("downloading 2", game_ready_count, "초")
@@ -546,7 +546,7 @@ def download_game(cla):
                 full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\downloading.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(370, 960, 500, 1040, cla, img, 0.8)
+                imgs_ = imgs_set_(370, 960, 500, 1040, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
                     print("downloading 3", game_ready_count, "초")
                     if game_ready_count % 600:
