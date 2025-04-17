@@ -68,6 +68,7 @@ from dungeon import dungeon_start
 from migoong import migoong_start
 from auction_game import auction_start
 from chaejib import chaejib_start
+from season import season_start
 
 sys.setrecursionlimit(10 ** 7)
 # pyqt5 관련###################################################
@@ -1076,7 +1077,7 @@ class FirstTab(QWidget):
         # 마을 의뢰
         self.com_group6 = QGroupBox('육성, 각종템받기, 거래소등록하기, 의뢰')
         cb6 = QComboBox()
-        list6 = ['스케쥴 선택', '각종템받기', '튜토육성', '채집하기', '거래소등록']
+        list6 = ['스케쥴 선택', '각종템받기', '튜토육성', '채집하기', '거래소등록', '시즌_1', '시즌_2']
         cb6.addItems(list6)
         vbox6 = QHBoxLayout()
         vbox6.addWidget(cb6)
@@ -4217,6 +4218,9 @@ class game_Playing(QThread):
                                     mission_start(v_.now_cla, result_schedule_)
                                 elif "의뢰" in result_schedule_:
                                     request_start(v_.now_cla, result_schedule_)
+
+                                elif "시즌" in result_schedule_:
+                                    season_start(v_.now_cla, result_schedule_)
 
 
                                 elif "발키리" in result_schedule_ or "혼돈" in result_schedule_ or "폴크" in result_schedule_:
