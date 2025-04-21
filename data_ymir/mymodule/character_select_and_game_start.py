@@ -543,22 +543,35 @@ def download_game(cla):
                 _stop_please(cla)
                 click_pos_2(500, 400, cla)
             else:
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\downloading.PNG"
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\character__select__btn2.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(370, 960, 500, 1040, cla, img, 0.9)
+                imgs_ = imgs_set_(800, 950, 960, 1040, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("downloading 3", game_ready_count, "초")
-                    if game_ready_count % 600:
-                        result_minute = game_ready_count // 600
-                        if result_minute > 0 and int(result_minute) == result_minute:
-                            result_ = 10 * result_minute
-
-                            why = "다운로드 시간이 길다" + str(result_) + "분 걸렸다."
-                            line_to_me(cla, why)
-                else:
-                    print("downloading 4", game_ready_count, "초")
+                    game_ready = False
+                    print("character__select__btn2...downloading 2", game_ready_count, "초")
                     _stop_please(cla)
+
+                else:
+
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\character_start\\downloading.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(370, 960, 500, 1040, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        print("downloading 3", game_ready_count, "초")
+                        if game_ready_count % 600:
+                            result_minute = game_ready_count // 600
+                            if result_minute > 0 and int(result_minute) == result_minute:
+                                result_ = 10 * result_minute
+
+                                why = "다운로드 시간이 길다" + str(result_) + "분 걸렸다."
+                                line_to_me(cla, why)
+                    else:
+                        print("downloading 4", game_ready_count, "초")
+                        _stop_please(cla)
             time.sleep(1)
     except Exception as e:
         print(e)
