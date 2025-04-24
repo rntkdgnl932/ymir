@@ -16,7 +16,7 @@ def go_test():
     import random
     import pytesseract
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos, text_check_get, text_check_get_black_white
-    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, bag_open, fix_bag, menu_open, juljun_time_check, dun_out
+    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, bag_open, fix_bag, menu_open, juljun_time_check, dun_out, jilyung_get
     from game_check import move_check, dun_check, check_start
     from get_item import get_item_start, get_event, get_pass, get_sangjum_gyohwan, get_just_wonjung, get_daily_mission
     from potion import potion_buy
@@ -32,7 +32,7 @@ def go_test():
     from chaejib import chaejib_start
 
     print("test")
-    cla = "one"
+    cla = "two"
 
     plus = 0
 
@@ -67,7 +67,7 @@ def go_test():
         # this_point_x
         # this_point_x_plus = 80
 
-        check_start(cla)
+        jilyung_get(cla)
 
 
         # auction_fast_start(cla)

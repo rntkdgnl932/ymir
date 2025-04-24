@@ -44,7 +44,7 @@ def dungeon_season(cla, data):
     import pyautogui
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
-    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check
+    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, jilyung_get
     from game_check import move_check
     from action import attack_check, chaejib_check, attack_on, chaejib_on, fix_bag
     from potion import potion_check
@@ -60,6 +60,7 @@ def dungeon_season(cla, data):
     try:
         print("dungeon_season", data)
 
+        # v_.jilyung
 
         # 시즌_4
 
@@ -97,7 +98,33 @@ def dungeon_season(cla, data):
                         print("grow_room", imgs_)
 
 
+                        if v_.jilyung == True:
 
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\jilyung.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(700, 70, 880, 240, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("jilyung", imgs_)
+
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\complete.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(850, 130, 920, 240, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("complete", imgs_)
+                                    juljun_off(cla)
+
+                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\jilyung.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(700, 70, 880, 240, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("jilyung", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                jilyung_get(cla)
+                                juljun_on(cla)
 
 
                         result_attack = attack_check(cla)

@@ -390,6 +390,127 @@ def menu_open_pure(cla):
         return 0
 
 
+
+def jilyung_get(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_reg
+    from clean_screen import clean_screen_start
+    from massenger import line_to_me
+    from schedule import myQuest_play_check
+    from character_select_and_game_start import character_change
+
+    try:
+        print("jilyung_get")
+
+        is_menu = False
+        is_menu_count = 0
+
+        while is_menu is False:
+            is_menu_count += 1
+            if is_menu_count > 11:
+                is_menu = True
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\season_jilyung.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\give_up.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(110, 650, 850, 730, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\grow.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(150, 370, 800, 420, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        x_reg_1 = imgs_.x - 50
+                        x_reg_2 = imgs_.x + 50
+
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\give_up.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_reg(x_reg_1, 650, x_reg_2, 730, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            is_menu = True
+                        else:
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\give_up.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(110, 650, 850, 730, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.5)
+                                confirm_all(cla)
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\give_up.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(110, 650, 850, 730, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+                            confirm_all(cla)
+
+                else:
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\grow.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(150, 370, 800, 420, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, 685, cla)
+                    else:
+                        click_pos_2(870, 1010, cla)
+                        time.sleep(0.5)
+                        confirm_all(cla)
+
+
+
+            else:
+                menu_open_pure(cla)
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\season_jilyung.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(650, 550, 850, 650, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(115, 465, cla)
+                    QTest.qWait(1000)
+
+            QTest.qWait(1000)
+
+        if is_menu == True:
+            for i in range(5):
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\title\\season_jilyung.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_2(920, 50, cla)
+                else:
+                    break
+                QTest.qWait(1000)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
 def confirm_all(cla):
     import numpy as np
     import cv2
