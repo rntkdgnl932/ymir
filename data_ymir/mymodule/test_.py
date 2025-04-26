@@ -32,7 +32,7 @@ def go_test():
     from chaejib import chaejib_start
 
     print("test")
-    cla = "two"
+    cla = "one"
 
     plus = 0
 
@@ -67,8 +67,28 @@ def go_test():
         # this_point_x
         # this_point_x_plus = 80
 
-        jilyung_get(cla)
+        # jilyung_get(cla)
 
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\grow.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(150, 370, 800, 420, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("grow", imgs_)
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\click_request_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(835, 135, 920, 190, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("click_request_btn", imgs_)
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\season_jilyung_ready.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(700, 130, 920, 190, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("season_jilyung_ready", imgs_)
 
         # auction_fast_start(cla)
 
