@@ -16,11 +16,11 @@ def go_test():
     import random
     import pytesseract
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos, text_check_get, text_check_get_black_white
-    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, attack_check, bag_open, fix_bag, menu_open, juljun_time_check, dun_out, jilyung_get
+    from action import out_check, juljun_off, juljun_on, juljun_check, confirm_all, fix_bag_item
     from game_check import move_check, dun_check, check_start
     from get_item import get_item_start, get_event, get_pass, get_sangjum_gyohwan, get_just_wonjung, get_daily_mission
     from potion import potion_buy
-    from chango import go_chango, chango_start, chango_maul_auction, chango_in
+    from chango import go_chango, chango_start, chango_maul_auction, chango_in, chango_maul_spot
     from request import request_get, request_start
     from clean_screen import clean_screen_go
     from dungeon import dungeon_in, random_spot_dun, dungeon_hondon_folk
@@ -69,12 +69,10 @@ def go_test():
 
         # jilyung_get(cla)
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\grow.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(150, 370, 800, 420, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("grow", imgs_)
+        # fix_bag(cla)
+
+        fix_bag_item(cla)
+
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\click_request_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)

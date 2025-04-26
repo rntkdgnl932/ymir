@@ -167,6 +167,7 @@ def chango_maul_spot(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from action import go_maul
     from auction_game import auction_fast_start
+    from action import fix_bag_item
 
     try:
         print("chango_maul_spot")
@@ -283,6 +284,7 @@ def chango_maul_spot(cla):
                     else:
                         go_maul(cla)
                         auction_fast_start(cla)
+                        fix_bag_item(cla)
 
             time.sleep(1)
         for i in range(5):

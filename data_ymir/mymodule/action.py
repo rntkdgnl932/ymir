@@ -66,14 +66,7 @@ def out_check(cla):
         if is_out == True:
             is_out = close_check(cla)
 
-        # if is_out == True:
-        #     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dead_die\\out_dead_point.PNG"
-        #     img_array = np.fromfile(full_path, np.uint8)
-        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        #     imgs_ = imgs_set_(400, 850, 560, 900, cla, img, 0.8)
-        #     if imgs_ is not None and imgs_ != False:
-        #         print("out_dead_point", imgs_)
-        #         dead_recovery(cla)
+
 
 
         return is_out
@@ -737,17 +730,191 @@ def fix_bag(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from boonhae_collection import boonhae_collection_start
     try:
-        for i in range(10):
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\juljun\\lack_of_space.PNG"
+
+        is_data = False
+        is_juljun = False
+
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\juljun\\lack_of_space.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(10, 160, 100, 200, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("lack_of_space")
+            is_data = True
+            is_juljun = True
+        else:
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\game_check\\bag_full_check.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(10, 160, 100, 200, cla, img, 0.8)
+            imgs_ = imgs_set_(370, 840, 600, 910, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("lack_of_space")
-                boonhae_collection_start(cla)
+                is_data = True
+
+        if is_data == True:
+            boonhae_collection_start(cla)
+            if is_juljun == True:
                 juljun_on(cla)
-                break
-            time.sleep(0.1)
+
+
+
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def fix_bag_item(cla):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen import clean_screen_start
+
+    my_item = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\fix_bag_item\\list"
+    file_list = os.listdir(my_item)
+
+    try:
+
+        is_data = False
+        is_data_count = 0
+
+        while is_data is False:
+            is_data_count += 1
+            if is_data_count > 7:
+                is_data = True
+
+
+
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\tuto\\story\\bag_refresh_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(770, 980, 870, 1040, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("bag_refresh_btn")
+
+                click_pos_2(930, 100, cla)
+
+                for i in range(len(file_list)):
+                    result_file_list = file_list[i].split(".")
+                    read_data = result_file_list[0]
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\fix_bag_item\\list\\" + str(read_data) + ".PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(700, 110, 960, 1000, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_x = imgs_.x
+                        click_y = imgs_.y
+
+                        result_full = fix_bag_item_click(cla, click_x, click_y)
+                        if result_full == True:
+                            break
+                        QTest.qWait(1000)
+
+
+            else:
+                bag_open(cla)
+            QTest.qWait(1000)
+
+        if is_data == True:
+            clean_screen_start(cla)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+
+def fix_bag_item_click(cla, click_x, click_y):
+    import numpy as np
+    import cv2
+    import pyautogui
+    import random
+    from function_game import imgs_set_, click_pos_reg
+
+
+    try:
+
+        is_data = False
+        is_data_count = 0
+
+        while is_data is False:
+            is_data_count += 1
+            if is_data_count > 7:
+                is_data = True
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\fix_bag_item\\all_look_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 950, 550, 1000, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("all_look_btn", imgs_)
+                for i in range(6):
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\fix_bag_item\\all_look_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(400, 950, 640, 1000, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\fix_bag_item\\close_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(400, 950, 550, 1000, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("close_btn", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            is_data = True
+                            break
+                    QTest.qWait(500)
+
+
+            else:
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\fix_bag_item\\max_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(480, 530, 650, 650, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("max_1", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.5)
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\fix_bag_item\\sayong_1_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(480, 530, 650, 650, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("sayong_1_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+
+
+                else:
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\fix_bag_item\\close_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(400, 950, 550, 1000, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("close_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        is_data = True
+                    else:
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\fix_bag_item\\get_item_notice.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(460, 460, 600, 530, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("get_item_notice", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            is_data = True
+
+
+                    click_pos_reg(click_x, click_y, cla)
+            QTest.qWait(500)
+
+
 
 
     except Exception as e:
