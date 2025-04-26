@@ -18,7 +18,7 @@ def request_start(cla, data):
     from game_check import move_check
     from dead_die import dead_check
     from massenger import line_to_me
-    from schedule import myQuest_play_add
+    from season import season_check
     try:
         print("request_start", data)
 
@@ -442,7 +442,7 @@ def request_get(cla, data):
     from game_check import move_check
     from schedule import myQuest_play_add
     from action import confirm_all, juljun_on, attack_check, out_check, juljun_off, attack_check_mission
-    from massenger import line_to_me
+    from season import season_check
 
     prohibition = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\prohibition"
     prohibition_list = os.listdir(prohibition)
@@ -903,34 +903,77 @@ def out_click_check(cla, data):
         print(e)
         return 0
 
-def season_check(cla):
+
+
+def request_giveup(cla):
     import numpy as np
     import cv2
     import os
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from action import juljun_check, juljun_off, juljun_on, attack_check, out_check, confirm_all, fix_bag
-    from potion import potion_check
-    from game_check import move_check
-    from dead_die import dead_check
-    from massenger import line_to_me
-    from schedule import myQuest_play_add
+    from clean_screen import clean_screen_start
 
     type = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung"
     type_list = os.listdir(type)
 
     try:
+
+        print("request_giveup")
+
         is_data = False
 
-        for i in range(len(type_list)):
-            result_file_list = type_list[i].split(".")
-            read_data = result_file_list[0]
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\list\\" + str(read_data) + ".PNG"
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_complete_btn_2.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(835, 135, 920, 190, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("request_complete_btn_2", imgs_)
+            juljun_off(cla)
+            time.sleep(2)
+            click_pos_reg(imgs_.x - 70, imgs_.y, cla)
+            time.sleep(2)
+        else:
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\request_click_btn.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(700, 130, 920, 190, cla, img, 0.85)
+            imgs_ = imgs_set_(835, 135, 900, 190, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
-                print("this type", str(read_data), imgs_)
+                print("request_click_btn", imgs_)
                 is_data = True
+            else:
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\click_request_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(835, 135, 920, 190, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("click_request_btn", imgs_)
+                    is_data = True
+
+        if is_data == True:
+
+            for i in range(10):
+
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\out_giveup_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(470, 650, 590, 710, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("out_giveup_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    break
+                else:
+
+                    result_out = out_check(cla)
+                    if result_out == True:
+
+                        drag_pos(810, 210, 810, 110, cla)
+
+                        time.sleep(0.2)
+
+                        click_pos_2(650, 185, cla)
+                    else:
+                        clean_screen_start(cla)
+                QTest.qWait(500)
 
 
         return is_data
@@ -938,4 +981,3 @@ def season_check(cla):
     except Exception as e:
         print(e)
     return 0
-
