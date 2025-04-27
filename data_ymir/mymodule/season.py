@@ -548,7 +548,7 @@ def season_check(cla):
     import os
     from function_game import imgs_set_
 
-    type = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung"
+    type = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\type"
     type_list = os.listdir(type)
 
     try:
@@ -559,7 +559,7 @@ def season_check(cla):
         for i in range(len(type_list)):
             result_file_list = type_list[i].split(".")
             read_data = result_file_list[0]
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\" + str(read_data) + ".PNG"
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\type\\" + str(read_data) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(700, 130, 920, 190, cla, img, 0.85)
