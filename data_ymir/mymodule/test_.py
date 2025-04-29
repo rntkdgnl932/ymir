@@ -71,7 +71,17 @@ def go_test():
 
         # fix_bag(cla)
 
-        fix_bag_item(cla)
+        for i in range(5):
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\chango\\jaelyo_in_ready.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(125, 100, 210, 160, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("jaelyo_in_ready", imgs_)
+                break
+            else:
+                click_pos_2(850, 130, cla)
+            time.sleep(1)
 
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\click_request_btn.PNG"
