@@ -594,6 +594,15 @@ def confirm_all(cla):
                                         print("out_btn_545_595", imgs_)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
                                         is_confirm = True
+                                    else:
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\fix_bag_item\\all_look_btn.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(400, 950, 700, 1000, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("all_look_btn", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            is_confirm = True
 
 
         return is_confirm
@@ -782,7 +791,7 @@ def fix_bag_item(cla):
 
         while is_data is False:
             is_data_count += 1
-            if is_data_count > 7:
+            if is_data_count > 20:
                 is_data = True
 
 
@@ -796,6 +805,8 @@ def fix_bag_item(cla):
 
                 click_pos_2(930, 100, cla)
 
+                is_item = False
+
                 for i in range(len(file_list)):
                     result_file_list = file_list[i].split(".")
                     read_data = result_file_list[0]
@@ -807,11 +818,15 @@ def fix_bag_item(cla):
                         click_x = imgs_.x
                         click_y = imgs_.y
 
+                        is_item = True
+
                         result_full = fix_bag_item_click(cla, click_x, click_y)
                         if result_full == True:
                             break
                         QTest.qWait(1000)
 
+                if is_item == False:
+                    is_data_count += 1
 
             else:
                 bag_open(cla)
@@ -847,14 +862,14 @@ def fix_bag_item_click(cla, click_x, click_y):
             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\fix_bag_item\\all_look_btn.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(400, 950, 550, 1000, cla, img, 0.85)
+            imgs_ = imgs_set_(400, 950, 700, 1000, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("all_look_btn", imgs_)
                 for i in range(6):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\fix_bag_item\\all_look_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(400, 950, 640, 1000, cla, img, 0.85)
+                    imgs_ = imgs_set_(400, 950, 700, 1000, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         click_pos_reg(imgs_.x, imgs_.y, cla)
 
@@ -914,7 +929,7 @@ def fix_bag_item_click(cla, click_x, click_y):
                     click_pos_reg(click_x, click_y, cla)
             QTest.qWait(500)
 
-
+        return is_data
 
 
     except Exception as e:
