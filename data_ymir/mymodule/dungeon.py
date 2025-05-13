@@ -816,7 +816,18 @@ def dungeon_in(cla, data):
                                             if read_data[0] == "폴크":
                                                 print("날아다니자....")
                                                 for f in range(3):
-                                                    click_pos_2(480, 520, cla)
+                                                    # confirm_all
+                                                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\mission_end_btn.PNG"
+                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                    imgs_ = imgs_set_(470, 550, 650, 650, cla, img, 0.85)
+                                                    if imgs_ is not None and imgs_ != False:
+                                                        print("mission_end_btn", imgs_)
+                                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                        time.sleep(1)
+                                                        click_pos_2(480, 520, cla)
+                                                    else:
+                                                        click_pos_2(480, 520, cla)
                                                     time.sleep(3)
                                                 for f in range(15):
                                                     click_pos_2(855, 890, cla)
