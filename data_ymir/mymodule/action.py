@@ -412,26 +412,43 @@ def jilyung_get(cla):
             imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
 
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\give_up.PNG"
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\complete_notice.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(110, 650, 850, 730, cla, img, 0.8)
+                imgs_ = imgs_set_(300, 500, 850, 730, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
+                    is_menu = True
+                else:
 
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\grow.PNG"
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\give_up.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(150, 370, 800, 420, cla, img, 0.8)
+                    imgs_ = imgs_set_(110, 650, 850, 730, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        x_reg_1 = imgs_.x - 50
-                        x_reg_2 = imgs_.x + 50
 
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\give_up.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\grow.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_reg(x_reg_1, 650, x_reg_2, 730, cla, img, 0.8)
+                        imgs_ = imgs_set_(150, 370, 800, 420, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            is_menu = True
+                            x_reg_1 = imgs_.x - 50
+                            x_reg_2 = imgs_.x + 50
+
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\give_up.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_reg(x_reg_1, 650, x_reg_2, 730, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                is_menu = True
+                            else:
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\give_up.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(110, 650, 850, 730, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.5)
+                                    confirm_all(cla)
                         else:
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\give_up.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
@@ -441,27 +458,18 @@ def jilyung_get(cla):
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 time.sleep(0.5)
                                 confirm_all(cla)
+
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\give_up.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\grow.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(110, 650, 850, 730, cla, img, 0.8)
+                        imgs_ = imgs_set_(150, 370, 800, 420, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            click_pos_reg(imgs_.x, 685, cla)
+                        else:
+                            click_pos_2(870, 1010, cla)
                             time.sleep(0.5)
                             confirm_all(cla)
-
-                else:
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\grow.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(150, 370, 800, 420, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        click_pos_reg(imgs_.x, 685, cla)
-                    else:
-                        click_pos_2(870, 1010, cla)
-                        time.sleep(0.5)
-                        confirm_all(cla)
 
 
 
