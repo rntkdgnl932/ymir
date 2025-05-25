@@ -15,9 +15,10 @@ def clean_screen_start(cla):
     import pyautogui
     import random
     from game_check import error_check2
-    from action import out_check
+    from action import out_check, macro_out
     from dead_die import dead_check
     from function_game import imgs_set_
+    from massenger import line_to_me
     try:
 
         clean = False
@@ -43,8 +44,19 @@ def clean_screen_start(cla):
                     clean_screen_go(cla)
                     clean = True
                 else:
-                    clean_screen_go(cla)
-                    error_check2(cla)
+
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\check\\game_title_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 0, 960, 1030, v_.now_cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+
+                        clean_screen_go(cla)
+                        error_check2(cla)
+                    else:
+                        why = "게임 꺼짐"
+                        line_to_me(cla, why)
+                        macro_out(cla)
 
 
                 QTest.qWait(1000)
