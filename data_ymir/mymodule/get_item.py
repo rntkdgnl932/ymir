@@ -215,15 +215,15 @@ def just_wonjung_in_out(cla, data):
                             is_in = True
                             break
                         else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\post.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
+                            imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
-                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_wonjung.PNG"
+                                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\wonjung.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(350, 550, 520, 640, cla, img, 0.7)
+                                imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.7)
                                 if imgs_ is not None and imgs_ != False:
                                     print("menu_wonjung", imgs_)
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -570,10 +570,10 @@ def get_post(cla):
                         is_in = True
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
+                        imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
@@ -657,10 +657,10 @@ def get_main(cla):
                         is_in = True
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
+                        imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
 
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
@@ -734,10 +734,10 @@ def get_upjuk(cla):
                         is_in = True
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
+                        imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
@@ -1295,10 +1295,10 @@ def get_daily_mission(cla):
                         is_in = True
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
+                        imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\get_item\\menu_point_2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)

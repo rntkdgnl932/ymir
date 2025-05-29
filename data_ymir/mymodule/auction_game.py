@@ -176,10 +176,10 @@ def auction_in(cla):
 
             else:
 
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\menu_auction.PNG"
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\auction.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(650, 430, 830, 520, cla, img, 0.85)
+                imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
                     print("menu_auction", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -252,10 +252,10 @@ def auction_sell(cla):
 
             else:
 
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\menu_auction.PNG"
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\auction.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(650, 430, 830, 520, cla, img, 0.85)
+                imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
                     print("menu_auction", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -332,10 +332,10 @@ def auction_fast_sell(cla):
 
             else:
 
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\menu_auction.PNG"
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\auction.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(650, 430, 830, 520, cla, img, 0.85)
+                imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
                     print("menu_auction", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)

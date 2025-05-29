@@ -24,10 +24,10 @@ def tuto_start(cla):
     try:
         print("tuto_start")
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\post.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(650, 550, 850, 650, cla, img, 0.8)
+        imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             clean_screen_start(cla)
 
@@ -104,10 +104,10 @@ def tuto_start(cla):
 
 
             # 실수로 메뉴 클릭시....
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\post.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(620, 550, 740, 640, cla, img, 0.7)
+            imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.7)
             if imgs_ is not None and imgs_ != False:
                 print("menu_post")
                 click_pos_2(920, 55, cla)

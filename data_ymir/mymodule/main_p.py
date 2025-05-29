@@ -4220,8 +4220,9 @@ class game_Playing(QThread):
                                     request_start(v_.now_cla, result_schedule_)
 
                                 elif "시즌" in result_schedule_:
-                                    season_start(v_.now_cla, result_schedule_)
+                                    # season_start(v_.now_cla, result_schedule_)
 
+                                    myQuest_play_add(v_.now_cla, result_schedule_)
 
                                 elif "발키리" in result_schedule_ or "혼돈" in result_schedule_ or "폴크" in result_schedule_:
                                     dungeon_start(v_.now_cla, result_schedule_)

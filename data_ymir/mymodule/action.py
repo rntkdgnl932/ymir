@@ -125,10 +125,10 @@ def close_check(cla):
                             print("out_check close_4 1: ", imgs_)
                             is_out = False
                         else:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\post.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(650, 550, 850, 650, cla, img, 0.8)
+                            imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("out_check : menu_post", imgs_)
                                 is_out = False
@@ -237,10 +237,10 @@ def menu_open(cla):
                 macro_out(cla)
 
             else:
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\post.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(650, 550, 850, 650, cla, img, 0.8)
+                imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("menu_post(menu_open)")
                     # # this_point_x = 720 + this_point_x_plus
@@ -346,10 +346,10 @@ def menu_open_pure(cla):
                 macro_out(cla)
 
             else:
-                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\post.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(650, 550, 850, 650, cla, img, 0.8)
+                imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("menu_post")
                     is_menu = True
@@ -484,10 +484,10 @@ def jilyung_get(cla):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(650, 550, 850, 650, cla, img, 0.8)
+                        imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_2(115, 465, cla)
                     QTest.qWait(1000)

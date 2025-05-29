@@ -328,10 +328,10 @@ def guild_check(cla):
 
                 # if is_get == True:
                 for i in range(5):
-                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                    full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\post.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
+                    imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
@@ -358,15 +358,15 @@ def guild_check(cla):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_open\\menu_post.PNG"
+                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 550, 850, 640, cla, img, 0.7)
+                        imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\guild\\menu_guild.PNG"
+                            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\menu_icon\\guild.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(670, 490, 830, 570, cla, img, 0.7)
+                            imgs_ = imgs_set_(0, 200, 960, 800, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
                                 print("menu_guild")
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
