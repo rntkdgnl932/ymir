@@ -62,7 +62,6 @@ def out_check(cla):
         if imgs_ is not None and imgs_ != False:
             print("out_check", imgs_)
             is_out = True
-
         if is_out == True:
             is_out = close_check(cla)
 
@@ -82,7 +81,7 @@ def close_check(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from dead_die import dead_recovery
     try:
-        # print("out_check")
+        # print("close_check")
         is_out = True
 
         full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\clean_screen\\close_1.PNG"
@@ -140,8 +139,6 @@ def close_check(cla):
                                 if imgs_ is not None and imgs_ != False:
                                     print("out_check event_1818 : ", imgs_)
                                     is_out = False
-
-
         return is_out
     except Exception as e:
         print(e)
@@ -837,6 +834,7 @@ def fix_bag_item(cla):
                     is_data_count += 1
 
             else:
+                print("요기요1")
                 bag_open(cla)
             QTest.qWait(1000)
 
@@ -1161,6 +1159,7 @@ def bag_open(cla):
                 if result_out == True:
                     click_pos_2(870, 55, cla)
                 else:
+                    print("요기요2")
                     clean_screen_start(cla)
             QTest.qWait(1000)
 

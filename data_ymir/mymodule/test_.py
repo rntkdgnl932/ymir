@@ -23,7 +23,7 @@ def go_test():
     from chango import go_chango, chango_start, chango_maul_auction, chango_in, chango_maul_spot
     from request import request_get, request_start
     from clean_screen import clean_screen_go
-    from dungeon import dungeon_in, random_spot_dun, dungeon_hondon_folk
+    from dungeon import dungeon_in, random_spot_dun, dungeon_hondon_folk, step_check
     from boonhae_collection import collection_start, boonhae_start, collection_upgrade
     from auction_game import auction_in, auction_low_num, auction_qun_num, auction_start, auction_fast_start
     from migoong import migoong_start
@@ -50,7 +50,7 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
     try:
-
+        # step_check(cla, 3)
         # request_get(cla, "외뢰_2")
         # 미궁_스비파_5
         # migoong_start(cla, "미궁_카라_1")
@@ -71,7 +71,7 @@ def go_test():
 
         # fix_bag(cla)
 
-        fix_bag_item(cla)
+        out_check(cla)
 
         # full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\action\\out_check\\out_check.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
@@ -93,19 +93,6 @@ def go_test():
         #     time.sleep(1)
 
 
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\click_request_btn.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(835, 135, 920, 190, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("click_request_btn", imgs_)
-
-            full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\season_jilyung\\season_jilyung_ready.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(700, 130, 920, 190, cla, img, 0.85)
-            if imgs_ is not None and imgs_ != False:
-                print("season_jilyung_ready", imgs_)
 
         # auction_fast_start(cla)
 
@@ -165,13 +152,6 @@ def go_test():
         # result_ = int(result_low * result_qun)
         #
         # print("result_", result_)
-
-        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\auction\\enroll_information_title.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(410, 310, 540, 360, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("enroll_information_title", imgs_)
 
 
 

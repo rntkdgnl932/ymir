@@ -37,7 +37,6 @@ def clean_screen_start(cla):
                 print("clean_screen_start", clean_count)
                 if clean_count > 2:
                     clean = True
-
                 result_out = out_check(cla)
                 QTest.qWait(1000)
                 if result_out == True:
@@ -48,9 +47,8 @@ def clean_screen_start(cla):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\check\\game_title_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 0, 960, 1030, v_.now_cla, img, 0.8)
+                    imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-
                         clean_screen_go(cla)
                         error_check2(cla)
                     else:

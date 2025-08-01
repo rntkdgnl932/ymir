@@ -726,7 +726,7 @@ def dungeon_in(cla, data):
                     full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\dungeon\\" + str(clicked) + ".PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(810, 210, 885, 280, cla, img, 0.85)
+                    imgs_ = imgs_set_(810, 200, 885, 280, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         print("clicked :", clicked, imgs_)
                         # 발키리, 혼돈, 폴크
@@ -960,8 +960,10 @@ def step_check(cla, step):
                         if is_now_step == int(step):
                             break
                         elif is_now_step < int(step):
+                            print("click right")
                             click_pos_2(905, 160, cla)
                         elif is_now_step > int(step):
+                            print("click left")
                             click_pos_2(725, 160, cla)
                     QTest.qWait(1000)
 
