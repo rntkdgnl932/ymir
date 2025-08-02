@@ -228,7 +228,9 @@ def request_start(cla, data):
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(20, 30, 200, 80, cla, img, 0.85)
                             if imgs_ is not None and imgs_ != False:
-                                request_get(cla, data)
+                                resulet_request_get = request_get(cla, data)
+                                if resulet_request_get == True:
+                                    is__request = True
                             else:
                                 print("로딩중이거나 걷는 거?")
                                 dead_check(cla)
@@ -765,8 +767,22 @@ def request_get(cla, data):
                                 if imgs_ is not None and imgs_ != False:
                                     drag_pos(90, 75, 90, 180, cla)
                                 else:
-                                    click_pos_2(190, 55, cla)
-                                    time.sleep(1)
+                                    is_bool = False
+
+                                    for is_bool_count in range(3):
+                                        full_path = "c:\\my_games\\ymir\\data_ymir\\imgs\\request\\maul_in_request_btn.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(10, 50, 170, 200, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            is_bool = True
+                                            break
+                                        else:
+                                            click_pos_2(190, 55, cla)
+                                            time.sleep(1)
+
+                                    if is_bool == False:
+                                        request_get_ready(cla, data)
 
                     QTest.qWait(1000)
 
@@ -775,7 +791,7 @@ def request_get(cla, data):
         if complete == True:
             print("add 하거라")
             myQuest_play_add(cla, data)
-
+        return complete
     except Exception as e:
         print(e)
         return 0
