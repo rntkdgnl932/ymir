@@ -200,7 +200,7 @@ class MyApp(QDialog):
         elif last_monitor_number == 2:
             x_reg = 960 * 2
         elif last_monitor_number == 3:
-            x_reg = 960 * 4
+            x_reg = 960 * 5
 
         # self.setGeometry(20 + x_reg, 200, 900, 700)
         self.setGeometry(20 + x_reg, y_reg, 900, 900)
